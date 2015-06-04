@@ -1,6 +1,6 @@
 @everywhere setupcode = quote
   include("DiscreteMaps.jl")
-  using DiscreteMaps, HDF5, JLD, Gadfly, Dates
+  using DiscreteMaps, HDF5, JLD, Dates
   NI = 10^5
   N = 10^5
   sumN = 20
