@@ -7,7 +7,8 @@
   epsr = [0,0.005]
   epsN = length(epsr)
   starttime = now()
-  startstring = "rd"
+  DiscreteMaps.newpath("results")
+  startstring = "results/rd"
   function getdiagnostics(PI)
     It = DiscreteMaps.itdict[PI](NI=NI,N=N,NH=N)
     filename = replace("$(startstring)-$(It.PInitial)-$(starttime).h5",":","-")

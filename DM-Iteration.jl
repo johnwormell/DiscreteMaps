@@ -131,6 +131,10 @@ function betasamplefn(NP::Int64,epsmax=0.0001,alpha=0.5,beta=1.)
   epsmax * rand(Distributions.Beta(alpha,beta),NP) # .*(1 - 2* (rand(Distributions.Bernoulli(),NP)))
 end
 
+function zerosamplefn(NP::Int64,epsmax=0.0001)
+  zeros(Float64,NP)
+end
+
 function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
   (epsmax < Inf )|| (epsmin > -Inf) && ((epsv, eA, vA) = chopeps(epsv,eA,vA;epsmax=epsmax,epsmin=epsmin))
   AN = size(eA,1)

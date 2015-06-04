@@ -11,7 +11,7 @@ using HDF5, JLD, Dates
 F64U = Union(Float64,Array{Float64})
 
 tomorrowmorning() = Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16)))+Dates.Hour(10)
-
+newpath(path) = ispath(path) || mkdir(path)
 restrictto(x::Array{Float64,1},xmin,xmax) = max(min(x,xmax),xmin)
 
 function restrictto!(x::Array{Float64,1},xmax,xmin)
