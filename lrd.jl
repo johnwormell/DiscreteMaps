@@ -14,7 +14,7 @@
     filename = replace("$(startstring)-$(It.PInitial)-$(starttime).h5",":","-")
 
     println(("Starting $PI"))
-    vAv = Array(Float64,sumN,epsN)
+    vAv = Array(Float64,sumN+1,epsN)
     Av = Array(Float64,N,epsN)
     for i = 1:epsN
       println("eps $i")
