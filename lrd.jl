@@ -1,6 +1,6 @@
 @everywhere setupcode = quote
   include("DiscreteMaps.jl")
-  using DiscreteMaps, HDF5, JLD, Gadfly, Dates
+  using DiscreteMaps, HDF5, JLD, Dates
   NI = 10^5
   N = 10^5
   sumN = 20
@@ -13,7 +13,7 @@
     It = DiscreteMaps.itdict[PI](NI=NI,N=N,NH=N)
     filename = replace("$(startstring)-$(It.PInitial)-$(starttime).h5",":","-")
 
-    println(("$PI"))
+    println(("Starting $PI"))
     vAv = Array(Float64,sumN,epsN)
     Av = Array(Float64,N,epsN)
     for i = 1:epsN
@@ -23,12 +23,11 @@
     end
 
     save(filename,"vAv",vAv,"Av",Av)
-    println("file saved $PI")
+    println("File saved for $PI")
     return "A"
   end
 end
 
 @everywhere eval(setupcode)
-getdiagnostics("D1")
 println("Eval done")
 pmap(getdiagnostics,ARGS)
