@@ -17,6 +17,7 @@
     vAv = Array(Float64,sumN,epsN)
     Av = Array(Float64,N,epsN)
     for i = 1:epsN
+      println("eps $i")
       xh = DiscreteMaps.obsiterate(It,epsr[i],returnhistory=true)
       vAv[:,i] = DiscreteMaps.autocovariance(It.A[1],xh,sumN)
       Av[:,i] = It.A[1](xh)
