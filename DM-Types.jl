@@ -14,9 +14,7 @@ type NDMap <: Map
   noise::Function
 end
 
-function runifinit(dom,dim)
-  return dom[:,1]+rand(dim).*(dom[:,2]-dom[:,1])
-end
+runifinit(dom,dim) = return dom[:,1]+rand(dim).*(dom[:,2]-dom[:,1])
 
 function rnormadditivenoise(dom,dim)
   function noise!(x::Array{Float64})
@@ -43,11 +41,11 @@ type DMap <: Map
   noise!::Function
 end
 
-#type Acim
+# type Acim
 #    M::DMap
 #    rho::Function
 #    sp::Space
-#end
+# end
 
 DMap(M::Map,df) = DMap(M.f!,df,M.params,M.dom,M.dim,M.periodic,M.init,M.noise);
 DMap(f!,df,params,dom,dim,periodic) = DMap(f!,df,params,dom,dim,periodic,()->runifinit(dom,dim),rnormadditivenoise(dom,dim))

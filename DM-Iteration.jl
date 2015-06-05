@@ -151,12 +151,16 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
   pval = Array(Float64,AN)
   for an = 1:AN
     lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
+#    lmX = [neps[an,:]' nA0c[an,:]']
+
     lmY = nAc[an,:]'
     lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]
     rss[an] = sum((lmY-lmX*lmbh).^2)
     pval[an] = Distributions.ccdf(Distributions.Chisq(eN-3),sum((lmY - lmX*lmbh).^2))
+#    pval[an] = Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2))
+
 #    println("Observable $an")
 #    println("Coefficients: ", lmbh)
 #    println("Residual sum of squares: ", sum((lmY-lmX*lmbh).^2))

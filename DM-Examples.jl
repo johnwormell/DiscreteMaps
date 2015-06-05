@@ -18,7 +18,7 @@ logistic(alpha::Float64=3.8) = logistic([alpha])
 
 logisticp(alpha::F64U=3.8) = Peturbation(logistic(alpha),scalingpetX)
 logistic1(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L1",logiA;largs...)
-
+logistic2(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L2",logiA2;largs...)
 
 # Logistic with noise
 function loginoisef!(x::Array{Float64,1},a::(Array{Float64,1},Float64))
@@ -138,6 +138,7 @@ logiwcoupj3(J::Integer=100;alpha0::Float64=3.8,sd0::Float64=0.02,n::Integer=100,
 # Dictionary
 
 itdict = {"L1" => logistic1,
+          "L2" => logistic2,
           "M1" => loginoisem1,
           "N1" => loginoise1,
           "D1" => doubling1,
