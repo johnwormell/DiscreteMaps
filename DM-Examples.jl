@@ -16,6 +16,8 @@ logistic(alpha::Float64=3.8) = logistic([alpha])
 #logistic(alpha::Float64) = DMap((x,a)->a*x.*(1-x),(x,a)->a*(1-2x),alpha)
 #logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diag(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
 
+# L1, L2: logistic deterministic
+
 logisticp(alpha::F64U=3.8) = Peturbation(logistic(alpha),scalingpetX)
 logistic1(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L1",logiA;largs...)
 logistic2(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L2",logiA2;largs...)
@@ -51,6 +53,10 @@ doubling(dim::Integer=1) = DMap(doublingf!,(x,a)->2*ones(dim),(),repmat([0. 1.],
 
 doublingp() = Peturbation(doubling(),nonlinearpetX)
 doubling1(;largs...) = IterationSchema(doublingp(),"D1",trigA;largs...)
+
+doublingpp() = Peturbation(doubling(),sinnonlinearpetX)
+doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
+
 
 # Arnol'd cat map
 
@@ -142,6 +148,7 @@ itdict = {"L1" => logistic1,
           "M1" => loginoisem1,
           "N1" => loginoise1,
           "D1" => doubling1,
+          "D2" => doubling2,
           "C1" => cat1,
           "C2" => cat2,
           "Y1" => loginocoup1,

@@ -68,8 +68,8 @@ function obsiterate(It::IterationSchema, Peps::Float64=0.;returnhistory=false)
   end
   function fn!(x::Array{Float64,1})
     Mf!(x,Mparams)
+    CX!(x) # swapped this with Mnoise!
     Mnoise!(x)
-    CX!(x)
   end
   obsiterate(fn!,It;returnhistory=returnhistory)
 end
@@ -100,4 +100,5 @@ function timedsample(It::IterationSchema;endtime::DateTime=tomorrowmorning(),NQ:
   end
   return cyclecount, epsrange, eAx, vAx
 end
-
+timedsample(PInitial::String;endtime::DateTime=tomorrowmorning(),NQ::Int64=1,startstring::String="rs") =
+  timedsample(itdict[PInitial];endtime=endtime,NQ=NQ,startstring=startstring)
