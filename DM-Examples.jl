@@ -7,14 +7,31 @@ nonlinearpetX(x::Array{Float64,1}) = x.*(1-x)
 sinnonlinearpetX(x::Array{Float64,1}) = sin(2*pi*x)
 
 # Logistic
+
 function logisticf!(x::Array{Float64,1},a::Array{Float64,1})
   x[:] = a[:] .* x .* (1.-x)
   nothing
 end
-logistic(alpha::Array{Float64}) = DMap(logisticf!,(x,a)->diag(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
-logistic(alpha::Float64=3.8) = logistic([alpha])
+
+function logisticg(x::Array{Float64,1},a::Array{Float64,1})
+  g1 = (1 - sqrt(1 - 4*x./a))/2 # + eps(maximum(a)/4)
+  g2 = 1 - g1
+  return checkindomain([g1 g2],logisticdom(a))
+end
+logisticg(x::Float64,a) = logisticg([x],a)
+
+logisticdom(alpha::Array{Float64,1}) = [(1 - alpha/4) alpha/4] #[alpha.^2.*(4-alpha)/16 alpha/4]
+logisticdom(alpha::Float64) = logisticdom([alpha])
+
+function logistic(alpha::Array{Float64},invertible=(length(alpha)==1))
+  invertible ?
+        IMap(logistic(alpha,false),logisticg,(a)->[0.5],(a)->-2*a) :
+        DMap(logisticf!,(x,a) -> (a * (1 - 2x)),alpha,logisticdom(alpha))
+end
+logistic(alpha::Float64=3.8) = logistic([alpha],true)
 #logistic(alpha::Float64) = DMap((x,a)->a*x.*(1-x),(x,a)->a*(1-2x),alpha)
-#logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diag(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
+#logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diagm(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
+
 
 logisticp(alpha::F64U=3.8) = Peturbation(logistic(alpha),scalingpetX)
 logistic1(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L1",logiA;largs...)
@@ -45,12 +62,29 @@ function doublingf!(x::Array{Float64,1},a::())
   nothing
 end
 
-doubling(dim::Integer=1) = DMap(doublingf!,(x,a)->2*ones(dim),(),repmat([0. 1.],dim,1),dim,true)
+function doublingg(x::Array{Float64,1},a::())
+  g1 = x/2
+  g2 = (x+1)/2
+  return [g1 g2]
+end
+doublingg(x::Float64,a) = doublingg([x],a)
+
+#doubling(dim::Integer=1) = DMap(doublingf!,(x,a)->2*ones(size(x)),(),repmat([0. 1.],dim,1),dim,true)
 #doubling() = DMap(doublingf!,(x,a)->2,(),[0. 1.],1,true)
 #doubling() = doubling(1)
 
+function doubling(dim::Integer=1,invertible::Bool=(dim==1))
+  invertible ?
+        IMap(doubling(dim,false),doublingg,(a)->[],(a)->[]) :
+        DMap(doublingf!,(x,a)->2*ones(size(x)),(),repmat([0. 1.],dim,1),dim,true)
+end
+
+
 doublingp() = Peturbation(doubling(),nonlinearpetX)
 doubling1(;largs...) = IterationSchema(doublingp(),"D1",trigA;largs...)
+
+doublingpp() = Peturbation(doubling(),sinnonlinearpetX)
+doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
 
 # Arnol'd cat map
 
@@ -142,6 +176,7 @@ itdict = {"L1" => logistic1,
           "M1" => loginoisem1,
           "N1" => loginoise1,
           "D1" => doubling1,
+          "D2" => doubling2,
           "C1" => cat1,
           "C2" => cat2,
           "Y1" => loginocoup1,

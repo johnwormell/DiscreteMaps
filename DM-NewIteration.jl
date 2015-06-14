@@ -100,4 +100,6 @@ function timedsample(It::IterationSchema;endtime::DateTime=tomorrowmorning(),NQ:
   end
   return cyclecount, epsrange, eAx, vAx
 end
+timedsample(PInitial::String;endtime::DateTime=tomorrowmorning(),NQ::Int64=1,startstring::String="rs",Itargs=()) =
+  timedsample(itdict[PInitial](Itargs...);endtime=endtime,NQ=NQ,startstring=startstring)
 
