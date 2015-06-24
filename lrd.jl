@@ -14,7 +14,7 @@
     It = DiscreteMaps.itdict[PI](NI=NI,N=N,NH=N)
     filename = replace("$(startstring)-$(It.PInitial)-$(starttime).h5",":","-")
 
-    println(("Starting $PI"))
+#    println(("Starting $PI"))
     vAv = Array(Float64,sumN+1,epsN)
     Av = Array(Float64,N,epsN)
     for i = 1:epsN
@@ -25,7 +25,7 @@
     end
 
     save(filename,"vAv",vAv,"Av",Av)
-    println("File saved for $PI")
+#    println("File saved for $PI")
     return "A"
   end
 end
