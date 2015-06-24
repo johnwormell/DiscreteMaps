@@ -1,3 +1,3 @@
 rm log/log-lrd
-bat log/log-lrd julia -p 13 lrd.jl C1 C2 D1 L1 M1 N1 X1 X2 X3 W1 W2 W3 Y1
+bat log/log-lrd julia -p 7 lrd.jl C2 D2 L2 M1 Y1 W3 X3
 

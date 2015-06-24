@@ -3,12 +3,13 @@
   using DiscreteMaps, HDF5, JLD, Dates
   NI = 10^5
   N = 10^5
-  sumN = 20
-  epsr = [0,0.0001,0.005]
+  sumN = 100
+  epsr = zeros(1000)
   epsN = length(epsr)
   starttime = now()
   DiscreteMaps.newpath("results")
   startstring = "results/rd"
+
   function getdiagnostics(PI)
     It = DiscreteMaps.itdict[PI](NI=NI,N=N,NH=N)
     filename = replace("$(startstring)-$(It.PInitial)-$(starttime).h5",":","-")
