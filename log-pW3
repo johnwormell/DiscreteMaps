@@ -1,0 +1,3500 @@
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+mapreduce_seq_impl at reduce.jl:218
+mapreduce_pairwise_impl at reduce.jl:131
+_mapreducedim! at reducedim.jl:170
+sum at reducedim.jl:224
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-Observables.jl:10
+__ieee754_rem_pio2 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libopenlibm.so (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+mapreduce_seq_impl at reduce.jl:218
+mapreduce_pairwise_impl at reduce.jl:131
+mapreduce_pairwise_impl at reduce.jl:134
+mapreduce_pairwise_impl at reduce.jl:134
+mapreduce_pairwise_impl at reduce.jl:134
+unknown function (ip: 832982277)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+__ieee754_rem_pio2 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libopenlibm.so (unknown line)
+sin at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libopenlibm.so (unknown line)
+__libc_malloc at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+jl_gc_collect at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+sin at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libopenlibm.so (unknown line)
+sin at operators.jl:360
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-Observables.jl:13
+jl_subtype at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+mapreduce_pairwise_impl at reduce.jl:134
+mapreduce_pairwise_impl at reduce.jl:134
+mapreduce_pairwise_impl at reduce.jl:135
+_mapreduce at reduce.jl:174
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+autocovariance at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:11
+observevar at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:24
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+CX! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:66
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:71
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+sin at operators.jl:360
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+allocobj at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+allocobj at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1012026048)
+unknown function (ip: 1012029263)
+unknown function (ip: 1012041662)
+jl_matching_methods at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+mean at statistics.jl:17
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:52
+jlcall___obsiterate#148___20769 at  (unknown line)
+observevar at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:24
+jlcall_observevar_20858 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-Observables.jl:13
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_tuple_uninit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -737955439)
+jl_new_array at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+cov at statistics.jl:293
+julia_cov_20892 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+jlcall_oiterationhistoryloop!_20855 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jlcall___obsiterate#148___20768 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20767 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_methods at ./reflection.jl:99
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_tuple at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
++ at array.jl:722
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait at ./task.jl:273
+process_events at ./stream.jl:537
+process_events at ./stream.jl:537
+julia_obsiterate_20768 at  (unknown line)
+wait at ./task.jl:273
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+autocovariance at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:14
+observevar at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:24
+observevar at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:24
+jlcall_observevar_20877 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:53
+jlcall___obsiterate#148___20750 at  (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+process_events at ./stream.jl:537
+broadcast! at broadcast.jl:220
+process_events at ./stream.jl:537
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-Types.jl:22
+autocovariance at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:10
+observevar at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:24
+observevar at /como/users/amfour/wormellj/DiscreteMaps/DM-Observing.jl:24
+jlcall_observevar_20876 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:53
+jlcall___obsiterate#148___20768 at  (unknown line)
+wait at ./task.jl:194
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+task_done_hook at task.jl:83
+wait at ./task.jl:273
+task_done_hook at task.jl:83
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+process_events at ./stream.jl:537
+task_done_hook at task.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait at ./task.jl:273
+.* at broadcast.jl:278
+wait at ./task.jl:273
+task_done_hook at task.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20767 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait_full at ./multi.jl:602
+wait at ./task.jl:273
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+wait at ./task.jl:273
+task_done_hook at task.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:53
+julia_obsiterate_20749 at  (unknown line)
+anonymous at task.jl:855
+_methods at ./reflection.jl:116
+task_done_hook at task.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:72
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait at ./task.jl:194
+unknown function (ip: 4199725)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall___obsiterate#148___20769 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:92
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait_full at ./multi.jl:602
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199725)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20768 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+run_work_thunk at multi.jl:621
+call_on_owner at ./multi.jl:751
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+anonymous at multi.jl:855
+unknown function (ip: 4199725)
+unknown function (ip: 4199725)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+_methods at ./reflection.jl:116
+unknown function (ip: 4199725)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+unknown function (ip: 4199725)
+jlcall_oiterationhistoryloop!_20854 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait at ./multi.jl:756
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+sync_end at ./task.jl:311
+jlcall_sync_end_18909 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1785312056)
+unknown function (ip: -1785315888)
+unknown function (ip: -1785310534)
+unknown function (ip: -1785247810)
+unknown function (ip: -1785246147)
+jl_load at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include at ./boot.jl:245
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at loading.jl:128
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_options at ./client.jl:285
+_start at ./client.jl:354
+jlcall__start_17420 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4200751)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+remotecall_fetch at multi.jl:704
+unknown function (ip: 4199781)
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+abstract_call_gf at ./inference.jl:678
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:1365
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+anonymous at task.jl:855
+unknown function (ip: 4199781)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1012051240)
+unknown function (ip: 1012054843)
+unknown function (ip: 1012060991)
+unknown function (ip: 1012223236)
+unknown function (ip: 1012239906)
+unknown function (ip: 1012244254)
+unknown function (ip: 1012271955)
+unknown function (ip: 1012278669)
+unknown function (ip: 1012279118)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+send_msg_ at multi.jl:172
+jlcall_send_msg__20156 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+send_msg_now at multi.jl:137
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+send_msg_now at multi.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+deliver_result at multi.jl:794
+jlcall_deliver_result_20153 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:856
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+unknown function (ip: 4199781)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jlcall___obsiterate#148___20767 at  (unknown line)
+unknown function (ip: 4199725)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+jlcall_oiterationhistoryloop!_20853 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jlcall___obsiterate#148___20766 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20765 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20766 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+Command terminated by signal 15
+3.44user 0.61system 0:08.43elapsed 48%CPU (0avgtext+0avgunknown function (ip: 4199725)
+unknown function (ip: 4199781)
+data __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+85624unknown function (ip: 4199781)
+maxresident)k
+0inputs+88outputs (0major+26040minor)pagefaults 0swaps
+Command terminated by signal 15
+18.67user 1.23system 0:54.55elapsed 36%CPU (0avgtext+0avgdata 299336maxresident)k
+0inputs+96outputs (0major+79722minor)pagefaults 0swaps
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+jl_gc_collect at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+jl_gc_collect at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 1879753636)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 1858678301)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+allocobj at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+.- at array.jl:754
+unknown function (ip: 559474289)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+allocobj at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_array_1d at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+broadcast_shape at broadcast.jl:32
+.* at broadcast.jl:278
+unknown function (ip: -678237413)
+unknown function (ip: -203237698)
+unknown function (ip: 1879758344)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1858684424)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_array_1d at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:92
+unknown function (ip: 559536390)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_tuple_uninit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+unknown function (ip: -202022012)
+unknown function (ip: -201996906)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879760046)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1858686126)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+.* at array.jl:752
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-Types.jl:21
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 559580987)
+unknown function (ip: 559532523)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_tuple at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:92
+unknown function (ip: -678237395)
+unknown function (ip: -201990166)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879751795)
+unknown function (ip: 1858677875)
+unknown function (ip: 1858684424)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:72
+unknown function (ip: 559536084)
+process_events at ./stream.jl:537
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+jl_f_arraysize at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+longer_size at broadcast.jl:24
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+unknown function (ip: -678237395)
+unknown function (ip: -201985288)
+unknown function (ip: -195120209)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+unknown function (ip: 1879758344)
+unknown function (ip: 1858685917)
+unknown function (ip: 1858677875)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 558896593)
+wait at ./task.jl:273
+jlcall_oiterationhistoryloop!_20853 at  (unknown line)
+broadcast_shape at broadcast.jl:30
+.* at broadcast.jl:278
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+wait at ./task.jl:273
+process_events at ./stream.jl:537
+unknown function (ip: -678237395)
+unknown function (ip: -195119986)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+unknown function (ip: 1879759837)
+unknown function (ip: 1858686915)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+jlcall_oiterationhistoryloop!_20852 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 557538875)
+wait at ./task.jl:194
+process_events at ./stream.jl:537
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:92
+wait at ./task.jl:273
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait at ./task.jl:194
+wait at ./task.jl:273
+unknown function (ip: -678237395)
+unknown function (ip: -195119708)
+wait at ./task.jl:273
+wait at ./task.jl:194
+unknown function (ip: 1879751795)
+unknown function (ip: 1858677114)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+unknown function (ip: 559290621)
+wait_full at ./multi.jl:602
+wait at ./task.jl:273
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jlcall___obsiterate#148___20766 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+wait at ./task.jl:194
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+jlcall_oiterationhistoryloop!_20851 at  (unknown line)
+wait_full at ./multi.jl:602
+wait at ./task.jl:194
+unknown function (ip: -678237395)
+unknown function (ip: -200763276)
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+unknown function (ip: 1879758344)
+unknown function (ip: 1858684424)
+jlcall___obsiterate#148___20765 at  (unknown line)
+unknown function (ip: 561185711)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait at ./task.jl:194
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jlcall___obsiterate#148___20764 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+wait_full at ./multi.jl:602
+unknown function (ip: -678237395)
+unknown function (ip: -200761745)
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879759837)
+unknown function (ip: 1858684983)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20764 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+unknown function (ip: 561185934)
+remotecall_fetch at multi.jl:704
+wait_full at ./multi.jl:602
+julia_obsiterate_20765 at  (unknown line)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+unknown function (ip: -200761278)
+unknown function (ip: -204119097)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+unknown function (ip: 1879751795)
+unknown function (ip: 1879758344)
+unknown function (ip: 1858269814)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 561186212)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+jlcall_oiterationhistoryloop!_20841 at  (unknown line)
+remotecall_fetch at multi.jl:704
+julia_obsiterate_20763 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879760046)
+unknown function (ip: 1858596337)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+unknown function (ip: 552347134)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:91
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879750789)
+unknown function (ip: 1879758344)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 552347470)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall___obsiterate#148___20754 at  (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624352456)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+unknown function (ip: 1879760046)
+unknown function (ip: 1879750789)
+unknown function (ip: 1879760835)
+anonymous at task.jl:855
+unknown function (ip: 552129473)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -85168952)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624348624)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+unknown function (ip: -678237395)
+oiterationpreloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:3
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879751034)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 552291588)
+unknown function (ip: -85172784)
+remotecall_fetch at multi.jl:709
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+julia_obsiterate_20753 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624415658)
+unknown function (ip: 624417422)
+unknown function (ip: 1858530504)
+unknown function (ip: 1858526672)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+jlcall_oiterationpreloop!_20810 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+unknown function (ip: 1879758344)
+unknown function (ip: 1879758903)
+unknown function (ip: 1879343734)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 552308258)
+unknown function (ip: 552312606)
+unknown function (ip: 552317094)
+unknown function (ip: 552340307)
+unknown function (ip: 552347021)
+unknown function (ip: 552347470)
+unknown function (ip: 552129473)
+unknown function (ip: 552291588)
+unknown function (ip: 552308258)
+unknown function (ip: 552312606)
+unknown function (ip: 552346270)
+unknown function (ip: 552347021)
+unknown function (ip: 552347470)
+unknown function (ip: 552129473)
+unknown function (ip: 552291588)
+unknown function (ip: 552308258)
+unknown function (ip: 552312606)
+unknown function (ip: 552314350)
+unknown function (ip: 552340307)
+unknown function (ip: 552347021)
+unknown function (ip: 552347470)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:91
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+oiterationpreloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:3
+jlcall_oiterationpreloop!_20809 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:44
+jlcall___obsiterate#148___20765 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20764 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: -85105750)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+include_from_node1 at ./loading.jl:131
+unknown function (ip: 624416613)
+unknown function (ip: 4199725)
+unknown function (ip: 1858593706)
+unknown function (ip: 1858595470)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879670257)
+unknown function (ip: 4199725)
+unknown function (ip: -85103986)
+anonymous at task.jl:1365
+anonymous at task.jl:855
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624418365)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 1858594661)
+unknown function (ip: 842357960)
+unknown function (ip: -678237517)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:44
+unknown function (ip: 1520368840)
+unknown function (ip: -576607032)
+jl_load at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: -85104795)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+unknown function (ip: 822762696)
+unknown function (ip: 822758864)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 1858596413)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+unknown function (ip: 842354128)
+unknown function (ip: 842421162)
+unknown function (ip: -678237395)
+jlcall___obsiterate#148___20766 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20765 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+unknown function (ip: 1520365008)
+unknown function (ip: 1520432042)
+unknown function (ip: 1520433806)
+unknown function (ip: -576610864)
+unknown function (ip: 4199781)
+unknown function (ip: -85103043)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include at ./boot.jl:245
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 822825898)
+unknown function (ip: 822827662)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 842422926)
+unknown function (ip: -678237050)
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+unknown function (ip: 1520432997)
+unknown function (ip: 1520434749)
+unknown function (ip: -576543830)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 822826853)
+unknown function (ip: 822828605)
+unknown function (ip: 4199725)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+unknown function (ip: 842422117)
+unknown function (ip: 842423869)
+unknown function (ip: -678237395)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -576542066)
+include_string at loading.jl:97
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+include_from_node1 at ./loading.jl:128
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 624352456)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+include_string at loading.jl:97
+unknown function (ip: -576542875)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+include_string at loading.jl:97
+unknown function (ip: 624348624)
+unknown function (ip: 1858530504)
+include_string at loading.jl:97
+unknown function (ip: -678237395)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -576541123)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879604424)
+unknown function (ip: 1879600592)
+unknown function (ip: 1879667626)
+unknown function (ip: 1879669390)
+unknown function (ip: 1879668581)
+unknown function (ip: 1879670333)
+jl_load at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include at ./boot.jl:245
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624415658)
+unknown function (ip: 1858526672)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+anonymous at task.jl:855
+include_from_node1 at ./loading.jl:131
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -85168952)
+include_from_node1 at ./loading.jl:128
+include_from_node1 at ./loading.jl:131
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1858593706)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 842357960)
+unknown function (ip: 842354128)
+unknown function (ip: 842421162)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:54
+jlcall_require_20209 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 842416989)
+unknown function (ip: 842421795)
+unknown function (ip: 842422926)
+unknown function (ip: 842422117)
+unknown function (ip: 842423869)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 842357960)
+unknown function (ip: 842354128)
+unknown function (ip: 842421162)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20141 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+unknown function (ip: -85172784)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:54
+jlcall_require_20194 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624411485)
+unknown function (ip: 624416291)
+unknown function (ip: 624417422)
+unknown function (ip: 624416613)
+unknown function (ip: 624418365)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 624352456)
+unknown function (ip: 624348624)
+unknown function (ip: 624415658)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20141 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:54
+jlcall_require_20207 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1858589533)
+unknown function (ip: 1858594339)
+unknown function (ip: 1858595470)
+unknown function (ip: 1858594661)
+unknown function (ip: 1858596413)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1858530504)
+unknown function (ip: 1858526672)
+unknown function (ip: 1858593706)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20139 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678236971)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237395)
+unknown function (ip: -678237050)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678237517)
+unknown function (ip: -678237285)
+unknown function (ip: -678237395)
+unknown function (ip: -678237395)
+unknown function (ip: -678238201)
+unknown function (ip: -678238214)
+jl_gc_collect at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+allocobj at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_tuple_uninit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_alloc_tuple at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_arraysize at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+longer_size at broadcast.jl:24
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+broadcast_shape at broadcast.jl:30
+.* at broadcast.jl:278
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+logiwcmap! at /como/users/amfour/wormellj/DiscreteMaps/DM-Examples.jl:92
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+fn! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:70
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+oiterationhistoryloop! at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:10
+jlcall_oiterationhistoryloop!_20850 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:46
+jlcall___obsiterate#148___20763 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_obsiterate_20762 at  (unknown line)
+obsiterate at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:74
+anonymous at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:855
+run_work_thunk at multi.jl:621
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:855
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1520368840)
+unknown function (ip: 1520365008)
+unknown function (ip: 1520432042)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:54
+jlcall_require_20195 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1520427869)
+unknown function (ip: 1520432675)
+unknown function (ip: 1520433806)
+unknown function (ip: 1520432997)
+unknown function (ip: 1520434749)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1520368840)
+unknown function (ip: 1520365008)
+unknown function (ip: 1520432042)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20142 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -85105750)
+unknown function (ip: 1879604424)
+unknown function (ip: 1879600592)
+unknown function (ip: 1879667626)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:54
+jlcall_require_20258 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879663453)
+unknown function (ip: 1879668259)
+unknown function (ip: 1879669390)
+unknown function (ip: 1879668581)
+unknown function (ip: 1879670333)
+jl_load at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include at ./boot.jl:245
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:128
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879604424)
+unknown function (ip: 1879600592)
+unknown function (ip: 1879667626)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:51
+jlcall_require_20258 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879663453)
+unknown function (ip: 1879668259)
+unknown function (ip: 1879669390)
+unknown function (ip: 1879668581)
+unknown function (ip: 1879670333)
+jl_load at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include at ./boot.jl:245
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:128
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879604424)
+unknown function (ip: 1879600592)
+unknown function (ip: 1879605946)
+unknown function (ip: 1879599336)
+unknown function (ip: 1879668743)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1879604424)
+unknown function (ip: 1879600592)
+unknown function (ip: 1879667626)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1310
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20243 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 822762696)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+unknown function (ip: 4199725)
+include_from_node1 at ./loading.jl:131
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+unknown function (ip: 822758864)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+require at loading.jl:54
+jlcall_require_20196 at  (unknown line)
+unknown function (ip: 822825898)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+unknown function (ip: 4199781)
+unknown function (ip: -576607032)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -85109923)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -576610864)
+unknown function (ip: -85105117)
+unknown function (ip: -85103986)
+unknown function (ip: -85104795)
+require at loading.jl:54
+unknown function (ip: -576543830)
+unknown function (ip: -85103043)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jlcall_require_20192 at  (unknown line)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 822821725)
+_require at loading.jl:67
+unknown function (ip: -85168952)
+unknown function (ip: -85172784)
+unknown function (ip: 822826531)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -85105750)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+unknown function (ip: 822827662)
+require at loading.jl:54
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+unknown function (ip: 822826853)
+jlcall_require_20195 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 822828605)
+unknown function (ip: -576548003)
+anonymous at multi.jl:848
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -576543197)
+run_work_thunk at multi.jl:621
+include_string at loading.jl:97
+unknown function (ip: -576542066)
+run_work_thunk at multi.jl:630
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -576542875)
+jlcall_run_work_thunk_20124 at  (unknown line)
+include_from_node1 at ./loading.jl:131
+unknown function (ip: -576541123)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+unknown function (ip: 822762696)
+include_string at loading.jl:97
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 822758864)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 822825898)
+include_from_node1 at ./loading.jl:131
+unknown function (ip: 4199725)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -576607032)
+unknown function (ip: -576610864)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+reload_path at loading.jl:152
+unknown function (ip: -576543830)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20142 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_require at loading.jl:67
+unknown function (ip: 4199725)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20139 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+Command terminated by signal 15
+3.91user 0.65system 0:09.04elapsed 50%CPU (0avgtext+0avgdata 104668maxresident)k
+0inputs+216outputs (0major+30800minor)pagefaults 0swaps
+Command terminated by signal 15
+19.26user 1.25system 0:39.08elapsed 52%CPU (0avgtext+0avgdata 185100maxresident)k
+0inputs+168outputs (0major+51167minor)pagefaults 0swaps
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+write at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+unknown function (ip: -1524999500)
+uv_write2 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_write_no_copy at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+write at stream.jl:732
+send_msg_ at multi.jl:178
+jlcall_send_msg__20119 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+send_msg_now at multi.jl:137
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+send_msg_now at multi.jl:83
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+deliver_result at multi.jl:794
+jlcall_deliver_result_20376 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:856
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: -434649988)
+unknown function (ip: -434647491)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -434713400)
+unknown function (ip: -434717232)
+unknown function (ip: -434650198)
+unknown function (ip: -434648434)
+unknown function (ip: -434649243)
+unknown function (ip: -434647491)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -434713400)
+unknown function (ip: -434717232)
+unknown function (ip: -434650198)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20145 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -232106884)
+unknown function (ip: -232104387)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -232170296)
+unknown function (ip: -232174128)
+unknown function (ip: -232107094)
+unknown function (ip: -232105330)
+unknown function (ip: -232106139)
+unknown function (ip: -232104387)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -232170296)
+unknown function (ip: -232174128)
+unknown function (ip: -232107094)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20141 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -1679743876)
+unknown function (ip: -1679741379)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1679807288)
+unknown function (ip: -1679811120)
+unknown function (ip: -1679744086)
+unknown function (ip: -1679742322)
+unknown function (ip: -1679743131)
+unknown function (ip: -1679741379)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1679807288)
+unknown function (ip: -1679811120)
+unknown function (ip: -1679744086)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20142 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+
+signal (15): Terminated
+unknown function (ip: 432688852)
+__libc_malloc at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 460471724)
+unknown function (ip: 460471860)
+unknown function (ip: 460472113)
+unknown function (ip: 455049112)
+unknown function (ip: 455015491)
+unknown function (ip: 453856561)
+unknown function (ip: 453793505)
+unknown function (ip: 453387840)
+unknown function (ip: 453394410)
+unknown function (ip: 453399288)
+unknown function (ip: 460264367)
+unknown function (ip: 460264590)
+unknown function (ip: 460264868)
+unknown function (ip: 454621300)
+unknown function (ip: 454622831)
+unknown function (ip: 454623298)
+unknown function (ip: 451265479)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 451218842)
+unknown function (ip: 451628147)
+unknown function (ip: 451637187)
+unknown function (ip: 451627386)
+unknown function (ip: 451634696)
+unknown function (ip: 451635255)
+unknown function (ip: 451220086)
+unknown function (ip: 451546609)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: 451544188)
+unknown function (ip: 451546685)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 451480776)
+unknown function (ip: 451476944)
+unknown function (ip: 451543978)
+unknown function (ip: 451545742)
+unknown function (ip: 451544933)
+unknown function (ip: 451546685)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 451480776)
+unknown function (ip: 451476944)
+unknown function (ip: 451543978)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20144 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+unknown function (ip: -412538553)
+unknown function (ip: -412529048)
+unknown function (ip: -412523814)
+unknown function (ip: -404319313)
+unknown function (ip: -404319090)
+unknown function (ip: -404318812)
+unknown function (ip: -409962380)
+unknown function (ip: -409960849)
+unknown function (ip: -409960382)
+unknown function (ip: -413318201)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+unknown function (ip: -1093435692)
+__libc_malloc at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+
+signal (15): Terminated
+
+signal (15): Terminated
+Command terminated by signal 15
+13.99user 0.48system 4:41.88elapsed 5%CPU (0avgtext+0avgdata 202900maxresident)k
+424inputs+32outputs (3major+55491minor)pagefaults 0swaps
+unknown function (ip: -878818659)
+unknown function (ip: -878801685)
+unknown function (ip: -878800166)
+unknown function (ip: -870595665)
+unknown function (ip: -870595442)
+unknown function (ip: -870595164)
+unknown function (ip: -876238732)
+unknown function (ip: -876237201)
+unknown function (ip: -876236734)
+unknown function (ip: -879594553)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -879310345)
+jl_uv_closeHandle at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 678382107)
+unknown function (ip: 678384346)
+unknown function (ip: 686588847)
+unknown function (ip: 686589070)
+unknown function (ip: 686589348)
+unknown function (ip: 680945780)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+unknown function (ip: 1153942356)
+unknown function (ip: 1153950426)
+unknown function (ip: 1162154927)
+unknown function (ip: 1162155150)
+unknown function (ip: -506688926)
+unknown function (ip: -506686758)
+unknown function (ip: -498482257)
+unknown function (ip: -498482034)
+unknown function (ip: -498481756)
+unknown function (ip: -504125324)
+unknown function (ip: -504123793)
+unknown function (ip: -504123326)
+unknown function (ip: -507481145)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719882722)
+unknown function (ip: 719885018)
+unknown function (ip: 728089519)
+unknown function (ip: 728089742)
+unknown function (ip: 728090020)
+unknown function (ip: 722446452)
+unknown function (ip: 722447983)
+unknown function (ip: 722448450)
+unknown function (ip: 719090631)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719312612)
+jl_matching_methods at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+
+signal (15): Terminated
+_methods at ./reflection.jl:99
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:899
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_interpret at ./inference.jl:1107
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1409
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719023400)
+unknown function (ip: 719027003)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_schedule_20392 at  (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20391 at  (unknown line)
+jlcall_notify_20391 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20071 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719374839)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719573697)
+unknown function (ip: 719574668)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: 719369340)
+unknown function (ip: 719371837)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719305928)
+unknown function (ip: 719302096)
+unknown function (ip: 719369130)
+unknown function (ip: 719370894)
+unknown function (ip: 719370085)
+unknown function (ip: 719371837)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 719305928)
+unknown function (ip: 719302096)
+unknown function (ip: 719369130)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20144 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20393 at  (unknown line)
+jlcall_notify_20393 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20071 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -413033993)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -412835135)
+unknown function (ip: -412834164)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: -413039492)
+unknown function (ip: -413036995)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -413102904)
+unknown function (ip: -413106736)
+unknown function (ip: -413039702)
+unknown function (ip: -413037938)
+unknown function (ip: -413038747)
+unknown function (ip: -413036995)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -413102904)
+unknown function (ip: -413106736)
+unknown function (ip: -413039702)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20144 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1581902151)
+unknown function (ip: 1581910411)
+unknown function (ip: 1581916890)
+unknown function (ip: 1590121391)
+unknown function (ip: 1590121614)
+unknown function (ip: 1590121892)
+unknown function (ip: 1584478324)
+unknown function (ip: 1584479855)
+unknown function (ip: 1584480322)
+unknown function (ip: 1581122503)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 985209442)
+unknown function (ip: 985211610)
+unknown function (ip: 993416111)
+unknown function (ip: 993416334)
+unknown function (ip: 993416612)
+unknown function (ip: 987773044)
+unknown function (ip: 987774575)
+unknown function (ip: 987775042)
+unknown function (ip: 984417223)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -22805676)
+unknown function (ip: -22797606)
+unknown function (ip: -14593105)
+unknown function (ip: -14592882)
+unknown function (ip: -14592604)
+unknown function (ip: -20236172)
+unknown function (ip: -20234641)
+unknown function (ip: -20234174)
+unknown function (ip: -23591993)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -23307785)
+jl_uv_closeHandle at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1021283500)
+unknown function (ip: -1360493740)
+unknown function (ip: -1360485670)
+unknown function (ip: -1352281169)
+unknown function (ip: -1352280946)
+unknown function (ip: -1352280668)
+unknown function (ip: -1357924236)
+unknown function (ip: -1357922705)
+unknown function (ip: -1357922238)
+unknown function (ip: -1361280057)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1360995849)
+jl_uv_closeHandle at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+pcre_free_study at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libpcre.so (unknown line)
+pcre_free_study at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libpcre.so (unknown line)
+unknown function (ip: 680947311)
+unknown function (ip: 680947778)
+unknown function (ip: 677589959)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_Znwm at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libstdc++.so.6 (unknown line)
+unknown function (ip: -1072316322)
+unknown function (ip: -1072327238)
+unknown function (ip: -1072317055)
+unknown function (ip: -1072350806)
+unknown function (ip: -1072736788)
+unknown function (ip: -1072730134)
+unknown function (ip: -1072725256)
+unknown function (ip: -1065860177)
+unknown function (ip: -1065859954)
+unknown function (ip: -1065859676)
+unknown function (ip: -1071503244)
+unknown function (ip: -1071501713)
+unknown function (ip: -1071501246)
+unknown function (ip: -1074859065)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1074637084)
+jl_matching_methods at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+pcre_free_study at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libpcre.so (unknown line)
+unknown function (ip: 615119175)
+unknown function (ip: 615128680)
+unknown function (ip: 615133914)
+unknown function (ip: 623338415)
+unknown function (ip: 623338638)
+unknown function (ip: 623338916)
+unknown function (ip: 617695348)
+unknown function (ip: 617696879)
+unknown function (ip: 617697346)
+unknown function (ip: 614339527)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1162155428)
+unknown function (ip: 1156511860)
+pcre_free_study at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libpcre.so (unknown line)
+_ZNSt13basic_ostreamIwSt11char_traitsIwEE5flushEv at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libstdc++.so.6 (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20399 at  (unknown line)
+jlcall_notify_20399 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20068 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -507196937)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -506998079)
+unknown function (ip: -506997108)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -507202436)
+unknown function (ip: -507199939)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -507265848)
+unknown function (ip: -507269680)
+unknown function (ip: -507202646)
+unknown function (ip: -507200882)
+unknown function (ip: -507201691)
+unknown function (ip: -507199939)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -507265848)
+unknown function (ip: -507269680)
+unknown function (ip: -507202646)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20141 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: -879315844)
+unknown function (ip: -879313347)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -879379256)
+unknown function (ip: -879383088)
+unknown function (ip: -879316054)
+unknown function (ip: -879314290)
+unknown function (ip: -879315099)
+unknown function (ip: -879313347)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -879379256)
+unknown function (ip: -879383088)
+unknown function (ip: -879316054)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20143 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -23313284)
+unknown function (ip: -23310787)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -23376696)
+unknown function (ip: -23380528)
+unknown function (ip: -23313494)
+unknown function (ip: -23311730)
+unknown function (ip: -23312539)
+unknown function (ip: -23310787)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -23376696)
+unknown function (ip: -23380528)
+unknown function (ip: -23313494)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20141 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: -1021275430)
+unknown function (ip: -1013070929)
+unknown function (ip: -1013070706)
+unknown function (ip: -1013070428)
+unknown function (ip: -1018713996)
+unknown function (ip: -1018712465)
+unknown function (ip: -1018711998)
+unknown function (ip: -1022069817)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1021847836)
+jl_matching_methods at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -1361001348)
+unknown function (ip: -1360998851)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1361064760)
+unknown function (ip: -1361068592)
+unknown function (ip: -1361001558)
+unknown function (ip: -1360999794)
+unknown function (ip: -1361000603)
+unknown function (ip: -1360998851)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1361064760)
+unknown function (ip: -1361068592)
+unknown function (ip: -1361001558)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20142 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20397 at  (unknown line)
+jlcall_notify_20397 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20070 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1581406711)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1581605569)
+unknown function (ip: 1581606540)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: 1581401212)
+unknown function (ip: 1581403709)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1581337800)
+unknown function (ip: 1581333968)
+unknown function (ip: 1581401002)
+unknown function (ip: 1581402766)
+unknown function (ip: 1581401957)
+unknown function (ip: 1581403709)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1581337800)
+unknown function (ip: 1581333968)
+unknown function (ip: 1581401002)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20143 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall_free_study_7705 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+unknown function (ip: 1156513391)
+unknown function (ip: 1156513858)
+unknown function (ip: 1153156039)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1153440247)
+jl_uv_closeHandle at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall_free_study_7705 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jlcall_free_study_7705 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20393 at  (unknown line)
+jlcall_notify_20393 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20070 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 677874167)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 678073025)
+unknown function (ip: 678073996)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: 677868668)
+unknown function (ip: 677871165)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 677805256)
+unknown function (ip: 677801424)
+unknown function (ip: 677868458)
+unknown function (ip: 677870222)
+unknown function (ip: 677869413)
+unknown function (ip: 677871165)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 677805256)
+unknown function (ip: 677801424)
+unknown function (ip: 677868458)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20143 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20393 at  (unknown line)
+jlcall_notify_20393 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20071 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 614623735)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 614822593)
+unknown function (ip: 614823564)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: 614618236)
+unknown function (ip: 614620733)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 614554824)
+unknown function (ip: 614550992)
+unknown function (ip: 614618026)
+unknown function (ip: 614619790)
+unknown function (ip: 614618981)
+unknown function (ip: 614620733)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 614554824)
+unknown function (ip: 614550992)
+unknown function (ip: 614618026)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20144 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_methods at ./reflection.jl:99
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:899
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_interpret at ./inference.jl:1107
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1409
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1074926296)
+unknown function (ip: -1074922693)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_schedule_20401 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at ./no file:25
+unknown function (ip: -659819218)
+unknown function (ip: -659816048)
+uv_atexit_hook at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_exit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:933
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+pcre_free_study at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libpcre.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: 1153434748)
+unknown function (ip: 1153437245)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1153371336)
+unknown function (ip: 1153367504)
+unknown function (ip: 1153434538)
+unknown function (ip: 1153436302)
+unknown function (ip: 1153435493)
+unknown function (ip: 1153437245)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1153371336)
+unknown function (ip: 1153367504)
+unknown function (ip: 1153434538)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20142 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall_free_study_7705 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+_methods at ./reflection.jl:99
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:899
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4573 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_interpret at ./inference.jl:1107
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1409
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1022137048)
+unknown function (ip: -1022133445)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_schedule_20389 at  (unknown line)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20388 at  (unknown line)
+jlcall_notify_20388 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20070 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1021785609)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1021586751)
+unknown function (ip: -1021585780)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: -1021791108)
+unknown function (ip: -1021788611)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1021854520)
+unknown function (ip: -1021858352)
+unknown function (ip: -1021791318)
+unknown function (ip: -1021789554)
+unknown function (ip: -1021790363)
+unknown function (ip: -1021788611)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1021854520)
+unknown function (ip: -1021858352)
+unknown function (ip: -1021791318)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20143 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at ./no file:25
+unknown function (ip: -1408731858)
+unknown function (ip: -1408728688)
+uv_atexit_hook at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_exit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:933
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+jlcall_free_study_7705 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at ./no file:25
+unknown function (ip: -506944210)
+unknown function (ip: -506941040)
+uv_atexit_hook at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_exit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:933
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20399 at  (unknown line)
+jlcall_notify_20399 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20068 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 984701431)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 984900289)
+unknown function (ip: 984901260)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: 984695932)
+unknown function (ip: 984698429)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 984632520)
+unknown function (ip: 984628688)
+unknown function (ip: 984695722)
+unknown function (ip: 984697486)
+unknown function (ip: 984696677)
+unknown function (ip: 984698429)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 984632520)
+unknown function (ip: 984628688)
+unknown function (ip: 984695722)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20141 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at ./no file:25
+unknown function (ip: 1226093870)
+unknown function (ip: 1226097040)
+uv_atexit_hook at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_exit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:933
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+__notify#13__ at ./task.jl:207
+jlcall___notify_23_13___18069 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_notify_20400 at  (unknown line)
+jlcall_notify_20400 at  (unknown line)
+_uv_hook_readcb at stream.jl:395
+jlcall__uv_hook_readcb_20071 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1074574857)
+jl_uv_readcb at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1074375999)
+unknown function (ip: -1074375028)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -1074580356)
+unknown function (ip: -1074577859)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1074643768)
+unknown function (ip: -1074647600)
+unknown function (ip: -1074580566)
+unknown function (ip: -1074578802)
+unknown function (ip: -1074579611)
+unknown function (ip: -1074577859)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1074643768)
+unknown function (ip: -1074647600)
+unknown function (ip: -1074580566)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20144 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+shutdown at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at ./no file:25
+unknown function (ip: 812049710)
+unknown function (ip: 812052880)
+uv_atexit_hook at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_exit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:933
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 1469011465)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_atexit_hook at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_exit at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:933
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: 959337596)
+unknown function (ip: 959340093)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 959274184)
+unknown function (ip: 959270352)
+unknown function (ip: 959337386)
+unknown function (ip: 959339150)
+unknown function (ip: 959338341)
+unknown function (ip: 959340093)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 959274184)
+unknown function (ip: 959270352)
+unknown function (ip: 959337386)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20122 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+syscall at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+
+signal (15): Terminated
+cfree at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+unknown function (ip: 917361111)
+unknown function (ip: 917292744)
+unknown function (ip: 917294424)
+unknown function (ip: 917302594)
+unknown function (ip: 917344526)
+unknown function (ip: 917326806)
+unknown function (ip: 917343050)
+
+signal (15): Terminated
+
+signal (15): Terminated
+
+signal (15): Terminated
+unknown function (ip: 898412390)
+unknown function (ip: 917326806)
+unknown function (ip: 898413292)
+dlopen at /lib/x86_64-linux-gnu/libdl.so.2 (unknown line)
+unknown function (ip: 484199229)
+unknown function (ip: 484166637)
+unknown function (ip: 475885175)
+unknown function (ip: 475889438)
+uv__epoll_wait at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv__io_poll at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_egal at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_egal at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1957387008)
+unknown function (ip: -1957385079)
+unknown function (ip: -1957385079)
+unknown function (ip: -1957385079)
+unknown function (ip: -1957385079)
+jl_compress_ast at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 475893926)
+unknown function (ip: 591678245)
+unknown function (ip: 591683518)
+unknown function (ip: 591696745)
+unknown function (ip: 591697038)
+unknown function (ip: 591697316)
+unknown function (ip: 582858238)
+unknown function (ip: 582858574)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1200649943)
+unknown function (ip: 1200662462)
+jl_matching_methods at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -207663801)
+unknown function (ip: 1613764866)
+unknown function (ip: 1613771482)
+unknown function (ip: 1621975983)
+unknown function (ip: 1621976206)
+unknown function (ip: 1621976484)
+unknown function (ip: 1616332916)
+unknown function (ip: 1616334447)
+unknown function (ip: 1616334914)
+unknown function (ip: 1612977095)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1613261303)
+jl_uv_closeHandle at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+uv_run at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_uv_dlopen at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 475917139)
+unknown function (ip: -207646752)
+unknown function (ip: 901682835)
+unknown function (ip: 475923853)
+unknown function (ip: -207633559)
+unknown function (ip: -207633266)
+unknown function (ip: -207632988)
+unknown function (ip: -213276556)
+unknown function (ip: -213275025)
+unknown function (ip: -213274558)
+unknown function (ip: 901525914)
+unknown function (ip: 475924302)
+unknown function (ip: -216632377)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+init_stdio at stream.jl:254
+reinit_stdio at stream.jl:279
+__init__ at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:272
+jlcall___init___19960 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_module_run_initializer at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -216370941)
+julia_init at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 901587073)
+unknown function (ip: 475706305)
+unknown function (ip: 475868420)
+unknown function (ip: 475885090)
+unknown function (ip: 475889438)
+unknown function (ip: 475893926)
+unknown function (ip: 475917139)
+unknown function (ip: 475923853)
+unknown function (ip: 475924302)
+unknown function (ip: 475706305)
+unknown function (ip: 475868420)
+unknown function (ip: 475885090)
+unknown function (ip: 475889438)
+unknown function (ip: 475891182)
+unknown function (ip: 475917139)
+unknown function (ip: 475923853)
+unknown function (ip: 475924302)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+read_cb_response at multi.jl:1009
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+start_cluster_workers at multi.jl:1027
+julia_addprocs_internal_19999 at  (unknown line)
+addprocs at multi.jl:1237
+julia_addprocs_19997 at  (unknown line)
+jlcall_addprocs_19997 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 901553964)
+unknown function (ip: 901574178)
+unknown function (ip: 901578526)
+unknown function (ip: 901579001)
+unknown function (ip: 901606227)
+unknown function (ip: 901612941)
+unknown function (ip: 901613390)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_module_run_initializer at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 901714179)
+julia_init at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:517
+unknown function (ip: -1324055428)
+unknown function (ip: -1324052931)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1324118840)
+unknown function (ip: -1324122672)
+unknown function (ip: -1324055638)
+unknown function (ip: -1324053874)
+unknown function (ip: -1324054683)
+unknown function (ip: -1324052931)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1324118840)
+unknown function (ip: -1324122672)
+unknown function (ip: -1324055638)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20146 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+occurs_more at ./inference.jl:1859
+jlcall_occurs_more_4501 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+occurs_more at ./inference.jl:1852
+jlcall_occurs_more_4501 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+occurs_more at ./inference.jl:1852
+jlcall_occurs_more_4501 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+inlineable at ./inference.jl:2384
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+inlining_pass at ./inference.jl:2656
+inlining_pass at ./inference.jl:2590
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+inlining_pass at ./inference.jl:2553
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1544
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 582630696)
+unknown function (ip: 582634299)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_module_run_initializer at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 582959363)
+julia_init at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+process_events at ./stream.jl:537
+unknown function (ip: 4199706)
+wait at ./task.jl:273
+wait at ./task.jl:194
+wait_full at ./multi.jl:602
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:704
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+remotecall_fetch at multi.jl:709
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at no file:513
+unknown function (ip: 1613255804)
+unknown function (ip: 1613258301)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1613192392)
+unknown function (ip: 1613188560)
+unknown function (ip: 1613255594)
+unknown function (ip: 1613257358)
+unknown function (ip: 1613256549)
+unknown function (ip: 1613258301)
+jl_load_file_string at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+include_string at loading.jl:97
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_methods at ./reflection.jl:99
+typeinf at ./inference.jl:1550
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+include_from_node1 at ./loading.jl:131
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1613192392)
+unknown function (ip: 1613188560)
+unknown function (ip: 1613255594)
+jl_f_top_eval at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+reload_path at loading.jl:152
+_require at loading.jl:67
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:1284
+jl_f_apply at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at multi.jl:848
+run_work_thunk at multi.jl:621
+run_work_thunk at multi.jl:630
+jlcall_run_work_thunk_20144 at  (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+anonymous at task.jl:6
+jl_handle_stack_switch at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_methods at ./reflection.jl:116
+jlcall__methods_4640 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+_methods at ./reflection.jl:116
+abstract_call_gf at ./inference.jl:678
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1472
+jlcall_typeinf_4573 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_interpret at ./inference.jl:1107
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1409
+jlcall_typeinf_4573 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_arg at ./inference.jl:866
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:878
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_interpret at ./inference.jl:1090
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1409
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call_gf at ./inference.jl:726
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_call at ./inference.jl:819
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_eval_call at ./inference.jl:903
+abstract_eval at ./inference.jl:935
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+abstract_interpret at ./inference.jl:1107
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf at ./inference.jl:1409
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1200672040)
+unknown function (ip: 1200675643)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_module_run_initializer at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 1201000707)
+julia_init at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jlcall_typeinf_4866 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+typeinf_ext at ./inference.jl:1216
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1957716696)
+unknown function (ip: -1957713221)
+unknown function (ip: -1957706945)
+unknown function (ip: -1957544700)
+unknown function (ip: -1957528030)
+unknown function (ip: -1957523682)
+unknown function (ip: -1957527462)
+unknown function (ip: -1957523682)
+unknown function (ip: -1957521938)
+unknown function (ip: -1957495981)
+unknown function (ip: -1957489267)
+unknown function (ip: -1957488818)
+unknown function (ip: -1957706815)
+unknown function (ip: -1957544700)
+unknown function (ip: -1957528030)
+unknown function (ip: -1957523682)
+unknown function (ip: -1957495981)
+unknown function (ip: -1957489267)
+unknown function (ip: -1957488818)
+jl_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+jl_module_run_initializer at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: -1957388029)
+julia_init at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199706)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+process_options at ./client.jl:236
+_start at ./client.jl:354
+jlcall__start_17420 at /usr/sms/share/julia/0.3.6/bin/../lib/julia/sys.so (unknown line)
+jl_apply_generic at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199706)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199706)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4199706)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+unknown function (ip: 4200751)
+julia_trampoline at /usr/sms/share/julia/0.3.6/bin/../lib/julia/libjulia.so (unknown line)
+unknown function (ip: 4199725)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 4199781)
+Command terminated by signal 15
+1.20user 0.39system 2:21.08elapsed 1%CPU (0avgtext+0avgdata 63912maxresident)k
+6920inputs+120outputs (6major+21295minor)pagefaults 0swaps

@@ -1,4 +1,5 @@
 cd log
+touch log-p-dummy
 ls | grep log-p | xargs rm
 cd ..
 PIS="C2 2
