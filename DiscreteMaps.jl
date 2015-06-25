@@ -10,6 +10,9 @@ using HDF5, JLD, Dates
 # General fluff
 F64U = Union(Float64,Array{Float64})
 
+# turn into keyword argument dictionary
+kw(;kwargs...) = kwargs
+
 tomorrowmorning() = Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16)))+Dates.Hour(10)
 newpath(path) = ispath(path) || mkdir(path)
 restrictto(x::Array{Float64,1},xmin,xmax) = max(min(x,xmax),xmin)

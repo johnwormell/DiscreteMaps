@@ -74,16 +74,17 @@ function obsiterate(It::IterationSchema, Peps::Float64=0.;returnhistory=false)
   obsiterate(fn!,It;returnhistory=returnhistory)
 end
 
-function timedsample(It::IterationSchema;endtime::DateTime=tomorrowmorning(),NQ::Int64=1,startstring::String="rs")
+function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
+                     NQ::Int64=1, NP::Int64=NQ*nworkers(), NCycles::Real=Inf,
+                     startstring::String="rs")
   epsv = Array(Float64,0)
   eAv = Array(Float64,It.AN,0)
   vAv = Array(Float64,It.AN,0)
-  NP = NQ * nworkers()
   filename = replace("$(startstring)-$(It.PInitial)-$(endtime)--$(hour(now()))-$(minute(now())).h5",":","-")
   obsiteratef(Peps::Float64) = obsiterate(It,Peps)
   cyclecount = 0
-  while now() < endtime
-    epsl = It.samplefn(NP)
+  while (now() < endtime) & (cyclecount < NCycles)
+    epsl = It.samplefn(NP,It.samplefnargs...)
     pmapcontainer = pmap(obsiteratef,epsl)
     eAv = [eAv Array(Float64,It.AN,NP)]
     vAv = [vAv Array(Float64,It.AN,NP)]
@@ -98,7 +99,11 @@ function timedsample(It::IterationSchema;endtime::DateTime=tomorrowmorning(),NQ:
     println("File saved at $(now())")
     cyclecount += 1
   end
-  return cyclecount, epsrange, eAx, vAx
+  return cyclecount, epsv, eAv, vAv
 end
-timedsample(PInitial::String;endtime::DateTime=tomorrowmorning(),NQ::Int64=1,startstring::String="rs",Itargs=()) =
-  timedsample(itdict[PInitial](Itargs...);endtime=endtime,NQ=NQ,startstring=startstring)
+timedsample(PInitial::String; endtime::DateTime=tomorrowmorning(),
+            NQ::Int64=1, NP::Int64=NQ*nworkers(), NCycles::Real=Inf,
+            Itargs=(),Itkwargs=kw(),
+            startstring::String="rs") =
+  timedsample(itdict[PInitial](Itargs...;Itkwargs...);endtime=endtime,NQ=NQ,NP=NP,NCycles=NCycles,
+              startstring=startstring)

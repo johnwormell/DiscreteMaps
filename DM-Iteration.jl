@@ -108,7 +108,7 @@ function observepeturbation(P::Peturbation,A::Array{Function,1},epsv::Array{Floa
   return eA,vA
 end
 
-function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},samplefn::Function,endtime::DateTime=tomorrowmorning(),N::Int64=10^7,NI::Int64=10^4,NR::Int64=1,NQ::Int64=3)
+function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},samplefn::Function,endtime::DateTime=tomorrowmorning(),N::Int64=10^7,NI::Int64=10^4,NR::Int64=1,NQ::Int64=3,samplefnargs=())
   AN = length(A)
   epsv = Array(Float64,0)
   eA = Array(Float64,AN,0)
@@ -116,7 +116,7 @@ function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},sample
   NP = NQ * nworkers()
   filename = replace("RO-$(PInitial)$(endtime).h5",":","-")
   while now() < endtime
-    epsvl = samplefn(NP)
+    epsvl = samplefn(NP,samplefnargs...)
     eAl, vAl = observepeturbation(P,A,epsvl,N,NI,NR)
     epsv = [epsv,epsvl]
     eA = [eA eAl]
@@ -133,6 +133,10 @@ end
 
 function zerosamplefn(NP::Int64,epsmax=0.0001)
   zeros(Float64,NP)
+end
+
+function evensamplefn(NP::Int64,deps=0.0001)
+  [0:NP-1]*deps
 end
 
 function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
