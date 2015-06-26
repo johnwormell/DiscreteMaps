@@ -1853,3 +1853,230 @@ unknown function (ip: 4199781)
 Command terminated by signal 15
 1.08user 0.30system 2:21.07elapsed 0%CPU (0avgtext+0avgdata 62116maxresident)k
 3688inputs+40outputs (7major+20849minor)pagefaults 0swaps
+exception on 2: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 3: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+Initialising!
+Starting!
+File saved at 2015-06-25T14:50:25
+File saved at 2015-06-25T14:55:37
+File saved at 2015-06-25T15:01:00
+File saved at 2015-06-25T15:06:20
+File saved at 2015-06-25T15:11:19
+File saved at 2015-06-25T15:17:01
+File saved at 2015-06-25T15:22:42
+File saved at 2015-06-25T15:27:44
+File saved at 2015-06-25T15:32:59
+File saved at 2015-06-25T15:37:44
+File saved at 2015-06-25T15:43:19
+File saved at 2015-06-25T15:48:27
+File saved at 2015-06-25T15:53:40
+File saved at 2015-06-25T15:58:31
+File saved at 2015-06-25T16:03:33
+File saved at 2015-06-25T16:08:54
+File saved at 2015-06-25T16:14:10
+File saved at 2015-06-25T16:19:23
+File saved at 2015-06-25T16:24:08
+File saved at 2015-06-25T16:29:48
+File saved at 2015-06-25T16:35:25
+File saved at 2015-06-25T16:40:22
+File saved at 2015-06-25T16:45:26
+File saved at 2015-06-25T16:50:10
+File saved at 2015-06-25T16:54:34
+File saved at 2015-06-25T16:59:39
+File saved at 2015-06-25T17:04:29
+File saved at 2015-06-25T17:08:55
+File saved at 2015-06-25T17:13:27
+File saved at 2015-06-25T17:19:25
+File saved at 2015-06-25T17:25:31
+File saved at 2015-06-25T17:31:37
+File saved at 2015-06-25T17:37:35
+File saved at 2015-06-25T17:43:33
+File saved at 2015-06-25T17:49:38
+File saved at 2015-06-25T17:55:43
+File saved at 2015-06-25T18:01:44
+File saved at 2015-06-25T18:07:47
+File saved at 2015-06-25T18:13:51
+File saved at 2015-06-25T18:19:50
+File saved at 2015-06-25T18:25:51
+File saved at 2015-06-25T18:31:50
+File saved at 2015-06-25T18:37:48
+File saved at 2015-06-25T18:43:55
+File saved at 2015-06-25T18:50:01
+File saved at 2015-06-25T18:56:09
+File saved at 2015-06-25T19:02:10
+File saved at 2015-06-25T19:08:08
+File saved at 2015-06-25T19:14:10
+File saved at 2015-06-25T19:20:15
+File saved at 2015-06-25T19:26:11
+File saved at 2015-06-25T19:32:12
+File saved at 2015-06-25T19:38:13
+File saved at 2015-06-25T19:44:16
+File saved at 2015-06-25T19:50:21
+File saved at 2015-06-25T19:56:25
+File saved at 2015-06-25T20:02:25
+File saved at 2015-06-25T20:08:27
+File saved at 2015-06-25T20:14:31
+File saved at 2015-06-25T20:20:26
+File saved at 2015-06-25T20:26:31
+File saved at 2015-06-25T20:32:31
+File saved at 2015-06-25T20:38:33
+File saved at 2015-06-25T20:44:33
+File saved at 2015-06-25T20:50:35
+File saved at 2015-06-25T20:56:36
+File saved at 2015-06-25T21:02:35
+File saved at 2015-06-25T21:08:33
+File saved at 2015-06-25T21:14:33
+File saved at 2015-06-25T21:20:36
+File saved at 2015-06-25T21:26:37
+File saved at 2015-06-25T21:32:35
+File saved at 2015-06-25T21:38:29
+File saved at 2015-06-25T21:44:30
+File saved at 2015-06-25T21:50:37
+File saved at 2015-06-25T21:56:33
+File saved at 2015-06-25T22:02:33
+File saved at 2015-06-25T22:08:30
+File saved at 2015-06-25T22:14:29
+File saved at 2015-06-25T22:20:22
+File saved at 2015-06-25T22:26:25
+File saved at 2015-06-25T22:32:28
+File saved at 2015-06-25T22:38:24
+File saved at 2015-06-25T22:44:21
+File saved at 2015-06-25T22:50:18
+File saved at 2015-06-25T22:56:11
+File saved at 2015-06-25T23:02:00
+File saved at 2015-06-25T23:07:56
+File saved at 2015-06-25T23:13:59
+File saved at 2015-06-25T23:20:00
+File saved at 2015-06-25T23:25:58
+File saved at 2015-06-25T23:32:00
+File saved at 2015-06-25T23:37:59
+File saved at 2015-06-25T23:42:57
+File saved at 2015-06-25T23:48:36
+File saved at 2015-06-25T23:53:56
+File saved at 2015-06-25T23:59:42
+File saved at 2015-06-26T00:05:27
+File saved at 2015-06-26T00:11:15
+File saved at 2015-06-26T00:16:33
+File saved at 2015-06-26T00:22:16
+File saved at 2015-06-26T00:27:18
+File saved at 2015-06-26T00:31:57
+File saved at 2015-06-26T00:36:35
+File saved at 2015-06-26T00:42:12
+File saved at 2015-06-26T00:47:58
+File saved at 2015-06-26T00:53:59
+File saved at 2015-06-26T00:59:56
+File saved at 2015-06-26T01:05:57
+File saved at 2015-06-26T01:11:56
+File saved at 2015-06-26T01:17:58
+File saved at 2015-06-26T01:24:01
+File saved at 2015-06-26T01:30:04
+File saved at 2015-06-26T01:36:05
+File saved at 2015-06-26T01:42:04
+File saved at 2015-06-26T01:48:02
+File saved at 2015-06-26T01:54:06
+File saved at 2015-06-26T02:00:05
+File saved at 2015-06-26T02:06:01
+File saved at 2015-06-26T02:12:05
+File saved at 2015-06-26T02:18:08
+File saved at 2015-06-26T02:24:11
+File saved at 2015-06-26T02:30:11
+File saved at 2015-06-26T02:36:13
+File saved at 2015-06-26T02:42:18
+File saved at 2015-06-26T02:48:17
+File saved at 2015-06-26T02:54:18
+File saved at 2015-06-26T03:00:14
+File saved at 2015-06-26T03:06:18
+File saved at 2015-06-26T03:12:19
+File saved at 2015-06-26T03:18:18
+File saved at 2015-06-26T03:24:20
+File saved at 2015-06-26T03:30:19
+File saved at 2015-06-26T03:36:20
+File saved at 2015-06-26T03:42:21
+File saved at 2015-06-26T03:48:23
+File saved at 2015-06-26T03:54:22
+File saved at 2015-06-26T04:00:20
+File saved at 2015-06-26T04:06:21
+File saved at 2015-06-26T04:12:20
+File saved at 2015-06-26T04:18:20
+File saved at 2015-06-26T04:24:18
+File saved at 2015-06-26T04:30:20
+File saved at 2015-06-26T04:36:19
+File saved at 2015-06-26T04:42:21
+File saved at 2015-06-26T04:48:21
+File saved at 2015-06-26T04:54:02
+File saved at 2015-06-26T04:59:43
+File saved at 2015-06-26T05:05:15
+File saved at 2015-06-26T05:10:18
+File saved at 2015-06-26T05:15:34
+File saved at 2015-06-26T05:21:01
+File saved at 2015-06-26T05:26:25
+File saved at 2015-06-26T05:31:57
+File saved at 2015-06-26T05:36:53
+File saved at 2015-06-26T05:42:25
+File saved at 2015-06-26T05:47:23
+File saved at 2015-06-26T05:53:19
+File saved at 2015-06-26T05:59:09
+File saved at 2015-06-26T06:04:55
+File saved at 2015-06-26T06:10:57
+File saved at 2015-06-26T06:17:09
+File saved at 2015-06-26T06:23:26
+File saved at 2015-06-26T06:29:39
+File saved at 2015-06-26T06:35:55
+File saved at 2015-06-26T06:42:06
+File saved at 2015-06-26T06:48:25
+File saved at 2015-06-26T06:54:50
+File saved at 2015-06-26T07:01:02
+File saved at 2015-06-26T07:07:24
+File saved at 2015-06-26T07:13:45
+File saved at 2015-06-26T07:19:58
+File saved at 2015-06-26T07:26:11
+File saved at 2015-06-26T07:32:26
+File saved at 2015-06-26T07:38:40
+File saved at 2015-06-26T07:44:58
+File saved at 2015-06-26T07:51:16
+File saved at 2015-06-26T07:57:31
+File saved at 2015-06-26T08:03:52
+File saved at 2015-06-26T08:10:05
+File saved at 2015-06-26T08:16:18
+File saved at 2015-06-26T08:22:33
+File saved at 2015-06-26T08:28:52
+File saved at 2015-06-26T08:35:01
+File saved at 2015-06-26T08:41:18
+File saved at 2015-06-26T08:47:30
+File saved at 2015-06-26T08:53:44
+File saved at 2015-06-26T09:00:01
+File saved at 2015-06-26T09:06:13
+File saved at 2015-06-26T09:12:30
+File saved at 2015-06-26T09:18:40
+File saved at 2015-06-26T09:24:51
+File saved at 2015-06-26T09:31:06
+File saved at 2015-06-26T09:37:23
+File saved at 2015-06-26T09:43:36
+File saved at 2015-06-26T09:49:47
+File saved at 2015-06-26T09:56:02
+File saved at 2015-06-26T10:02:19
+
+ERROR: epsrange not defined
+ in timedsample at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:101
+ in include at ./boot.jl:245
+ in include_from_node1 at loading.jl:128
+ in process_options at ./client.jl:285
+ in _start at ./client.jl:354
+while loading /como/users/amfour/wormellj/DiscreteMaps/lri.jl, in expression starting on line 30
+Command exited with non-zero status 1
+128376.89user 1180.64system 19:17:39elapsed 186%CPU (0avgtext+0avgdata 350712maxresident)k
+0inputs+1697280outputs (0major+296622877minor)pagefaults 0swaps

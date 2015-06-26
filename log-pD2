@@ -3822,3 +3822,166 @@ __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: 4199781)
 __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: 4199781)
+exception on 2: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 3: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+Initialising!
+Starting!
+File saved at 2015-06-25T14:51:40
+File saved at 2015-06-25T14:59:08
+File saved at 2015-06-25T15:06:34
+File saved at 2015-06-25T15:14:34
+File saved at 2015-06-25T15:22:25
+File saved at 2015-06-25T15:30:13
+File saved at 2015-06-25T15:38:59
+File saved at 2015-06-25T15:48:02
+File saved at 2015-06-25T15:56:04
+File saved at 2015-06-25T16:04:06
+File saved at 2015-06-25T16:12:33
+File saved at 2015-06-25T16:20:27
+File saved at 2015-06-25T16:27:03
+File saved at 2015-06-25T16:33:49
+File saved at 2015-06-25T16:40:47
+File saved at 2015-06-25T16:48:02
+File saved at 2015-06-25T16:55:07
+File saved at 2015-06-25T17:02:39
+File saved at 2015-06-25T17:09:40
+File saved at 2015-06-25T17:17:34
+File saved at 2015-06-25T17:26:30
+File saved at 2015-06-25T17:35:26
+File saved at 2015-06-25T17:44:23
+File saved at 2015-06-25T17:53:16
+File saved at 2015-06-25T18:01:59
+File saved at 2015-06-25T18:10:52
+File saved at 2015-06-25T18:19:45
+File saved at 2015-06-25T18:28:30
+File saved at 2015-06-25T18:37:25
+File saved at 2015-06-25T18:46:07
+File saved at 2015-06-25T18:54:54
+File saved at 2015-06-25T19:03:36
+File saved at 2015-06-25T19:12:17
+File saved at 2015-06-25T19:21:12
+File saved at 2015-06-25T19:29:57
+File saved at 2015-06-25T19:38:50
+File saved at 2015-06-25T19:47:33
+File saved at 2015-06-25T19:56:18
+File saved at 2015-06-25T20:05:11
+File saved at 2015-06-25T20:14:04
+File saved at 2015-06-25T20:22:58
+File saved at 2015-06-25T20:31:48
+File saved at 2015-06-25T20:40:46
+File saved at 2015-06-25T20:49:37
+File saved at 2015-06-25T20:58:23
+File saved at 2015-06-25T21:07:14
+File saved at 2015-06-25T21:15:55
+File saved at 2015-06-25T21:24:39
+File saved at 2015-06-25T21:33:24
+File saved at 2015-06-25T21:42:09
+File saved at 2015-06-25T21:50:52
+File saved at 2015-06-25T21:59:38
+File saved at 2015-06-25T22:08:31
+File saved at 2015-06-25T22:17:14
+File saved at 2015-06-25T22:26:01
+File saved at 2015-06-25T22:34:51
+File saved at 2015-06-25T22:43:30
+File saved at 2015-06-25T22:52:16
+File saved at 2015-06-25T23:01:01
+File saved at 2015-06-25T23:09:43
+File saved at 2015-06-25T23:18:34
+File saved at 2015-06-25T23:27:28
+File saved at 2015-06-25T23:36:14
+File saved at 2015-06-25T23:44:39
+File saved at 2015-06-25T23:53:20
+File saved at 2015-06-26T00:01:23
+File saved at 2015-06-26T00:10:01
+File saved at 2015-06-26T00:17:59
+File saved at 2015-06-26T00:26:51
+File saved at 2015-06-26T00:35:19
+File saved at 2015-06-26T00:43:24
+File saved at 2015-06-26T00:52:21
+File saved at 2015-06-26T01:01:04
+File saved at 2015-06-26T01:09:46
+File saved at 2015-06-26T01:18:41
+File saved at 2015-06-26T01:27:31
+File saved at 2015-06-26T01:36:18
+File saved at 2015-06-26T01:45:02
+File saved at 2015-06-26T01:54:00
+File saved at 2015-06-26T02:02:52
+File saved at 2015-06-26T02:11:37
+File saved at 2015-06-26T02:20:32
+File saved at 2015-06-26T02:29:24
+File saved at 2015-06-26T02:38:19
+File saved at 2015-06-26T02:47:01
+File saved at 2015-06-26T02:55:51
+File saved at 2015-06-26T03:04:35
+File saved at 2015-06-26T03:13:30
+File saved at 2015-06-26T03:22:18
+File saved at 2015-06-26T03:31:09
+File saved at 2015-06-26T03:39:54
+File saved at 2015-06-26T03:48:35
+File saved at 2015-06-26T03:57:18
+File saved at 2015-06-26T04:06:06
+File saved at 2015-06-26T04:14:52
+File saved at 2015-06-26T04:23:37
+File saved at 2015-06-26T04:32:25
+File saved at 2015-06-26T04:41:17
+File saved at 2015-06-26T04:49:55
+File saved at 2015-06-26T04:58:16
+File saved at 2015-06-26T05:06:37
+File saved at 2015-06-26T05:14:58
+File saved at 2015-06-26T05:22:33
+File saved at 2015-06-26T05:29:45
+File saved at 2015-06-26T05:37:09
+File saved at 2015-06-26T05:45:03
+File saved at 2015-06-26T05:53:39
+File saved at 2015-06-26T06:02:10
+File saved at 2015-06-26T06:10:42
+File saved at 2015-06-26T06:20:01
+File saved at 2015-06-26T06:29:18
+File saved at 2015-06-26T06:38:42
+File saved at 2015-06-26T06:48:04
+File saved at 2015-06-26T06:57:17
+File saved at 2015-06-26T07:06:28
+File saved at 2015-06-26T07:15:45
+File saved at 2015-06-26T07:25:01
+File saved at 2015-06-26T07:34:31
+File saved at 2015-06-26T07:43:49
+File saved at 2015-06-26T07:53:05
+File saved at 2015-06-26T08:02:21
+File saved at 2015-06-26T08:11:32
+File saved at 2015-06-26T08:20:43
+File saved at 2015-06-26T08:30:02
+File saved at 2015-06-26T08:39:19
+File saved at 2015-06-26T08:48:34
+File saved at 2015-06-26T08:57:51
+File saved at 2015-06-26T09:07:08
+File saved at 2015-06-26T09:16:07
+File saved at 2015-06-26T09:25:21
+File saved at 2015-06-26T09:34:30
+File saved at 2015-06-26T09:43:45
+File saved at 2015-06-26T09:53:03
+File saved at 2015-06-26T10:02:06
+
+ERROR: epsrange not defined
+ in timedsample at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:101
+ in include at ./boot.jl:245
+ in include_from_node1 at loading.jl:128
+ in process_options at ./client.jl:285
+ in _start at ./client.jl:354
+while loading /como/users/amfour/wormellj/DiscreteMaps/lri.jl, in expression starting on line 30
+Command exited with non-zero status 1
+128593.91user 1617.62system 19:17:25elapsed 187%CPU (0avgtext+0avgdata 307144maxresident)k
+0inputs+1911440outputs (0major+406651901minor)pagefaults 0swaps

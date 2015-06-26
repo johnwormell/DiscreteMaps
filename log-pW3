@@ -3498,3 +3498,116 @@ unknown function (ip: 4199781)
 Command terminated by signal 15
 1.20user 0.39system 2:21.08elapsed 1%CPU (0avgtext+0avgdata 63912maxresident)k
 6920inputs+120outputs (6major+21295minor)pagefaults 0swaps
+exception on 5: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 4: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 6: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 8: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 3: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 7: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+exception on 2: ERROR: key not found: "--worker"
+ in getindex at dict.jl:617
+ in eval at /home/vagrant/buildbot/slave/package_tarball64/build/base/sysimg.jl:7
+ in anonymous at multi.jl:1310
+ in anonymous at multi.jl:848
+ in run_work_thunk at multi.jl:621
+ in run_work_thunk at multi.jl:630
+ in anonymous at task.jl:6
+ERROR: epsrange not defined
+ in timedsample at /como/users/amfour/wormellj/DiscreteMaps/DM-NewIteration.jl:101
+ in include at ./boot.jl:245
+ in include_from_node1 at loading.jl:128
+ in process_options at ./client.jl:285
+ in _start at ./client.jl:354
+while loading /como/users/amfour/wormellj/DiscreteMaps/lri.jl, in expression starting on line 30
+Initialising!
+Starting!
+File saved at 2015-06-25T15:09:24
+File saved at 2015-06-25T15:32:47
+File saved at 2015-06-25T15:55:00
+File saved at 2015-06-25T16:18:13
+File saved at 2015-06-25T16:42:30
+File saved at 2015-06-25T17:05:45
+File saved at 2015-06-25T17:32:28
+File saved at 2015-06-25T17:59:46
+File saved at 2015-06-25T18:27:07
+File saved at 2015-06-25T18:54:23
+File saved at 2015-06-25T19:21:34
+File saved at 2015-06-25T19:48:51
+File saved at 2015-06-25T20:16:04
+File saved at 2015-06-25T20:43:25
+File saved at 2015-06-25T21:10:28
+File saved at 2015-06-25T21:37:26
+File saved at 2015-06-25T22:04:31
+File saved at 2015-06-25T22:31:34
+File saved at 2015-06-25T22:58:40
+File saved at 2015-06-25T23:25:44
+File saved at 2015-06-25T23:52:43
+File saved at 2015-06-26T00:18:06
+File saved at 2015-06-26T00:42:48
+File saved at 2015-06-26T01:09:24
+File saved at 2015-06-26T01:36:22
+File saved at 2015-06-26T02:03:30
+File saved at 2015-06-26T02:30:42
+File saved at 2015-06-26T02:57:52
+File saved at 2015-06-26T03:25:06
+File saved at 2015-06-26T03:52:03
+File saved at 2015-06-26T04:19:01
+File saved at 2015-06-26T04:45:58
+File saved at 2015-06-26T05:11:46
+File saved at 2015-06-26T05:35:54
+File saved at 2015-06-26T05:59:04
+File saved at 2015-06-26T06:25:56
+File saved at 2015-06-26T06:54:18
+File saved at 2015-06-26T07:22:44
+File saved at 2015-06-26T07:50:53
+File saved at 2015-06-26T08:19:06
+File saved at 2015-06-26T08:47:20
+File saved at 2015-06-26T09:15:20
+File saved at 2015-06-26T09:43:22
+File saved at 2015-06-26T10:08:13
+
+Command exited with non-zero status 1
+440351.06user 21167.47system 19:23:32elapsed 661%CPU (0avgtext+0avgdata 486816maxresident)k
+0inputs+136360outputs (0major+5326200918minor)pagefaults 0swaps
