@@ -1,8 +1,16 @@
-ls | grep log- | xargs rm
-bat log-C2 julia -p 2 lri.jl C1 40000000 40000
-bat log-D2 julia -p 2 lri.jl D1 40000000 40000
-bat log-L2 julia -p 2 lri.jl L1 40000000 40000
-bat log-M1 julia -p 2 lri.jl N1 40000000 40000
-bat log-W3 julia -p 7 lri.jl W1 40000000 40000
-bat log-X3 julia -p 7 lri.jl X1 40000000 40000
-bat log-Y1 julia -p 7 lri.jl Y1 40000000 40000
+cd log
+touch log-s-dummy
+ls | grep log-s | xargs rm
+cd ..
+PIS="C2 2
+D2 2
+L2 2
+M1 2
+W3 7
+X3 7
+Y1 7
+"
+for PI in $PIS; do
+  set -- $PI
+  bat log-s$1 julia -p $2 lri.jl $1 40000000 40000
+done

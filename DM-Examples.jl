@@ -21,7 +21,7 @@ logistic(alpha::Float64=3.8) = logistic([alpha])
 logisticp(alpha::F64U=3.8) = Peturbation(logistic(alpha),scalingpetX)
 logistic1(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L1",logiA;largs...)
 logistic2(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L2",logiA2;largs...)
-logistich(alpha::F64U=3.8,phase::Float64=0.;largs...) = IterationSchema(logisticp(alpha),"Lh",sin100A(phase);largs...) # h for hecto
+logistich(alpha::F64U=3.8,phase::Float64=0.;largs...) = IterationSchema(logisticp(alpha),"Lh",sin100LhdefaultcptsA(phase);largs...) # h for hecto
 
 # Logistic with noise
 function loginoisef!(x::Array{Float64,1},a::(Array{Float64,1},Float64))
