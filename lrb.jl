@@ -12,22 +12,9 @@ end
 @everywhere eval(setupcode)
 
 DiscreteMaps.newpath("results/lrb")
-for i = 1:20
-  peturbsample(20,40000,1e-3)
-  peturbsample(20,40000,1e-4)
-  peturbsample(20,40000,1e-5)
-  peturbsample(20,40000,1e-6)
-  peturbsample(40,40000,1e-3)
-  peturbsample(40,40000,1e-4)
-  peturbsample(40,40000,1e-5)
-  peturbsample(40,40000,1e-6)
-  peturbsample(20,80000,1e-3)
-  peturbsample(20,80000,1e-4)
-  peturbsample(20,80000,1e-5)
-  peturbsample(20,80000,1e-6)
-  peturbsample(40,80000,1e-3)
-  peturbsample(40,80000,1e-4)
-  peturbsample(40,80000,1e-5)
-  peturbsample(40,80000,1e-6)
+while true
+  for n in [40000,60000], deps in [3e-6,5e-6,1e-5,2e-5,3e-5]
+    peturbsample(20,n,deps)
+  end
 end
 
