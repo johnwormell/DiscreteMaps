@@ -50,9 +50,44 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
   vA = Array(Float64,It.AN)
   for an = 1:It.AN
     sA[an] = sum(It.A[an](x_history))
-    vA[an] = observevar(It.A[an],x_history)/It.N
+    (It.useacv | NH < It.N) && (vA[an] = observevar(It.A[an],x_history)/It.N)
   end
-  NH < It.N && oiterationmainloop!(x,fn!,It.A,sA,It.N-NH)
+  if NH < It.N
+    if It.useacv
+      oiterationmainloop!(x,fn!,It.A,sA,It.N-NH)
+    else
+      bufferrandsize = 5
+      Nremaining = It.N-NH
+      NVsamp = min(int(floor(Nremaining/100.)),It.NVsamp)
+      NVbuffer = min(NVsamp,It.NVbuffer)
+      sAs = Array(Float64,It.AN,
+                  int(floor((Nremaining+NVbuffer+bufferrandsize)/(NVsamp+NVbuffer-bufferrandsize))))
+      samplecount = 0
+      println("NVsamp: ",NVsamp)
+      println("Nremaining: ",Nremaining)
+      while Nremaining > 0
+        # to use for calculating variance
+        if (Nremaining >= NVsamp)
+          sAo = zeros(It.AN)
+          oiterationmainloop!(x,fn!,It.A,sAo,NVsamp)
+          sAs[:,samplecount+1] = sAo
+          sA += sAo
+          Nremaining -= NVsamp
+          samplecount += 1
+        #  println("samp / Nremaining: ",Nremaining)
+        end
+        # to put into acv buffer
+        Nbuffer = min(Nremaining,NVbuffer+int(rand(-bufferrandsize:bufferrandsize)))
+        oiterationmainloop!(x,fn!,It.A,sA,
+                            Nbuffer + int(rand(-bufferrandsize:bufferrandsize))) # in case of periodicity
+        Nremaining -= Nbuffer
+    #    println("buff / Nremaining: ",Nremaining)
+      end
+      (samplecount == size(sAs,2))|> println
+      vA = var(sAs[:,1:samplecount]/NVsamp,2)*NVsamp/It.N
+    end
+  end
+
   eA = sA/It.N
   return [eA vA]
 end
@@ -80,7 +115,8 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
   epsv = Array(Float64,0)
   eAv = Array(Float64,It.AN,0)
   vAv = Array(Float64,It.AN,0)
-  filename = replace("$(startstring)-$(It.PInitial)-$(endtime)--$(hour(now()))-$(minute(now())).h5",":","-")
+  It.useacv ? (svstring = "") : (svstring = "-s")
+  filename = replace("$(startstring)-$(It.PInitial)-$(endtime)--$(hour(now()))-$(minute(now()))$(svstring).h5",":","-")
   obsiteratef(Peps::Float64) = obsiterate(It,Peps)
   cyclecount = 0
   while (now() < endtime) & (cyclecount < NCycles)

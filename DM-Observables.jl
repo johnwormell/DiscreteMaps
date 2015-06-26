@@ -25,11 +25,11 @@ function gj(n::Int64,t::Int64,coup=true)
   t==6 && return jinx(n), 1/2
 end
 
-function sino(n::Int64,m::Int64)
-  A(x::Array{Float64}) = sin(2*pi*(n*x[1,:]+m*x[2,:]))
+function sino(n::Int64,m::Int64;phase::Float64=0.)
+  A(x::Array{Float64}) = sin(2*pi*(n*x[1,:]+m*x[2,:])-phase)
 end
-function sino(n::Int64)
-  A(x::Array{Float64}) = sin(2*pi*n*x)
+function sino(n::Int64;phase::Float64=0.)
+  A(x::Array{Float64}) = sin(2*pi*n*x-phase)
 end
 function coso(n::Int64,m::Int64)
   A(x::Array{Float64}) = cos(2*pi*(n*x[1,:]+m*x[2,:]))
@@ -47,7 +47,7 @@ end
 
 trigA = [ido(),sino(1),sino(2),sino(3),sino(10),sino(100),sino(1000),coso(1),coso(2),coso(3),coso(10),coso(100),coso(1000)]
 trig2A = [ido(1),ido(2),sino(1,0),sino(0,1),sino(3,2),sino(10,0),sino(100,0),sino(1000,0),coso(0,1),coso(3,2),coso(10,0),coso(100,0),coso(1000,0)]
-sin100A = [sino(i) for i = 1:100]
+sin100A(phase::Float64=0.) = [sino(i;phase=phase) for i = 1:100]
 logiA = [ido(),sino(1),sino(100),gaussian(0.3,0.03),gaussian(0.3,0.10)]
 logiA2 = [ido(),sino(1),sino(100),gaussian(0.4,0.0003),gaussian(0.4,0.003)]
 coupA = [georg(100),jeroen(100)]

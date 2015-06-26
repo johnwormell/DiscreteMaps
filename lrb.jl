@@ -1,20 +1,22 @@
 @everywhere setupcode = quote
   include("DiscreteMaps.jl")
   using DiscreteMaps, HDF5, JLD, Dates
+  endtime = DateTime(2015,06,29,10,00,00)
 
-  function peturbsample(M,N,deps)
-    DiscreteMaps.timedsample("Lh",NP=M,NCycles=1,startstring="results/lrb/rb-$(M)-$(N)-$(deps)",
-                             Itargs=(),Itkwargs=DiscreteMaps.kw(samplefn=DiscreteMaps.evensamplefn,samplefnargs=(deps),
-                                                 N=N))
+  function peturbsample(M,N,deps,phase)
+    DiscreteMaps.timedsample("Lh",endtime=endtime,NP=M,NCycles=1,startstring="results/lrb/rb-$(M)-$(N)-$(deps)-$(round(phase/2pi,3))",
+                             Itargs=(3.8,phase),Itkwargs=DiscreteMaps.kw(samplefn=DiscreteMaps.evensamplefn,samplefnargs=(deps),
+                                                                         N=N))
   end
 end
 
 @everywhere eval(setupcode)
 
 DiscreteMaps.newpath("results/lrb")
-while true
-  for n in [40000,60000], deps in [3e-6,5e-6,1e-5,2e-5,3e-5]
-    peturbsample(20,n,deps)
+(length(ARGS) == 1) ? (M = int(ARGS[1])) : (M = 20)
+ while (now() < endtime)
+  for N in [40000,60000,80000], deps in ([1:10]*1e-6), phase in (2pi * [0:9]/10)
+    peturbsample(M,N,deps,phase)
   end
-end
+ end
 

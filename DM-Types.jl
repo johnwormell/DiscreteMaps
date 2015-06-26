@@ -73,9 +73,12 @@ type IterationSchema
   NI::Integer
   NH::Integer
   AN::Integer
+  useacv::Bool
+  NVsamp::Integer
+  NVbuffer::Integer
 end
 IterationSchema(P::Peturbation,Pinitial::String,A::Array{Function,1};
                 samplefn::Function=betasamplefn,samplefnargs=(),
-                N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4) =
-  IterationSchema(P,Pinitial,A,samplefn,samplefnargs,N,NI,NH,length(A))
+                N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4,useacv=false,NVsamp=1000,NVbuffer=NVsamp) =
+  IterationSchema(P,Pinitial,A,samplefn,samplefnargs,N,NI,NH,length(A),useacv,NVsamp,NVbuffer)
 
