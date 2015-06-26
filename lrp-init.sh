@@ -2,15 +2,7 @@ cd log
 touch log-p-dummy
 ls | grep log-p | xargs rm
 cd ..
-PIS="C2 2
-D2 2
-L2 2
-M1 2
-W3 7
-X3 7
-Y1 7
-"
+PIS="C2 D2 L2 M1 W3 W3 X3 X3 Y1 Y1"
 for PI in $PIS; do
-  set -- $PI
-  bat log-p$1 julia -p $2 lri.jl $1 40000 40000 const
+  bat log-p$PI julia -p 1 lri.jl $PI 40000 40000 const
 done
