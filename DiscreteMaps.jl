@@ -1,13 +1,17 @@
 #Pkg.add("ApproxFun")
 #Pkg.add("Distributions")
+#Pkg.add("Roots")
 #Pkg.update()
 module DiscreteMaps
 
 #using ApproxFun
 using Distributions
 using HDF5, JLD, Dates
+using Roots
 
 # General fluff
+
+# Input types
 F64U = Union(Float64,Array{Float64})
 I64U = Union(Int64,Array{Int64})
 
@@ -17,9 +21,14 @@ tomorrowmorning() = Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16)))+Dat
 # Create a folder if it doesn't already exist
 newpath(path) = ispath(path) || mkdir(path)
 
-# Domain stuff
-restrictto(x::Array{Float64,1},xmin,xmax) = max(min(x,xmax),xmin)
+# Extending ones
+Base.ones(n::()) = 1.
 
+# Domain stuff
+domsize(dom::Array{Float64,2}) = dom[:,2] - dom[:,1]
+#domsize(M::Map) = domsize(M.dom)
+
+restrictto(x::Array{Float64,1},xmin,xmax) = max(min(x,xmax),xmin)
 function restrictto!(x::Array{Float64,1},xmax,xmin)
   x[:] = restrictto(x)
   nothing
@@ -28,20 +37,37 @@ end
 function indomain(x::Array{Float64},dom::Array{Float64,2})
   return minimum(dom[:,1] .<= x .<=dom[:,2],1)
 end
-
 function checkindomain(x::Array{Float64},dom::Array{Float64,2})
   return x[:,vec(indomain(x,dom))]
 end
 
 # Distance from edge of (hyper-)rectangular domain
 function domainedgedist(x::Array{Float64},dom::Array{Float64,2})
-  return (minimum(min(abs(x.-dom[:,1]),abs(x.-dom[:,2])),1))
+  return broadcast(min,abs(x.-dom[:,1]),abs(x.-dom[:,2]))
+end
+
+# Distance from edge of (hyper-)rectangular domain for x pointing in oriented directions
+function domainedgedistoriented(x::Array{Float64},sgn::Array{Int8},dom::Array{Float64,2})
+  dommatrix = (sgn .== -1) .* dom[:,1] + (sgn .== 1) .* dom[:,2]
+  return abs(x .- dommatrix)
+end
+
+# Distance from nearest (hyper-rectangular) "barrier" for x pointing in oriented directions
+function barrierdistoriented(x::Array{Float64},sgn::Array{Int8},dom::Array{Float64})
+  distmatrix = fill(convert(Float64,-Inf),size(x))
+  pmatrix = Array(Float64,length(x))
+  for i = 1:size(dom,2)
+    pmatrix[:] = (dom[:,i] .- x)[:].*sgn[:]
+    distmatrix[:] = max(distmatrix[:],pmatrix)
+  end
+  return distmatrix
 end
 
 # Test function!
-testfn(x,centre,width) = (abs(x.-centre) .< width) .* exp(1-(1 - ((x .-centre)/width).^2).^(-1))
-
-
+testfn(x::F64U,centre,width) = (abs(x.-centre) .< width) .* exp(1-(1 - ((x .-centre)./width).^2).^(-1))
+normalisedtestfnspike(x::F64U) = (x .> 0) .* testfn(x,0,1) ./ sqrt(x)
+normalisedtestfnspiketotalintegral = 1.526429236397948867946243218050187830844867513079036769761039753444952626979774
+  # integral of testfn(x,0,1)/sqrt(x) on [0,1]
 # Types
 
 include("DM-Types.jl")
@@ -73,6 +99,7 @@ include("DM-Display.jl")
 
 # ACIM
 
+include("DM-Acim2.jl")
 include("DM-Acim.jl")
 
 end

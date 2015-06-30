@@ -1,34 +1,90 @@
 # Examples of discrete maps
 
-export logistic, loginoise, logiwcoup, doubling, cat
-
 scalingpetX(x::Array{Float64,1}) = x
 nonlinearpetX(x::Array{Float64,1}) = x.*(1-x)
 sinnonlinearpetX(x::Array{Float64,1}) = sin(2*pi*x)
 
 # Logistic
 
+# So logisticg etc. won't throw a DomainError if x isn't in the image of f,
+# but just output empty vector
+
+function nicesqrt(x::F64U)
+  minimum(x) >= 0 ? (sqrt(x)) : (fill(convert(typeof(x[1]),NaN),size(x)))
+end
+
+# Map functions
 function logisticf!(x::Array{Float64,1},a::Array{Float64,1})
   x[:] = a[:] .* x .* (1.-x)
   nothing
 end
 
-function logisticg(x::Array{Float64,1},a::Array{Float64,1})
-  g1 = (1 - sqrt(1 - 4*x./a))/2 # + eps(maximum(a)/4)
-  g2 = 1 - g1
-  return checkindomain([g1 g2],logisticdom(a))
+function makelogisticg(;newdom::Bool=false)
+  function logisticg(x::Array{Float64,1},a::Array{Float64,1})
+    g1 = (1 - nicesqrt(1 - 4*x./a))/2 # + eps(maximum(a)/4)
+    g2 = 1 - g1
+    return checkindomain([g1 g2],logisticdom(a;newdom=newdom))
+  end
+  logisticg(x::Float64,a) = logisticg([x],a)
+  return logisticg
 end
-logisticg(x::Float64,a) = logisticg([x],a)
 
-logisticdom(alpha::Array{Float64,1}) = [(1 - alpha/4) alpha/4] #[alpha.^2.*(4-alpha)/16 alpha/4]
-logisticdom(alpha::Float64) = logisticdom([alpha])
-
-function logistic(alpha::Array{Float64},invertible=(length(alpha)==1))
-  invertible ?
-        IMap(logistic(alpha,false),logisticg,(a)->[0.5],(a)->-2*a) :
-        DMap(logisticf!,(x,a) -> (a * (1 - 2x)),alpha,logisticdom(alpha))
+# Logistic domain
+# This is not the natural domain of the logistic map in any sense but it
+# limits the number of discontinuities when you do the transfer map so the
+# number of artefact functions required, and for that we must be greatful
+function logisticdom(alpha::Array{Float64,1};newdom::Bool=false)
+  if newdom
+    return [alpha.^2.*(4-alpha)/16 alpha/4]
+  else
+    return [1-alpha/4 alpha/4]
+  end
 end
-logistic(alpha::Float64=3.8) = logistic([alpha],true)
+logisticdom(alpha::Float64;newdom::Bool=false) = logisticdom([alpha];newdom=newdom)
+
+# Logistic inversetransferwt - see type definition
+function logisticinversetransferwt(x::Array{Float64,1},a::Array{Float64,1})
+  return fill(0.5,size(x))
+#   return (x .< 0.5) .* (1 - 0.5 *testfn(x,0.5,0.1)) +
+#     (x .> 0.5) .* (0.5 * testfn(x,0.5,0.1)) + # in the chaotic regime, a width of 0.1 will keep it clear of the edge of the domain for one application of inversetransfer
+#     (x .== 0.5) .* 1.
+# # This is really here "just in case"
+end
+
+# returns logistic Artefacts container for parameter alpha
+function logisticartefacts(alpha;newdom=false)
+  discont = makef(logisticf!)(logisticdom(alpha,newdom=newdom)[:,1],alpha) # where is the discontinuity happening?
+  logartefn(x::F64U) = 1. * (x .< [discont]') # step function, returns a matrix
+  if newdom
+   logpointsin= [discont - 10*eps(maxabs(discont)), discont + 10*eps(maxabs(discont))] # get values near the edge of the step function
+   loggetcoeffs(y::F64U,i::Int64) = y[2] - y[1] # we use the difference in values as a coeff
+  else
+    logpointsin = discont + 2*eps(maxabs(discont)) # get value at the edge of the step function
+    loggetcoeffs(y::F64U,i::Int64) = y # we just use the value
+  end
+  lognfns = 1 # at present
+
+  return Artefacts(logartefn,logpointsin,loggetcoeffs,lognfns)
+end
+
+function logistic(alpha::Array{Float64},invertible=(length(alpha)==1);newdom::Bool=false)
+  if ~(invertible)
+    DMap(logisticf!, # logistic map
+         (x,a) -> (a .* (1 - 2x)), # differential of 1D logistic map
+         alpha, # parameter is the logistic parameter
+         logisticdom(alpha;newdom=newdom)) # domain of logistic map
+    # the rest is specified by defaults in DMap
+  else
+    IMap(logistic(alpha,false;newdom=newdom), # logistic DMap, see immediately above
+         makelogisticg(newdom=newdom), # inverse of logistic map
+         logisticinversetransferwt, # logisticinversetransferwt, just constant 1/2
+         (a)->[0.5], # one critical point
+         (a)->-2*a, # f'(0.5) = -2α
+         logisticartefacts(alpha;newdom=newdom) # logistic Artefacts container
+         )
+  end
+end
+logistic(alpha::Float64=3.8;newdom=false) = logistic([alpha],true;newdom=newdom)
 #logistic(alpha::Float64) = DMap((x,a)->a*x.*(1-x),(x,a)->a*(1-2x),alpha)
 #logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diagm(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
 
@@ -74,9 +130,21 @@ doublingg(x::Float64,a) = doublingg([x],a)
 #doubling() = doubling(1)
 
 function doubling(dim::Integer=1,invertible::Bool=(dim==1))
-  invertible ?
-        IMap(doubling(dim,false),doublingg,(a)->[],(a)->[]) :
-        DMap(doublingf!,(x,a)->2*ones(size(x)),(),repmat([0. 1.],dim,1),dim,true)
+  if ~(invertible)
+        DMap(doublingf!, # double it!
+             (x,a)->2*ones(size(x)), # let its derivative be 2!
+             (), # no parameters
+             repmat([0. 1.],dim,1), # got a unit domain!
+             dim, # of an arbitrary number of dimensions but by default 1 (see above)
+             true) # it's periodic
+  else
+    IMap(doubling(dim,false), #doubling DMap, see immediately above
+         doublingg, # inverse of doubling map
+         (a)->[],(a)->[], # critical points stuff (none)
+         (x,a) -> fill(0.5,size(x)), # inversetransferwt fn - evenly distributed
+         Artefacts()) # no artefacts
+
+  end
 end
 
 
@@ -85,6 +153,38 @@ doubling1(;largs...) = IterationSchema(doublingp(),"D1",trigA;largs...)
 
 doublingpp() = Peturbation(doubling(),sinnonlinearpetX)
 doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
+
+# Sine-peturbed doubling
+
+spdoublinglift(x::Float64,a::Float64) = 2*(x + a*sin(2pi*x))
+function spdoublingf!(x::Array{Float64,1},a::Float64)
+  x[:] = mod(spdoublinglift(x[1],a),1)
+  nothing
+end
+
+function spdoublingg(y::Array{Float64,1},a::Float64)
+  g1 = fzero(x->spdoublinglift(x,a) - y[1],0.,1.)
+  g2 = fzero(x->spdoublinglift(x,a) - (y[1]+1),0.,1.)
+  return [g1 g2]
+end
+spdoublingg(x::Float64,a) = spdoublingg([x],a)
+
+function spdoubling(a::Float64=0.05,invertible::Bool=true)
+  if ~(invertible)
+        DMap(spdoublingf!, # double it + peturbation
+             (x,a)->2*(1 + 2pi*a*cos(2pi*x)), # derivative
+             a, # a peturbation parameter
+             repmat([0. 1.],1,1), # got a unit domain of dimension 1
+             1, # one dimension remember
+             true) # it's periodic
+  else
+    IMap(spdoubling(a,false), #spdoubling DMap, see immediately above
+         spdoublingg, # inverse of spdoubling map
+         (x,a) -> fill(0.5,size(x)) # inversetransferwt fn - evenly distributed
+         ) # no artefacts or critical points
+  end
+end
+
 
 # Arnol'd cat map
 
