@@ -32,7 +32,8 @@ logistic(alpha::Float64=3.8) = logistic([alpha],true)
 #logistic(alpha::Float64) = DMap((x,a)->a*x.*(1-x),(x,a)->a*(1-2x),alpha)
 #logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diagm(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
 
-### L1, L2, Lh: logistic deterministic
+
+# L1, L2: logistic deterministic
 
 logisticp(alpha::F64U=3.8) = Peturbation(logistic(alpha),scalingpetX)
 logistic1(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L1",logiA;largs...)
@@ -88,6 +89,10 @@ doubling1(;largs...) = IterationSchema(doublingp(),"D1",trigA;largs...)
 doublingpp() = Peturbation(doubling(),sinnonlinearpetX)
 doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/specacim
 # Arnol'd cat map
 
 catmatrix = [2. 1.;1. 1.]

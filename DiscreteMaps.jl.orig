@@ -11,10 +11,13 @@ using HDF5, JLD, Dates
 F64U = Union(Float64,Array{Float64})
 I64U = Union(Int64,Array{Int64})
 
+<<<<<<< HEAD
 # turn into keyword argument dictionary
 kw(;kwargs...) = kwargs
 
+=======
 # returns 10AM tomorrow
+>>>>>>> origin/specacim
 tomorrowmorning() = Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16)))+Dates.Hour(10)
 
 # Create a folder if it doesn't already exist

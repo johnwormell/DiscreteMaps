@@ -119,9 +119,14 @@ type IterationSchema
   NVbuffer::Integer
 end
 IterationSchema(P::Peturbation,Pinitial::String,A::Array{Function,1};
+<<<<<<< HEAD
                 samplefn::Function=betasamplefn,samplefnargs=(),
                 N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4,useacv=false,NVsamp=1000,NVbuffer=NVsamp) =
   IterationSchema(P,Pinitial,A,samplefn,samplefnargs,N,NI,NH,length(A),useacv,NVsamp,NVbuffer)
+
+=======
+          samplefn::Function=betasamplefn,N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4) =
+  IterationSchema(P,Pinitial,A,samplefn,N,NI,NH,length(A))
 
 # ACIM stuff
 
@@ -153,3 +158,4 @@ Spikes(CO::CriticalOrbit,dom::Array{Float64,2},mag0=fill(0.01,length(CO.crit)),
 #    rho::Function
 #    sp::Space
 # end
+>>>>>>> origin/specacim
