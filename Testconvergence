@@ -1,0 +1,25 @@
+include("/Users/johnwormell/Dropbox/Julia/Specacim/DiscreteMaps.jl")
+using DiscreteMaps
+using Gadfly
+
+M = DiscreteMaps.logistic(3.8)
+pg = linspace(M.dom[1],M.dom[2],3000)
+
+Ns = [21,22,31,32,41,42,51,52,76,77,101,102,151,152,201,202,301,302,401,402]
+L = minimum(Ns)
+NNs = length(Ns)
+rv = Array(Float64,L,NNs)
+
+for i = 1:NNs
+  (acim, r) = DiscreteMaps.spectralacim(M,Ns[i];verbose=false)
+#  y = (acim(pg))
+#  yn = y ./ mean(y[~isnan(y)])
+#  Gadfly.plot(x=pg,y=yn,Geom.line)
+  println(Ns[i],convert(Array{Float32},r[1:6]))
+  rv[:,i] = r[1:L]
+end
+
+rv ./= rv[1,:]
+
+Gadfly.plot(x=Ns,y=abs(rv[4,:]-mean(rv[4,NNs-1:NNs])),Scale.y_log10,Scale.x_log10)
+
