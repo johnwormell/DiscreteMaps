@@ -63,8 +63,8 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
       sAs = Array(Float64,It.AN,
                   int(floor((Nremaining+NVbuffer+bufferrandsize)/(NVsamp+NVbuffer-bufferrandsize))))
       samplecount = 0
-      println("NVsamp: ",NVsamp)
-      println("Nremaining: ",Nremaining)
+#      println("NVsamp: ",NVsamp)
+#      println("Nremaining: ",Nremaining)
       while Nremaining > 0
         # to use for calculating variance
         if (Nremaining >= NVsamp)

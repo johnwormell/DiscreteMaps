@@ -139,7 +139,7 @@ function evensamplefn(NP::Int64,deps=0.0001)
   [0:NP-1]*deps
 end
 
-function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
+function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false)
   (epsmax < Inf )|| (epsmin > -Inf) && ((epsv, eA, vA) = chopeps(epsv,eA,vA;epsmax=epsmax,epsmin=epsmin))
   AN = size(eA,1)
   eN = size(eA,2)
@@ -154,10 +154,14 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
   rss = Array(Float64,AN)
   pval = Array(Float64,AN)
   for an = 1:AN
-    lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
-#    lmX = [neps[an,:]' nA0c[an,:]']
+    if secondorder
+      lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
+    else
+      lmX = [neps[an,:]' nA0c[an,:]']
+    end
 
     lmY = nAc[an,:]'
+   # lmX |> println
     lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]
