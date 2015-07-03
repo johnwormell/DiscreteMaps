@@ -50,7 +50,7 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
   vA = Array(Float64,It.AN)
   for an = 1:It.AN
     sA[an] = sum(It.A[an](x_history))
-    (It.useacv | NH < It.N) && (vA[an] = observevar(It.A[an],x_history)/It.N)
+    (It.useacv | (NH < It.N)) && (vA[an] = observevar(It.A[an],x_history)/It.N)
   end
   if NH < It.N
     if It.useacv
@@ -63,8 +63,8 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
       sAs = Array(Float64,It.AN,
                   int(floor((Nremaining+NVbuffer+bufferrandsize)/(NVsamp+NVbuffer-bufferrandsize))))
       samplecount = 0
-#      println("NVsamp: ",NVsamp)
-#      println("Nremaining: ",Nremaining)
+      #      println("NVsamp: ",NVsamp)
+      #      println("Nremaining: ",Nremaining)
       while Nremaining > 0
         # to use for calculating variance
         if (Nremaining >= NVsamp)
@@ -74,16 +74,13 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
           sA += sAo
           Nremaining -= NVsamp
           samplecount += 1
-        #  println("samp / Nremaining: ",Nremaining)
         end
         # to put into acv buffer
         Nbuffer = min(Nremaining,NVbuffer+int(rand(-bufferrandsize:bufferrandsize)))
         oiterationmainloop!(x,fn!,It.A,sA,
                             Nbuffer + int(rand(-bufferrandsize:bufferrandsize))) # in case of periodicity
         Nremaining -= Nbuffer
-    #    println("buff / Nremaining: ",Nremaining)
       end
-      (samplecount == size(sAs,2))|> println
       vA = var(sAs[:,1:samplecount]/NVsamp,2)*NVsamp/It.N
     end
   end
@@ -122,6 +119,7 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
   while (now() < endtime) & (cyclecount < NCycles)
     epsl = It.samplefn(NP,It.samplefnargs...)
     pmapcontainer = pmap(obsiteratef,epsl)
+#    pmapcontainer = pmap(obsiterate,fill(It,length(epsl)))
     eAv = [eAv Array(Float64,It.AN,NP)]
     vAv = [vAv Array(Float64,It.AN,NP)]
     epsv = [epsv, epsl]
@@ -137,6 +135,7 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
   end
   return cyclecount, epsv, eAv, vAv
 end
+
 timedsample(PInitial::String; endtime::DateTime=tomorrowmorning(),
             NQ::Int64=1, NP::Int64=NQ*nworkers(), NCycles::Real=Inf,
             Itargs=(),Itkwargs=kw(),
