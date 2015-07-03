@@ -41,7 +41,7 @@ function ido(dim::Int64=1)
   A(x::Array{Float64}) = x[dim,:]
 end
 
-function gaussian(mu,sd)
+function gaussian(mu::Float64,sd::Float64)
   A(x::Array{Float64}) = exp(-(x-mu).^2/(2*sd^2))/sd/sqrt(2pi)
 end
 

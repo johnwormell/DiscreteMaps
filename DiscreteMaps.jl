@@ -105,4 +105,32 @@ include("DM-Display.jl")
 include("DM-Acim2.jl")
 include("DM-Acim.jl")
 
+# logistic 3.8 gaussians - remove soon
+
+  Nk = 10
+  Ntht = 10
+  Npts = 40
+
+  peakedgeheight = 0.1
+  CO = DiscreteMaps.criticalorbit(DiscreteMaps.logistic(3.8),Npts);
+  spds = DiscreteMaps.logisticcospeeds(CO,DiscreteMaps.logistic(3.8)) |> vec;
+  pts = CO.pts[:]
+  wdths = (CO.mag[:]/peakedgeheight).^2
+
+
+  relkvals = Array(Float64,1,1,Nk)
+  relkvals[:] = [1:Nk]/4
+  kvals = relkvals .* ones(1,Ntht) .* spds * 1e-5
+
+  relthtvals = [1:Ntht]'
+  thtvals = relthtvals .* kvals
+
+  sdvs = kvals[:]
+  ctrs = (pts .+ thtvals)[:]
+  NA = length(sdvs)
+#  typeof(DiscreteMaps.gaussian(ctrs[i],sdvs[i])) |> println
+  logisticgaussA = [DiscreteMaps.gaussian(ctrs[i],sdvs[i]) for i = 1:NA]
+
+
 end
+

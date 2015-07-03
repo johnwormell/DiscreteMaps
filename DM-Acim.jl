@@ -5,7 +5,7 @@
 
 function criticalorbit(M::IMap,Npts::Integer=50)
   crit = BigFloat[0.5] #M.crit(M.params)
-  alpha = BigFloat[3.8]
+  alpha = BigFloat[M.params[1]]
   critxx = M.critxx(M.params)
 
   Nc = length(crit)
