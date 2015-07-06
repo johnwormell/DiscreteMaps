@@ -96,7 +96,11 @@ logistic2(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L2",logi
 
 logistich(alpha::F64U=3.8,phase::Float64=0.;largs...) = IterationSchema(logisticp(alpha),"Lh",sin100LhdefaultcptsA(phase);largs...) # h for hecto
 logistichp(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lhp",sin100p30A;largs...) # h for hecto
-logistichp(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lup",sin1p30A;largs...) # u for one
+logisticup(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lup",sin1p30A;largs...) # u for one
+
+logisticgae(k::Float64,alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lge",logisticgaussevenA(k);largs...) # u for one
+logisticgac(k::Float64,alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lgc",logisticgaussnearcoA(k);largs...) # u for one
+
 # Logistic with noise
 function loginoisef!(x::Array{Float64,1},a::(Array{Float64,1},Float64))
   x[:] = restrictto(a[1] .* x .* (1.-x) + a[2]*randn(length(x)),0.,1.)
@@ -280,6 +284,8 @@ itdict = {"L1" => logistic1,
           "Lh" => logistich,
           "Lhp" => logistichp,
           "Lup" => logisticup,
+          "Lgc" => logisticgac,
+          "Lge" => logisticgae,
           "M1" => loginoisem1,
           "N1" => loginoise1,
           "D1" => doubling1,
