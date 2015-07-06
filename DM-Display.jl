@@ -8,9 +8,19 @@ function chopeps(epsv::Array{Float64,1},eA::Array{Float64,2},vA::Array{Float64,2
   return epsv, eA, vA
 end
 
+stringarrayu =
+function restrictfiles(files,keys::Array)
+  for str in keys
+    files = filter(x->contains(x,"$(str)"),files)
+  end
+  files
+end
 
-searchdir(path,key) = filter(x->contains(x,key), readdir(path))
-searchdirh5(path,key) = filter(x->contains(x,".h5"),searchdir(path,key))
+searchdir(path,key::String) = filter(x->contains(x,key), readdir(path))
+searchdir(path,keys::Array) =
+  restrictfiles(readdir(path),keys)
+
+searchdirh5(path,key=[]) = filter(x->contains(x,".h5"),searchdir(path,key))
 
 function synthesiseresults(PInitial,Jpathx="",extrastuff=["rs"];foutput=true)
   path = "$(Jpathx)"

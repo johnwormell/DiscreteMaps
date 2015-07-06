@@ -113,7 +113,7 @@ include("DM-Acim.jl")
 
   peakedgeheight = 0.1
   CO = DiscreteMaps.criticalorbit(DiscreteMaps.logistic(3.8),Npts);
-  spds = DiscreteMaps.logisticcospeeds(CO,DiscreteMaps.logistic(3.8)) |> vec;
+  spds = DiscreteMaps.logisticcospeeds(CO,DiscreteMaps.logistic(3.8)) |> abs |> vec;
   pts = CO.pts[:]
   wdths = (CO.mag[:]/peakedgeheight).^2
 

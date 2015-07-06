@@ -49,6 +49,7 @@ trigA = [ido(),sino(1),sino(2),sino(3),sino(10),sino(100),sino(1000),coso(1),cos
 trig2A = [ido(1),ido(2),sino(1,0),sino(0,1),sino(3,2),sino(10,0),sino(100,0),sino(1000,0),coso(0,1),coso(3,2),coso(10,0),coso(100,0),coso(1000,0)]
 sin100A(phase::Float64=0.) = [sino(i;phase=phase) for i = 1:100]
 sin100p30A = [sino(i;phase=phase) for phase=([0:14]/15 * pi), i = 1:100]
+sin1p30A = [sino(1,phase=phase) for phase =([0:14]/15*pi)]
 logiA = [ido(),sino(1),sino(100),gaussian(0.3,0.03),gaussian(0.3,0.10)]
 logiA2 = [ido(),sino(1),sino(100),gaussian(0.4,0.0003),gaussian(0.4,0.003)]
 coupA = [georg(100),jeroen(100)]
