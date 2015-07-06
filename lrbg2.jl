@@ -55,7 +55,7 @@ DiscreteMaps.newpath("results/lrb")
 (length(ARGS) == 1) ? (M = int(ARGS[1])) : (M = 20)
 
 while (now() < endtime)
-  for deps in ([201:400]*2.5e-8)
+  for deps in ([1:201]*2.5e-8)
     peturbsample(M,deps)
   end
 end

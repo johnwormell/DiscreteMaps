@@ -105,11 +105,11 @@ include("DM-Display.jl")
 include("DM-Acim2.jl")
 include("DM-Acim.jl")
 
-# logistic 3.8 gaussians - remove soon
+# logistic 3.8 gaussians - move elsewhere soon
 
-  Nk = 10
-  Ntht = 10
-  Npts = 40
+  Nk = 6
+  Ntht = 6
+  Npts = 30
 
   peakedgeheight = 0.1
   CO = DiscreteMaps.criticalorbit(DiscreteMaps.logistic(3.8),Npts);
