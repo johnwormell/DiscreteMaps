@@ -11,7 +11,7 @@ end
   using DiscreteMaps, HDF5, JLD, Dates
   endtime = DateTime(2016,07,06,12,00,00)
   function peturbsample(M,deps,kr)
-    N = 10^7
+    N = 10^6
     NH = 10^2
     DiscreteMaps.timedsample("Lg$gtype",NP=M,NCycles=1,startstring="results/lrb/rbug$(gtype)-$(deps)-$(kr)-",
                              Itargs=(1/kr),Itkwargs=DiscreteMaps.kw(samplefn=DiscreteMaps.evensamplefn,samplefnargs=(deps),N=N,NH=NH))
@@ -23,12 +23,11 @@ end
 DiscreteMaps.newpath("results/")
 DiscreteMaps.newpath("results/lrb")
 (length(ARGS) == 2) ? (M = int(ARGS[2])) : (M = 20)
+deps = 1e-6
 kr = 1.
 krstep = 1.
 while (now() < endtime)
-  for deps in 10.^(linspace(-8,-5,200))
-    peturbsample(M,deps,kr)
-  end
+  peturbsample(M,deps,kr)
   kr += krstep
 end
 
