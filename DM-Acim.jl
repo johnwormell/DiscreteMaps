@@ -4,7 +4,9 @@
 # Currently works only probably for 1 critical point
 # and definitely only for 1 dimension.
 
-function criticalorbit(M::IMap,Npts::Integer=300)
+COdefaultNpts = 100
+
+function criticalorbit(M::IMap,Npts::Integer=COdefaultNpts)
   crit = M.crit(M.params)
   critxx = M.critxx(M.params)
 
@@ -37,7 +39,7 @@ end
 # Should probably let the domain of f, g etc just be Real to deal with this
 # but it slows down iteration in the other parts of this module.
 # Currently not being used for spectralacim.
-function logisticcriticalorbit(M::IMap,Npts::Integer=50)
+function logisticcriticalorbit(M::IMap,Npts::Integer=COdefaultNpts)
   crit = BigFloat[M.crit(M.params)...] #
   alpha = BigFloat[M.params...]
   critxx = M.critxx(M.params)
