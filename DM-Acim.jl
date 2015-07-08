@@ -36,6 +36,7 @@ end
 # of the orbits to have the same accuracy as the magnitudes - hence why this.
 # Should probably let the domain of f, g etc just be Real to deal with this
 # but it slows down iteration in the other parts of this module.
+# Currently not being used for spectralacim.
 function logisticcriticalorbit(M::IMap,Npts::Integer=50)
   crit = BigFloat[0.5] #M.crit(M.params)
   alpha = BigFloat[3.8]
@@ -137,18 +138,19 @@ function inversetransfer(r::Function,M::IMap,rargs=())
   return Mr
 end
 
+# Computes a spectral approximation of the acim
 function spectralacim(M::IMap, # map whose acim we are finding
                       N::Integer=100; # number of points to take spectra at
                       verbose=false) # print output about accuracy etc
   crit = M.crit(M.params) #critical point(s), if any
-  crite = (length(crit) == 1) # is there a critical point?
+  critexists = (length(crit) == 1) # is there a critical point?
   # (only going with one critical point for the moment)
 
   the_spectralpts = spectralpts(N,M.periodic,M.dom)
 #  the_spectralpts[N] -= 2eps(1.) # otherwise get non-finite values on the boundary where there are spikes
 #  the_spectralpts[1] += 2eps(1.)
 
-  if crite
+  if critexists
     CO = criticalorbit(M)
     Sp = Spikes(CO,M.dom)
 
@@ -161,10 +163,11 @@ function spectralacim(M::IMap, # map whose acim we are finding
       spikefn(x,Sp) - eta_at_c*zeta(x) # η - η(c)ζ
     h = transfer(fixedhfn,M,())(the_spectralpts) -
       spikefn(the_spectralpts,Sp,false,true) #L1(η - η(c)ζ) - η + η1
-                                  # η1 is in here because we subtract the identity matrix later on
+                                  # η1 is in here because later on we subtract the identity from
+                                  # a matrix that looks like L1
   end
 
-  if crite
+  if critexists
     fixedfn(x::Array{Float64,1},i::Int64) =
       spectralf(x,i,M.periodic,M.dom) - Dr_at_c[i+1]*zeta(x) # Ti - Ti(c)ζ (if we're using Chebyshev, e.g.)
   else
@@ -187,27 +190,28 @@ function spectralacim(M::IMap, # map whose acim we are finding
     end
   end
 
-  # floating point/nan error - to fix also for cheby points not on boundary maybe
-  if crite
+  # floating point/nan error for cheby points on the boundary - for others we hope they don't exist
+  if critexists
     (M.dom[1] in Sp.CO.pts) && (LD[1,:] = 0; h[1] = 0)
     (M.dom[2] in Sp.CO.pts) && (LD[N,:] = 0; h[N] = 0)
   end
 
 #  verbose && println("Doing linear algebra stuff")
-  if crite
+  if critexists
     Lhat = [eta_at_c Dr_at_c; spectraltransf(N,M.periodic) * [h LD]]
   else
     Lhat = spectraltransf(N,M.periodic) * LD
   end
 
   Deltahat = [Lhat - I; zeros(M.Art.nfns,length(crit)) ac]
-  weightm = speye(size(Deltahat,1)) # to choose what the norm that you do the svd on looks like
+  weightm = speye(size(Deltahat,1)) # what the norm that you do the svd on looks like
   (U,S,V) = svd(weightm * Deltahat)
-  r = V[:,end]
   verbose && println("Smallest singular values are ",[signif(S[i],4) for i = length(S) - [0:4]])
+  r = V[:,end]
+
 
   # Creating the measure
-  if crite
+  if critexists
     mu = SumMeasure([SpectralMeasure(r[2:end],M.dom,M.periodic),r[1] * Sp])
   else
     mu = SpectralMeasure(r,M.dom,M.periodic)
@@ -217,6 +221,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
   munorm = totalint(mu)[1]
   mu = mu/munorm
 
+  # checking everything's ok
   if verbose
     println("r: ",round(r[1:10]'/munorm,4))
     println("Lr: ",round((Lhat*r)[1:10]'/munorm,4))
