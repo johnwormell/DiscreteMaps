@@ -1,9 +1,42 @@
+# Spectral determination of invariant measures
 
 # Determines orbits of critical points of a map.
 # Currently works only probably for 1 critical point
 # and definitely only for 1 dimension.
 
-function criticalorbit(M::IMap,Npts::Integer=50)
+function criticalorbit(M::IMap,Npts::Integer=300)
+  crit = M.crit(M.params)
+  critxx = M.critxx(M.params)
+
+  Nc = length(crit)
+  pts = Array(Float64,Npts,Nc)
+  mag = Array(Float64,Npts,Nc)
+  sgn = Array(Int8,Npts,Nc)
+
+  for i = 1:Nc
+    # the formulae here are described in Ruelle 2009, p. 1045
+    pts[1,i] = M.f(crit[i],M.params)[1]
+    mag[1,i] = sqrt(2/abs(critxx[i]))
+    sgn[1,i] = sign(critxx[i])
+
+    for p = 1:(Npts-1)
+      pts[p+1,i:i] = M.f(pts[p,i],M.params)[1]
+      dfp = (M.df(pts[p,i],M.params))[1]
+      mag[p+1,i:i] = mag[p,i] ./ sqrt(abs(dfp))
+      sgn[p+1,i:i] = sgn[p,i] * sign(dfp)
+    end
+  end
+  # periodic error?
+  return CriticalOrbit(crit,pts,mag,sgn)
+end
+
+
+# Using BigFloats to determine the critical orbit for logistic map -
+# I think you need twice the precision or thereabouts for the positions
+# of the orbits to have the same accuracy as the magnitudes - hence why this.
+# Should probably let the domain of f, g etc just be Real to deal with this
+# but it slows down iteration in the other parts of this module.
+function logisticcriticalorbit(M::IMap,Npts::Integer=50)
   crit = BigFloat[0.5] #M.crit(M.params)
   alpha = BigFloat[3.8]
   critxx = M.critxx(M.params)
@@ -30,9 +63,12 @@ function criticalorbit(M::IMap,Npts::Integer=50)
   return CriticalOrbit(crit,pts,mag,sgn)
 end
 
-# Computes a function containing all the spikes from the map.
+# Computes a function containing all the spikes (ηi) from the map.
 # The acim should be continuous after these spikes are removed.
-function spikefn(x::Array{Float64,1},Sp::Spikes, dofirst::Bool=true, dorest::Bool=true)
+function spikefn(x::Array{Float64,1},# points to evaluate at
+                 Sp::Spikes, #spike measure
+                 dofirst::Bool=true, #include the first spike in the density
+                 dorest::Bool=true) #include the rest of the spikes in the density
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
   # dofirst = include first spikes (η1)
@@ -69,9 +105,8 @@ function spikefn(x::Array{Float64,1},Sp::Spikes, dofirst::Bool=true, dorest::Boo
   #  dofull ? (return (full,first)) : (return first) # eek
 end
 spikefn(x::Array{Float64,1},Sp::Spikes; dorest::Bool=true, dofirst::Bool=true) = spikefn(x,Sp,dofirst,dorest)
-spikefn(x::Float64,largs...) = spikefn([x],largs...)
+spikefn(x::Float64,args...;kwargs...) = spikefn([x],args...;kwargs...)
 measuredensity(x::F64U,Sp::Spikes) = spikefn(x,Sp)
-#spikefn(x::Float64,Sp::Spikes,largs...) = spikefn([x],Sp,largs...)
 
 # Transfer operator aka Frobenius-Perron operator
 function transfer(r::Function,M::IMap,rargs=())
@@ -89,7 +124,7 @@ function transfer(r::Function,M::IMap,rargs=())
   return Lr
 end
 
-# A right inverse of the transfer
+# A right inverse of the transfer operator: used on η1 to calculate ζ (from the paper)
 function inversetransfer(r::Function,M::IMap,rargs=())
   function Mr(x::Array{Float64})
     #    Mrx = Array(Float64,size(x))
@@ -104,69 +139,70 @@ end
 
 function spectralacim(M::IMap, # map whose acim we are finding
                       N::Integer=100; # number of points to take spectra at
-                      verbose=true) # print output about accuracy etc
-  crit = M.crit(M.params)
-  crite = (length(crit) == 1) # only going with one critical point for the moment
+                      verbose=false) # print output about accuracy etc
+  crit = M.crit(M.params) #critical point(s), if any
+  crite = (length(crit) == 1) # is there a critical point?
+  # (only going with one critical point for the moment)
 
   the_spectralpts = spectralpts(N,M.periodic,M.dom)
-  the_spectralpts[N] -= 2eps(1.)
-  the_spectralpts[1] += 2eps(1.)
+#  the_spectralpts[N] -= 2eps(1.) # otherwise get non-finite values on the boundary where there are spikes
+#  the_spectralpts[1] += 2eps(1.)
 
   if crite
     CO = criticalorbit(M)
     Sp = Spikes(CO,M.dom)
 
-    lphieta1 =  spikefn(crit,Sp,true,false)
-    lphi = spectralf(crit,[0:N-1],M.periodic,M.dom)
+    eta_at_c = spikefn(crit,Sp)[1]
+    Dr_at_c = spectralf(crit,[0:N-1],M.periodic,M.dom)
 
+    zeta = inversetransfer(spikefn,M,(Sp,true,false))
 
     fixedhfn(x::Array{Float64,1}) =
-      spikefn(x,Sp) -
-      lphieta1[1]*inversetransfer(spikefn,M,(Sp,true,false))(x)
+      spikefn(x,Sp) - eta_at_c*zeta(x) # η - η(c)ζ
     h = transfer(fixedhfn,M,())(the_spectralpts) -
-      spikefn(the_spectralpts,Sp,false,true)
+      spikefn(the_spectralpts,Sp,false,true) #L1(η - η(c)ζ) - η + η1
+                                  # η1 is in here because we subtract the identity matrix later on
   end
 
   if crite
     fixedfn(x::Array{Float64,1},i::Int64) =
-      spectralf(x,i,M.periodic,M.dom) -
-      lphi[i+1]*inversetransfer(spikefn,M,(Sp,true,false))(x)
+      spectralf(x,i,M.periodic,M.dom) - Dr_at_c[i+1]*zeta(x) # Ti - Ti(c)ζ (if we're using Chebyshev, e.g.)
   else
     fixedfn(x::Array{Float64,1},i::Int64) =
       spectralf(x,i,M.periodic,M.dom)
   end
 
-  L = Array(Float64,N,N)
+  LD = Array(Float64,N,N)
   ac = Array(Float64,M.Art.nfns,N)
 
   for i = 1:N
-    L[:,i] = transfer(fixedfn,M,(i-1))(the_spectralpts)
+    LD[:,i] = transfer(fixedfn,M,(i-1))(the_spectralpts)
 
     # Getting the artefact functions and doing stuff with it
     if M.Art.nfns > 0
       ac[:,i] = M.Art.getcoeffs(
         transfer(fixedfn,M,(i-1))(M.Art.pointsin),
         i)
-      L[:,i] += M.Art.artefn(the_spectralpts) * ac[:,i]
+      LD[:,i] += M.Art.artefn(the_spectralpts) * ac[:,i]
     end
   end
 
-  # floating point/nan error - to fix also for ~10 points away from boundary maybe
+  # floating point/nan error - to fix also for cheby points not on boundary maybe
   if crite
-    (M.dom[1] in Sp.CO.pts) && (L[1,:] = 0; h[1] = 0)
-    (M.dom[2] in Sp.CO.pts) && (L[N,:] = 0; h[N] = 0)
+    (M.dom[1] in Sp.CO.pts) && (LD[1,:] = 0; h[1] = 0)
+    (M.dom[2] in Sp.CO.pts) && (LD[N,:] = 0; h[N] = 0)
   end
 
-  verbose && println("Doing linear algebra stuff")
+#  verbose && println("Doing linear algebra stuff")
   if crite
-    LL = [lphieta1 lphi; spectraltransf(N,M.periodic) * [h L]]
+    Lhat = [eta_at_c Dr_at_c; spectraltransf(N,M.periodic) * [h LD]]
   else
-    LL = spectraltransf(N,M.periodic) * L
+    Lhat = spectraltransf(N,M.periodic) * LD
   end
 
-  LIF = [LL - I; zeros(M.Art.nfns,length(crit)) ac]
-  weightv = ones(size(LIF)) #max([ones(length(crit)),1:N,ones(M.Art.nfns)],15) #max([-1:N-1],10-[-1:N-1])
-  (U,S,V) = svd(weightv .* LIF)
+  Deltahat = [Lhat - I; zeros(M.Art.nfns,length(crit)) ac]
+  weightm = speye(size(Deltahat,1)) # to choose what the norm that you do the svd on looks like
+  (U,S,V) = svd(weightm * Deltahat)
   r = V[:,end]
   verbose && println("Smallest singular values are ",[signif(S[i],4) for i = length(S) - [0:4]])
 
@@ -181,16 +217,13 @@ function spectralacim(M::IMap, # map whose acim we are finding
   munorm = totalint(mu)[1]
   mu = mu/munorm
 
-  #  crite && (Sp = Spikes(Sp,normfactor=1. /rnorm) ) <- not this:
-  #                                  # for the moment, you always put r[1] in front of spikes
-
   if verbose
     println("r: ",round(r[1:10]'/munorm,4))
-    println("Lr: ",round((LL*r)[1:10]'/munorm,4))
-    (M.Art.nfns > 0) && println("Artefact size: ",(LIF*r)[N+2])
+    println("Lr: ",round((Lhat*r)[1:10]'/munorm,4))
+    (M.Art.nfns > 0) && println("Artefact size: ",(Deltahat*r)[N+2])
   end
 
-  return mu, S
+  return mu #, S # mu = measure, S = vector of singular values
 
 end
 

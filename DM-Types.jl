@@ -223,8 +223,9 @@ type SpectralMeasure <: Measure
   dom::Array{Float64,2}
   periodic::Bool
   N::Integer
-  SpectralMeasure(coeffs,dom,periodic,N=length(coeffs)) = new(coeffs,dom,periodic,N)
 end
+SpectralMeasure(coeffs::Array{Float64,1},dom::Array{Float64,2},periodic::Bool,N::Integer=length(coeffs)) =
+  SpectralMeasure(coeffs,dom,periodic,N)
 (*)(normfactor::Real,mu::SpectralMeasure) = SpectralMeasure(mu.coeffs * normfactor, mu.dom, mu.periodic)
 
 type SumMeasure <: Measure
