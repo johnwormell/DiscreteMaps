@@ -160,3 +160,4 @@ Lhdefaultcmag = [0.5129891760425771
 peakedgeheight = 0.01
 LhdefaultcptsA = [gaussian(Lhdefaultcpts[i],(Lhdefaultcmag[i]/peakedgeheight)^2) for i = 1:50]
 sin100LhdefaultcptsA(phase::Float64=0.) = [sin100A(phase),LhdefaultcptsA]
+
