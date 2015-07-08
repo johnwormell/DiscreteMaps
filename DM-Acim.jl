@@ -38,8 +38,8 @@ end
 # but it slows down iteration in the other parts of this module.
 # Currently not being used for spectralacim.
 function logisticcriticalorbit(M::IMap,Npts::Integer=50)
-  crit = BigFloat[0.5] #M.crit(M.params)
-  alpha = BigFloat[3.8]
+  crit = BigFloat[M.crit(M.params)...] #
+  alpha = BigFloat[M.params...]
   critxx = M.critxx(M.params)
 
   Nc = length(crit)
@@ -141,7 +141,8 @@ end
 # Computes a spectral approximation of the acim
 function spectralacim(M::IMap, # map whose acim we are finding
                       N::Integer=100; # number of points to take spectra at
-                      verbose=false) # print output about accuracy etc
+                      verbose=false, # print output about accuracy etc
+                      uselogisticcofn=false) # use logisticcriticalorbit function to calculate CO
   crit = M.crit(M.params) #critical point(s), if any
   critexists = (length(crit) == 1) # is there a critical point?
   # (only going with one critical point for the moment)
@@ -151,7 +152,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
 #  the_spectralpts[1] += 2eps(1.)
 
   if critexists
-    CO = criticalorbit(M)
+    CO = uselogisticcofn ? logisticcriticalorbit(M) : criticalorbit(M)
     Sp = Spikes(CO,M.dom)
 
     eta_at_c = spikefn(crit,Sp)[1]
@@ -192,8 +193,8 @@ function spectralacim(M::IMap, # map whose acim we are finding
 
   # floating point/nan error for cheby points on the boundary - for others we hope they don't exist
   if critexists
-    (M.dom[1] in Sp.CO.pts) && (LD[1,:] = 0; h[1] = 0)
-    (M.dom[2] in Sp.CO.pts) && (LD[N,:] = 0; h[N] = 0)
+    (minabs(Sp.CO.pts - M.dom[1]) < 10*eps(M.dom[1])) && (LD[1,:] = 0; h[1] = 0)
+    (minabs(Sp.CO.pts - M.dom[2]) < 10*eps(M.dom[2])) && (LD[N,:] = 0; h[N] = 0)
   end
 
 #  verbose && println("Doing linear algebra stuff")
