@@ -39,21 +39,21 @@ include("DM-Domain.jl")
 include("DM-Examples.jl")
 
 # Common observables
-#include("DM-Observables.jl")
+include("DM-Observables.jl")
 
 ## ERGODIC APPROXIMATION OF INVARIANT MEASURES
 # Observation and noise in observables
-#include("DM-Observing.jl")
+include("DM-Observing.jl")
 
 # Map iteration
 include("DM-Iteration.jl")
-#include("DM-NewIteration.jl")
+include("DM-NewIteration.jl")
 
 # Fluctuation-dissipation
-#include("DM-Fluctuation.jl")
+include("DM-Fluctuation.jl")
 
 # Displaying iteration stuff
-#include("DM-Display.jl")
+include("DM-Display.jl")
 
 ## SPECTRAL APPROXIMATION OF INVARIANT MEASURES
 # Spectral functions
