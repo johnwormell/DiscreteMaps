@@ -135,8 +135,8 @@ function zerosamplefn(NP::Int64,epsmax=0.0001)
   zeros(Float64,NP)
 end
 
-function evensamplefn(NP::Int64,deps=0.0001)
-  [0:NP-1]*deps
+function evensamplefn(NP::Int64,deps=0.0001,centred=false)
+  centred ? [0:NP-1] * deps : ([0:NP-1]-(NP-1)/2) * deps
 end
 
 function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false)

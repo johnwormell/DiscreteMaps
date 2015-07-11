@@ -85,7 +85,7 @@ end
 totalint(mu::Measure,A=nothing) = measureintbd(mu.dom,mu,A)
 normalise(mu::Measure) = mu / totalint(mu)[1]
 lyapunov(M::DifferentiableMap,mu::Measure) =
-  exp(DiscreteMaps.totalint(mu,x->log(nextfloat(0.)+abs(M.df(x,M.params)[1])))[1]) # estimated Lyapunov exponent
+  exp(totalint(mu,x->log(nextfloat(0.)+abs(M.df(x,M.params)[1])))[1]) # estimated Lyapunov exponent
 
 # Measure density
 
@@ -97,4 +97,13 @@ function measuredensity(x::F64U,mu::SumMeasure)
     dens += measuredensity(x)
   end
   return dens
+end
+
+# output is input for plotting a measure
+function plotmeasure(mu::Measure;meshf=10000)
+  boxsize = domsize(mu.dom)[1]/meshf
+  hgd = linspace(mu.dom...,meshf+1)
+  pgd = hgd[1:end-1] + boxsize/2
+  mudens = measureint(pgd,mu)[1] / boxsize
+  return pgd, mudens
 end

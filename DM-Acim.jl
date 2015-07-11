@@ -153,7 +153,8 @@ end
 # Computes a spectral approximation of the acim
 function spectralacim(M::IMap, # map whose acim we are finding
                       N::Integer=100; # number of points to take spectra at
-                      verbose=false) # print output about accuracy etc
+                      verbose=false, # print output about accuracy etc
+                      uselogisticcofn=false) # use logisticcriticalorbit function to calculate CO
   crit = M.crit(M.params) #critical point(s), if any
   critexists = (length(crit) == 1) # is there a critical point?
   # (only going with one critical point for the moment)
@@ -163,7 +164,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
 #  the_spectralpts[1] += 2eps(1.)
 
   if critexists
-    CO = criticalorbit(M)
+    CO = uselogisticcofn ? logisticcriticalorbit(M) : criticalorbit(M)
     Sp = Spikes(CO,M.dom)
 
     eta_at_c = spikefn(crit,Sp)[1]

@@ -56,4 +56,3 @@ function synthesiseresults(PInitial,Jpathx="",extrastuff=["rs"];foutput=true)
     end
   end
 end
-
