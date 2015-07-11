@@ -4,7 +4,9 @@
 # Currently works only probably for 1 critical point
 # and definitely only for 1 dimension.
 
-function criticalorbit(M::IMap,Npts::Integer=300)
+COdefaultNpts = 100
+
+function criticalorbit(M::IMap,Npts::Integer=COdefaultNpts)
   crit = M.crit(M.params)
   critxx = M.critxx(M.params)
 
@@ -37,9 +39,9 @@ end
 # Should probably let the domain of f, g etc just be Real to deal with this
 # but it slows down iteration in the other parts of this module.
 # Currently not being used for spectralacim.
-function logisticcriticalorbit(M::IMap,Npts::Integer=50)
-  crit = BigFloat[0.5] #M.crit(M.params)
-  alpha = BigFloat[M.params[1]]
+function logisticcriticalorbit(M::IMap,Npts::Integer=COdefaultNpts)
+  crit = BigFloat[M.crit(M.params)...] #
+  alpha = BigFloat[M.params...]
   critxx = M.critxx(M.params)
 
   Nc = length(crit)
@@ -205,8 +207,8 @@ function spectralacim(M::IMap, # map whose acim we are finding
 
   # floating point/nan error for cheby points on the boundary - for others we hope they don't exist
   if critexists
-    (M.dom[1] in Sp.CO.pts) && (LD[1,:] = 0; h[1] = 0)
-    (M.dom[2] in Sp.CO.pts) && (LD[N,:] = 0; h[N] = 0)
+    (minabs(Sp.CO.pts - M.dom[1]) < 10*eps(M.dom[1])) && (LD[1,:] = 0; h[1] = 0)
+    (minabs(Sp.CO.pts - M.dom[2]) < 10*eps(M.dom[2])) && (LD[N,:] = 0; h[N] = 0)
   end
 
 #  verbose && println("Doing linear algebra stuff")
