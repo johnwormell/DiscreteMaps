@@ -20,12 +20,12 @@ function logisticf!(x::Array{Float64,1},a::Array{Float64,1})
 end
 
 function makelogisticg(;newdom::Bool=false)
-  function logisticg(x::Array{Float64,1},a::Array{Float64,1})
+  function logisticg(x::F64U,a::F64U)
     g1 = (1 - nicesqrt(1 - 4*x./a))/2 # + eps(maximum(a)/4)
     g2 = 1 - g1
     return checkindomain([g1 g2],logisticdom(a;newdom=newdom))
   end
-  logisticg(x::Float64,a) = logisticg([x],a)
+#  logisticg(x::Float64,a) = logisticg([x]::Array{Float64,1},a::Array{Float64,1}) # SKULL AND XBONES FOR PARALLELISATION
   return logisticg
 end
 
@@ -88,10 +88,18 @@ logistic(alpha::Float64=3.8;newdom=false) = logistic([alpha],true;newdom=newdom)
 #logistic(alpha::Float64) = DMap((x,a)->a*x.*(1-x),(x,a)->a*(1-2x),alpha)
 #logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diagm(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
 
+### L1, L2, Lh: logistic deterministic
 
 logisticp(alpha::F64U=3.8) = Peturbation(logistic(alpha),scalingpetX)
 logistic1(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L1",logiA;largs...)
 logistic2(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"L2",logiA2;largs...)
+
+logistich(alpha::F64U=3.8,phase::Float64=0.;largs...) = IterationSchema(logisticp(alpha),"Lh",sin100LhdefaultcptsA(phase);largs...) # h for hecto
+logistichp(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lhp",sin100p30A;largs...) # h for hecto
+logisticup(alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lup",sin1p30A;largs...) # u for one
+
+logisticgae(k::Float64,alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lge",logisticgaussevenA(k);largs...) # u for one
+logisticgac(k::Float64,alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lgc",logisticgaussnearcoA(k);largs...) # u for one
 
 # Logistic with noise
 function loginoisef!(x::Array{Float64,1},a::(Array{Float64,1},Float64))
@@ -273,6 +281,11 @@ logiwcoupj3(J::Integer=100;alpha0::Float64=3.8,sd0::Float64=0.02,n::Integer=100,
 
 itdict = {"L1" => logistic1,
           "L2" => logistic2,
+          "Lh" => logistich,
+          "Lhp" => logistichp,
+          "Lup" => logisticup,
+          "Lgc" => logisticgac,
+          "Lge" => logisticgae,
           "M1" => loginoisem1,
           "N1" => loginoise1,
           "D1" => doubling1,

@@ -37,7 +37,12 @@ function makef(f!::Function)
     f!(P,a)
     return P
   end
-  f(x::Float64,a) = f([x],a)
+  function f(x::Float64,a) # to avert errors relating to recursion in serialization
+    P = [x]
+    f!(P,a)
+    return P[1]
+  end
+#  f(x::Float64,a) = f([x],a) # CAUSES NASTY STACKOVERFLOWERRORS AVOID AVOID!!!
   return f
 end
 
@@ -75,6 +80,9 @@ type DMap <: DifferentiableMap
 
   DMap(f!,df,params,dom,dim,periodic,init,noise!) = new(makef(f!),f!,df,params,dom,dim,periodic,init,noise!)
 end
+#DMap(f!::Function,df::Function,params,dom::Array,dim::Integer,periodic::Bool,init::Function,noise!::Function) =
+#  DMap(makef(f!),f!,df,params,dom,dim,periodic,init,noise!)
+
 
 DMap(M::Map,df) = DMap(M.f!,df,M.params,M.dom,M.dim,M.periodic,M.init,M.noise);
 DMap(f!,df,params,dom,dim,periodic) = DMap(f!,df,params,dom,dim,periodic,()->runifinit(dom,dim),rnormadditivenoise(dom,dim))
@@ -153,14 +161,19 @@ type IterationSchema
   PInitial::String
   A::Array{Function,1}
   samplefn::Function
+  samplefnargs
   N::Integer
   NI::Integer
   NH::Integer
   AN::Integer
+  useacv::Bool
+  NVsamp::Integer
+  NVbuffer::Integer
 end
 IterationSchema(P::Peturbation,Pinitial::String,A::Array{Function,1};
-          samplefn::Function=betasamplefn,N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4) =
-  IterationSchema(P,Pinitial,A,samplefn,N,NI,NH,length(A))
+                samplefn::Function=betasamplefn,samplefnargs=(),
+                N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4,useacv=false,NVsamp=1000,NVbuffer=NVsamp) =
+  IterationSchema(P,Pinitial,A,samplefn,samplefnargs,N,NI,NH,length(A),useacv,NVsamp,NVbuffer)
 
 # ACIM stuff
 

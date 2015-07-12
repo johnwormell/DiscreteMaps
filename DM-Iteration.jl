@@ -108,7 +108,7 @@ function observepeturbation(P::Peturbation,A::Array{Function,1},epsv::Array{Floa
   return eA,vA
 end
 
-function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},samplefn::Function,endtime::DateTime=tomorrowmorning(),N::Int64=10^7,NI::Int64=10^4,NR::Int64=1,NQ::Int64=3)
+function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},samplefn::Function,endtime::DateTime=tomorrowmorning(),N::Int64=10^7,NI::Int64=10^4,NR::Int64=1,NQ::Int64=3,samplefnargs=())
   AN = length(A)
   epsv = Array(Float64,0)
   eA = Array(Float64,AN,0)
@@ -116,7 +116,7 @@ function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},sample
   NP = NQ * nworkers()
   filename = replace("RO-$(PInitial)$(endtime).h5",":","-")
   while now() < endtime
-    epsvl = samplefn(NP)
+    epsvl = samplefn(NP,samplefnargs...)
     eAl, vAl = observepeturbation(P,A,epsvl,N,NI,NR)
     epsv = [epsv,epsvl]
     eA = [eA eAl]
@@ -135,7 +135,11 @@ function zerosamplefn(NP::Int64,epsmax=0.0001)
   zeros(Float64,NP)
 end
 
-function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
+function evensamplefn(NP::Int64,deps=0.0001,centred=false)
+  centred ? [0:NP-1] * deps : ([0:NP-1]-(NP-1)/2) * deps
+end
+
+function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false)
   (epsmax < Inf )|| (epsmin > -Inf) && ((epsv, eA, vA) = chopeps(epsv,eA,vA;epsmax=epsmax,epsmin=epsmin))
   AN = size(eA,1)
   eN = size(eA,2)
@@ -150,10 +154,14 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf)
   rss = Array(Float64,AN)
   pval = Array(Float64,AN)
   for an = 1:AN
-    lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
-#    lmX = [neps[an,:]' nA0c[an,:]']
+    if secondorder
+      lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
+    else
+      lmX = [neps[an,:]' nA0c[an,:]']
+    end
 
     lmY = nAc[an,:]'
+   # lmX |> println
     lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]

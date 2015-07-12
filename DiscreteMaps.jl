@@ -15,6 +15,9 @@ using Roots
 F64U = Union(Float64,Array{Float64})
 I64U = Union(Int64,Array{Int64})
 
+# turn into keyword argument dictionary
+kw(;kwargs...) = kwargs
+
 # returns 10AM tomorrow
 tomorrowmorning() = Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16)))+Dates.Hour(10)
 

@@ -66,6 +66,18 @@ function logisticcriticalorbit(M::IMap,Npts::Integer=COdefaultNpts)
   return CriticalOrbit(crit,pts,mag,sgn)
 end
 
+function logisticcospeeds(CO::CriticalOrbit,M::IMap)
+  (Npts, Nc) = size(CO.pts)
+  cospd = Array(Float64, Npts,Nc)
+  crit = M.crit(M.params)
+  cospd[1,1:1] = crit .* (1 - crit)
+  for i = 1:(Npts-1)
+    cospd[i+1,1:1] = 1 * (1 * CO.pts[i,:] .* (1-CO.pts[i,:])) +
+      M.df(CO.pts[i,:],M.params) .* cospd[i,:]
+  end
+  return cospd
+end
+
 # Computes a function containing all the spikes (ηi) from the map.
 # The acim should be continuous after these spikes are removed.
 function spikefn(x::Array{Float64,1},# points to evaluate at
