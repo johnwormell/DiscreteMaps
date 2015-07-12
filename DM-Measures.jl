@@ -107,3 +107,26 @@ function plotmeasure(mu::Measure;meshf=10000)
   mudens = measureint(pgd,mu)[1] / boxsize
   return pgd, mudens
 end
+
+# Fluctuation-Dissipation Theorem - calculating linear response of inv measure
+function flucdis(mu::SpectralMeasure,L::Matrix{Float64},Xc::Array{Float64})#,Ac::Array{Float64})
+  ~mu.periodic && error("Chebyshev measures not implemented for F-D")
+  rhoc = mu.coeffs
+  Ncoeffs = length(rhoc)
+  divrX = fourierdiff(Ncoeffs,mu.dom) * (fscmult(Xc,Ncoeffs)*rhoc)
+#  divrX2 = divrX[2:end]
+#  L2 = L[2:end,2:end]
+#   "max eigval: $(eigvals(L2) |> abs |> maximum)" |> println
+#   drho = divrX2
+#   for i = 1:4
+#     drho[:] = divrX2 + L2 * drho
+#   end
+  drho = (I - L[2:end,2:end]) \ divrX[2:end]
+  return SpectralMeasure([0,-drho],mu.dom,mu.periodic)
+end
+flucdis(mu::SpectralMeasure,L::Matrix{Float64},X::Function) =
+  flucdis(mu,L,fouriertransf(length(mu.coeffs))*X(fourierpts(length(mu.coeffs),mu.dom)))
+function flucdis(M::IMap,XXc,N::Integer=100)
+  (mu,L) = spectralacim(M,N,returntransfmat=true)
+  flucdis(mu,L,XXc)
+end

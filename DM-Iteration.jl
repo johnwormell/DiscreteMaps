@@ -170,7 +170,7 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
 
     lmY = nAc[an,:]'
    # lmX |> println
-    lmbh = pinv(lmX) * lmY
+    lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]
     rss[an] = sum((lmY-lmX*lmbh).^2)

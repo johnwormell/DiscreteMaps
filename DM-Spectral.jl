@@ -54,13 +54,73 @@ fourierapprox(x::F64U,coeffs::F64U, dom::Array{Float64} = defdom(true)) =
 
 fouriertotalint(n::Integer,dom::Array{Float64}=defdom(true)) = [2pi, zeros(n-1)] * domsize(dom)[1] # check
 
-function tridv(n::Integer)
+function tridv(n::Integer,pow::Real=-1)
   tdv = zeros(n)
-  tdv[2:2:end] = 1./[1:floor(n/2)]
+  tdv[2:2:end] = [1:floor(n/2)].^pow
   tdv
 end
 
-fourierint(n::Integer,dom::Array{Float64}=defdom(true)) = Tridiagonal(tridv(n-1),zeros(n),-tridv(n-1)) * domsize(dom)[1]/2pi
+fourierint(n::Integer,dom::Array{Float64}=defdom(true)) = Tridiagonal(tridv(n-1,-1),zeros(n),-tridv(n-1,-1)) * domsize(dom)[1]/2pi
+fourierdiff(n::Integer,dom::Array{Float64}=defdom(true)) = Tridiagonal(-tridv(n-1,1),zeros(n),tridv(n-1,1)) * 2pi/domsize(dom)[1]
+
+# Fourier multiplication matrices
+fillhf(m::Float64,f::Real) = fill(m,fld(f,2))
+
+function fsmultk(k::Integer,N::Integer)
+  # left,top
+  I = [1,2k+1]
+  J = [2k+1,1]
+  V = [0.5,1]
+  # top half
+  append!(I,[2:2:N-2k-1,3:2:N-2k+1])
+  append!(J,[2k+3:2:N,2k+2:2:N])
+  append!(V,[fillhf(0.5,N-2k-1),fillhf(-0.5,N-2k)])
+
+  # middle
+  append!(I,[2:1:2k-1])
+  append!(J,[2k-1:-1:2])
+  append!(V,fill(0.5,2k-2))
+
+  # bottom half
+  append!(I,[2k+3:2:N,2k+2:2:N])
+  append!(J,[2:2:N-2k-1,3:2:N-2k+1])
+  append!(V,[fillhf(0.5,N-2k-1),fillhf(-0.5,N-2k)])
+
+  return sparse(I,J,V,N,N)
+end
+function fcmultk(k::Integer,N::Integer)
+  # left,top edges
+  I = [1,2k]
+  J = [2k,1]
+  V = [0.5,1]
+  # top half
+  append!(I,[2:N-2k])
+  append!(J,[2k+2:N])
+  append!(V,fill(0.5,max(N-2k-1,0)))
+  # middle
+  append!(I,[2:2:2k-2,3:2:2k-1])
+  append!(J,[2k-2:-2:2,2k-1:-2:3])
+  append!(V,[fill(0.5,k-1),fill(-0.5,k-1)])
+  # bottom half
+  append!(I,[2k+2:N])
+  append!(J,[2:N-2k])
+  append!(V,fill(0.5,max(N-2k-1,0)))
+
+  return sparse(I,J,V,N,N)
+end
+function fscmultk(k::Integer,N::Integer)
+  (k==1)&& return speye(N)
+  (rem(k,2) == 0) ? (return fcmultk(div(k,2),N)) : (return fsmultk(div(k-1,2),N))
+end
+
+function fscmult(coeffs::Array{Float64},N::Integer=length(coeffs))
+  fscmultm = zeros(N,N)
+  coeffsl = max(N,length(coeffs))
+  for i in find(coeffs[1:coeffsl] .!= 0)
+    fscmultm += coeffs[i] * fscmultk(i,N)
+  end
+  fscmultm
+end
 
 # Generic spectral functions - 1D only
 

@@ -156,7 +156,8 @@ end
 function spectralacim(M::IMap, # map whose acim we are finding
                       N::Integer=100; # number of points to take spectra at
                       verbose=false, # print output about accuracy etc
-                      uselogisticcofn=false) # use logisticcriticalorbit function to calculate CO
+                      uselogisticcofn=false, # use logisticcriticalorbit function to calculate CO
+                      returntransfmat=false) # if no critical points, additionally return the transfer operator matrix
   crit = M.crit(M.params) #critical point(s), if any
   critexists = (length(crit) == 1) # is there a critical point?
   # (only going with one critical point for the moment)
@@ -243,7 +244,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
     (M.Art.nfns > 0) && println("Artefact size: ",(Deltahat*r)[N+2])
   end
 
+  returntransfmat && ~critexists && (return mu, Lhat)
   return mu #, S # mu = measure, S = vector of singular values
 
 end
-
