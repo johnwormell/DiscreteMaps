@@ -154,6 +154,14 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
   rss = Array(Float64,AN)
   pval = Array(Float64,AN)
   for an = 1:AN
+    if minimum(errsize[an,:]) <= 0
+      zeroval[an] = NaN
+      lrtval[an] = NaN
+      rss[an] = NaN
+      pval[an] = NaN
+      continue
+    end
+
     if secondorder
       lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
     else
@@ -162,7 +170,7 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
 
     lmY = nAc[an,:]'
    # lmX |> println
-    lmbh = inv(lmX' * lmX) * lmX' * lmY
+    lmbh = pinv(lmX) * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]
     rss[an] = sum((lmY-lmX*lmbh).^2)
@@ -183,3 +191,4 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
 end
 
 checklinearresponse(Dct::Dict,args...) = checklinearresponse(Dct["epsv"],Dct["eA"],Dct["vA"],args...)
+
