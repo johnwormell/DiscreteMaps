@@ -18,21 +18,21 @@ function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::B
     partialspikes = (0 .< lratio .< 1) | (0 .< rratio .< 1)
     fullspikes = abs(lratio - rratio) .== 1
 
-    quadgkspikes = find(partialspikes)
+    quadgkspikelist = find(partialspikes)
     # full spikes
     if A == nothing
       theintegral += normalisedtestfnspiketotalintegral * Sp.mag0[i] *
         sum(fullspikes .* Sp.CO.mag[:,i] .* sqrt(Sp.widths[:,i]))
     else
-      append!(quadgkspikes,find(fullspikes))
+      append!(quadgkspikelist,find(fullspikes))
     end
 
     # progressively add
-    for j in quadgkspikes
+    for j in quadgkspikelist
       if A == nothing
         intfn = normalisedtestfnspike
       else
-        intfn(x) = normalisedtestfnspike(x) * A((x - Sp.CO.pts[j,i])/Sp.widths[j,i] / Sp.CO.sgn[j,i])
+        intfn(x) = normalisedtestfnspike(x) * A(x*Sp.widths[j,i]/Sp.CO.sgn[j,i] + Sp.CO.pts[j,i])
       end
       (pint, perr) = quadgk(intfn,sort([lratio[j],rratio[j]])...)
       pcoeff = Sp.mag0[i] * Sp.CO.mag[j,i] .* sqrt(Sp.widths[j,i])
