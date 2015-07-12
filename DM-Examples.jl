@@ -164,35 +164,67 @@ doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
 
 # Sine-peturbed doubling
 
-spdoublinglift(x::Float64,a::Float64) = 2*(x + a*sin(2pi*x))
-function spdoublingf!(x::Array{Float64,1},a::Float64)
+spdoublinglift(x::Float64,a::(Float64,Int64)) = 2*(x + a[1]*sin(2pi*a[2]*x))
+function spdoublingf!(x::Array{Float64,1},a::(Float64,Int64))
   x[:] = mod(spdoublinglift(x[1],a),1)
   nothing
 end
 
-function spdoublingg(y::Array{Float64,1},a::Float64)
+function spdoublingg(y::Array{Float64,1},a::(Float64,Int64))
   g1 = fzero(x->spdoublinglift(x,a) - y[1],0.,1.)
   g2 = fzero(x->spdoublinglift(x,a) - (y[1]+1),0.,1.)
   return [g1 g2]
 end
-spdoublingg(x::Float64,a) = spdoublingg([x],a)
+spdoublingg(x::Float64,a::(Float64,Int64)) = spdoublingg([x],a)
 
-function spdoubling(a::Float64=0.05,invertible::Bool=true)
+function spdoubling(amp::Float64=0.05,k::Int64=1,invertible::Bool=true)
+  a = (amp,k)
   if ~(invertible)
         DMap(spdoublingf!, # double it + peturbation
-             (x,a)->2*(1 + 2pi*a*cos(2pi*x)), # derivative
-             a, # a peturbation parameter
+             (x,a)->2*(1 + a[1]*2pi*a[2]*cos(2pi*a[2]*x)), # derivative
+             a, # a peturbation parameter, a tuple (amplitude, frequency)
              repmat([0. 1.],1,1), # got a unit domain of dimension 1
              1, # one dimension remember
              true) # it's periodic
   else
-    IMap(spdoubling(a,false), #spdoubling DMap, see immediately above
+    IMap(spdoubling(a...,false), #spdoubling DMap, see immediately above
          spdoublingg, # inverse of spdoubling map
          (x,a) -> fill(0.5,size(x)) # inversetransferwt fn - evenly distributed
          ) # no artefacts or critical points
   end
 end
 
+# Doubling-esque
+
+#doublingesquelift(x::Float64,a::(Float64,Int64)) = 2*(x + a[1]*sin(2pi*a[2]*x))
+function desquef!(x::Array{Float64,1},a::Function)
+  x[:] = mod(a(x[1]),1)
+  nothing
+end
+
+function desqueg(y::Array{Float64,1},a::Function)
+  g1 = fzero(x->a(x[1]) - y[1],0.,1.)
+  g2 = fzero(x->a(x[1]) - (y[1]+1),0.,1.)
+  return [g1 g2]
+end
+desqueg(x::Float64,a::Function) = desqueg([x],a)
+
+
+function desque(lift::Function=(x->2x),dlift::Function=(x->fill(2,x|>size)),invertible::Bool=true)
+  if ~(invertible)
+        DMap(desquef!,
+             (x,a)->dlift(x), # derivative
+             lift, # lift function
+             repmat([0. 1.],1,1), # got a unit domain of dimension 1
+             1, # one dimension remember
+             true) # it's periodic
+  else
+    IMap(desque(lift,dlift,false),
+         desqueg,
+         (x,a) -> fill(0.5,size(x)) # inversetransferwt fn - evenly distributed
+         ) # there should be no artefacts or critical points
+  end
+end
 
 # Arnol'd cat map
 
