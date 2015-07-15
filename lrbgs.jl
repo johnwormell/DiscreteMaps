@@ -23,4 +23,6 @@
     end
 end
 @everywhere eval(setupcode)
+M = 20
+deps = 1e-6
 peturbsample(M,deps,1.);
