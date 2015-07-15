@@ -154,7 +154,7 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
   rss = Array(Float64,AN)
   pval = Array(Float64,AN)
   for an = 1:AN
-    if minimum(errsize[an,:]) <= 0
+    if minimum(vA[an,:]) <= 100eps(maximum(vA[an,:]))
       zeroval[an] = NaN
       lrtval[an] = NaN
       rss[an] = NaN
@@ -170,6 +170,8 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
 
     lmY = nAc[an,:]'
    # lmX |> println
+#     an == 115 && lmX |> println
+#     an == 115 && (lmX' * lmX) |> println
     lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]

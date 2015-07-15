@@ -9,15 +9,15 @@
     end
 
 @everywhere setupcode = quote
-    nv = [1,13,22]
+    nv = [1,13,18,22]
     using DiscreteMaps
-    
+
 
     using expas
     function peturbsample(M,deps,kr)
         N = 10^8
         NH = 10^2
-        DiscreteMaps.timedsample(expas.logisticgs(2. .^(-[1:0.5:30]),nv,
+        DiscreteMaps.timedsample(expas.logisticgs(2. .^(-[1:0.5:27]),nv,
             samplefn=DiscreteMaps.evensamplefn,samplefnargs=(deps),N=N,NH=NH),
             NP=M,NCycles=1,startstring="results/lrb/rbugs-$(deps)-$(kr)-")
     end
