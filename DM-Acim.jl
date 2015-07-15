@@ -244,7 +244,8 @@ function spectralacim(M::IMap, # map whose acim we are finding
     (M.Art.nfns > 0) && println("Artefact size: ",(Deltahat*r)[N+2])
   end
 
-  returntransfmat && ~critexists && (return mu, Lhat)
+  returntransfmat && #~critexists &&  #this uncommenting is just temporary
+    (return mu, Lhat)
   return mu #, S # mu = measure, S = vector of singular values
 
 end

@@ -110,10 +110,10 @@ end
 
 # Fluctuation-Dissipation Theorem - calculating linear response of inv measure
 function flucdis(mu::SpectralMeasure,L::Matrix{Float64},Xc::Array{Float64})#,Ac::Array{Float64})
-  ~mu.periodic && error("Chebyshev measures not implemented for F-D")
+#  ~mu.periodic && error("Chebyshev measures not implemented for F-D")
   rhoc = mu.coeffs
   Ncoeffs = length(rhoc)
-  divrX = fourierdiff(Ncoeffs,mu.dom) * (fscmult(Xc,Ncoeffs)*rhoc)
+  divrX = spectraldiff(Ncoeffs,mu.periodic,mu.dom) * (spectralmult(Xc,Ncoeffs,mu.periodic)*rhoc)
 #  divrX2 = divrX[2:end]
 #  L2 = L[2:end,2:end]
 #   "max eigval: $(eigvals(L2) |> abs |> maximum)" |> println
@@ -122,10 +122,13 @@ function flucdis(mu::SpectralMeasure,L::Matrix{Float64},Xc::Array{Float64})#,Ac:
 #     drho[:] = divrX2 + L2 * drho
 #   end
   drho = (I - L[2:end,2:end]) \ divrX[2:end]
-  return SpectralMeasure([0,-drho],mu.dom,mu.periodic)
+  tint = spectraltotalint(Ncoeffs,mu.periodic,mu.dom)
+  drho0 = -sum(tint[2:end] .* drho)/tint[1]
+  return SpectralMeasure(-[drho0,drho],mu.dom,mu.periodic)
 end
 flucdis(mu::SpectralMeasure,L::Matrix{Float64},X::Function) =
-  flucdis(mu,L,fouriertransf(length(mu.coeffs))*X(fourierpts(length(mu.coeffs),mu.dom)))
+  flucdis(mu,L,spectraltransf(length(mu.coeffs),mu.periodic)
+          *X(spectralpts(length(mu.coeffs),mu.periodic,mu.dom)))
 function flucdis(M::IMap,XXc,N::Integer=100)
   (mu,L) = spectralacim(M,N,returntransfmat=true)
   flucdis(mu,L,XXc)
