@@ -32,7 +32,7 @@ function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::B
       if A == nothing
         intfn = normalisedtestfnspike
       else
-        intfn(x) = normalisedtestfnspike(x) * A((x - Sp.CO.pts[j,i])/Sp.widths[j,i] / Sp.CO.sgn[j,i])
+        intfn(x) = normalisedtestfnspike(x) * A(x*Sp.widths[j,i]/Sp.CO.sgn[j,i] + Sp.CO.pts[j,i])
       end
       (pint, perr) = quadgk(intfn,sort([lratio[j],rratio[j]])...)
       pcoeff = Sp.mag0[i] * Sp.CO.mag[j,i] .* sqrt(Sp.widths[j,i])
@@ -104,7 +104,7 @@ function plotmeasure(mu::Measure;meshf=10000)
   boxsize = domsize(mu.dom)[1]/meshf
   hgd = linspace(mu.dom...,meshf+1)
   pgd = hgd[1:end-1] + boxsize/2
-  mudens = measureint(pgd,mu)[1] / boxsize
+  mudens = measureint(hgd,mu)[1] / boxsize
   return pgd, mudens
 end
 

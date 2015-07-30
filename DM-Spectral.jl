@@ -218,22 +218,48 @@ function gaussianfouriercoefs(n::Integer,dom::Array{Float64,2}=DM.defdom(true),
   end
   gfv
 end
+using MATLAB
 function chebygauskernel(n::Integer, sratio::Float64=0.001)
 #   omega0 = pi/2
 # #  -(2pi*sratio*[0:n-1]).^2 / 2 |> exp |> println
 #   kerm = diagm(cos(-[0:n-1]*omega0).*exp(-(2pi*sratio*[0:n-1]).^2 / 2))
 #   kerm
-  cm = chebytransf(n)
-  cp = chebypts(n,[-1. 1.])
-  km = Array(Float64,n,n)
-  for i = 1:n
-    for j = 1:n
-      km[j,i] = (1 + (j!=1))/pi * sqrt(1 - cp[j]^2) * (exp(-((cp[j]-cp[i]) / 2sratio).^2 / 2) +
-                   exp(-((cp[j]+cp[i]-2) / 2sratio).^2 / 2) +
-                   exp(-((cp[j]+cp[i]+2) / 2sratio).^2 / 2))/sqrt(2pi)/2sratio
-    end
-  end
-  return km #cm * km * cm'
+#   cm = chebytransf(n)
+#   cp = chebypts(n,[-1. 1.])
+#   km = Array(Float64,n,n)
+#   for i = 1:n
+#     for j = 1:n
+#       km[j,i] = (1 + (j!=1))/pi * sqrt(1 - cp[j]^2) * (exp(-((cp[j]-cp[i]) / 2sratio).^2 / 2) +
+#                    exp(-((cp[j]+cp[i]-2) / 2sratio).^2 / 2) +
+#                    exp(-((cp[j]+cp[i]+2) / 2sratio).^2 / 2))/sqrt(2pi)/2sratio
+#     end
+#   end
+#   return km #cm * km * cm'
+#  @time  ms = MSession(0);
+#  @time begin
+#    sigma = 0.02;
+#    n=100;
+    put_variable(:n,n)
+    put_variable(:sigma,sratio*domsize(defdom(false)))
+    eval_string("addpath('/Users/johnwormell/Documents/MATLAB/Apps/chebfun')")
+    eval_string("""
+      ckernel = chebfun(@(x) exp(-x.^2/2/sigma^2)/sigma/sqrt(2*pi));
+      convmat = zeros(n,n);
+      for i = 1:n
+        chebpol = chebfun([zeros(i-1,1);1],'coeffs');
+        convolute = conv(ckernel,chebpol);
+        for p = 1:2
+          l = length(convolute.funs{p}.onefun.coeffs);
+          convolute.funs{p}.onefun.coeffs = 2 * convolute.funs{p}.onefun.coeffs .* [mod([0:(l-1)]',2) == 0];
+        end
+
+        convmat(:,i) = chebcoeffs(convolute,n);
+      end
+        """
+                  )
+  get_variable(:convmat)
+#  end
+#  @time close(ms)
 end
 # Returns kernel matrix of a Fourier Gaussian distribution
 fouriergauskernel(n::Integer,sratio::Float64=0.001) =
@@ -241,3 +267,4 @@ fouriergauskernel(n::Integer,sratio::Float64=0.001) =
 fouriergauskernel(n::Integer,dom::Array{Float64,2} = DM.defdom(true),
                    sigma::Float64=defaultrelsigmasize*DM.domsize(dom)[1]) =
   DM.fourierconv(gaussianfouriercoefs(n,dom,sigma,0.),[0. 2pi],n)
+

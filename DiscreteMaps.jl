@@ -27,7 +27,14 @@ newpath(path) = ispath(path) || mkdir(path)
 # Naturally extending ones
 Base.ones(n::()) = 1.
 
-
+# chop
+chop{T<:Real}(x::T,epsl=1000eps()) = (abs(x) < epsl) ? convert(T,0) : x
+function chopm!{T<:Real}(x::Array{T})
+  epsl = 100*maximum(size(x))*eps(maxabs(x))
+  for i = 1:length(x)
+    x[i] = chop(x[i],epsl)
+  end
+end
 ## GENERAL
 # Types
 include("DM-Types.jl")
@@ -57,7 +64,8 @@ include("DM-Iteration.jl")
 
 ## SPECTRAL APPROXIMATION OF INVARIANT MEASURES
 # Spectral functions
-include("DM-Spectral.jl")
+#include("DM-Spectral.jl")
+include("DM-LegSpectral.jl")
 
 # Measures
 include("DM-Measures.jl")
