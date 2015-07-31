@@ -4,7 +4,7 @@
     using DiscreteMaps
     alpha = 3.8
     copts = DiscreteMaps.logisticcriticalorbit(DiscreteMaps.logistic(alpha)).pts |> vec
-    gauA(stdv,ns) = [DiscreteMaps.gaussian(copts[i],std) for std in stdv,i in ns] |> vec
+    gauA(stdv,ns) = [DiscreteMaps.ido()]#,[DiscreteMaps.gaussian(copts[i],std) for std in stdv,i in ns] |> vec
     logisticgs(stdv,ns;largs...) = DiscreteMaps.IterationSchema(DiscreteMaps.logisticp(alpha),"Lgs",gauA(stdv,ns);largs...)
     end
 
