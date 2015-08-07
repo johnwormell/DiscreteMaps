@@ -4,12 +4,12 @@
     using DiscreteMaps
     alpha = 3.8
     copts = DiscreteMaps.logisticcriticalorbit(DiscreteMaps.logistic(alpha)).pts |> vec
-    gauA(stdv,ns) = [DiscreteMaps.ido()]#,[DiscreteMaps.gaussian(copts[i],std) for std in stdv,i in ns] |> vec
+    gauA(stdv,ns) = [DiscreteMaps.ido(),vec([DiscreteMaps.gaussian(copts[i],std) for std in stdv,i in ns])]
     logisticgs(stdv,ns;largs...) = DiscreteMaps.IterationSchema(DiscreteMaps.logisticp(alpha),"Lgs",gauA(stdv,ns);largs...)
     end
 
 @everywhere setupcode = quote
-    nv = [1,13,18,22]
+    nv = [1,5,13,18,22]
     using DiscreteMaps
 
 
@@ -26,3 +26,4 @@ end
 M = 20
 deps = 1e-6
 peturbsample(M,deps,1.);
+
