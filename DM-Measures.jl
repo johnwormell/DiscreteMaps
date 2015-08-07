@@ -100,11 +100,11 @@ function measuredensity(x::F64U,mu::SumMeasure)
 end
 
 # output is input for plotting a measure
-function plotmeasure(mu::Measure;meshf=10000)
+function plotmeasure(mu::Measure;meshf=3000)
   boxsize = domsize(mu.dom)[1]/meshf
   hgd = linspace(mu.dom...,meshf+1)
   pgd = hgd[1:end-1] + boxsize/2
-  mudens = measureint(pgd,mu)[1] / boxsize
+  mudens = measureint(hgd,mu)[1] / boxsize
   return pgd, mudens
 end
 
