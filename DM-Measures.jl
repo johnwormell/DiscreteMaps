@@ -18,21 +18,21 @@ function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::B
     partialspikes = (0 .< lratio .< 1) | (0 .< rratio .< 1)
     fullspikes = abs(lratio - rratio) .== 1
 
-    quadgkspikelist = find(partialspikes)
+    quadgkspikes = find(partialspikes)
     # full spikes
     if A == nothing
       theintegral += normalisedtestfnspiketotalintegral * Sp.mag0[i] *
         sum(fullspikes .* Sp.CO.mag[:,i] .* sqrt(Sp.widths[:,i]))
     else
-      append!(quadgkspikelist,find(fullspikes))
+      append!(quadgkspikes,find(fullspikes))
     end
 
     # progressively add
-    for j in quadgkspikelist
+    for j in quadgkspikes
       if A == nothing
         intfn = normalisedtestfnspike
       else
-        intfn(x) = normalisedtestfnspike(x) * A(x*Sp.widths[j,i]/Sp.CO.sgn[j,i] + Sp.CO.pts[j,i])
+        intfn(x) = normalisedtestfnspike(x) * A((x - Sp.CO.pts[j,i])/Sp.widths[j,i] / Sp.CO.sgn[j,i])
       end
       (pint, perr) = quadgk(intfn,sort([lratio[j],rratio[j]])...)
       pcoeff = Sp.mag0[i] * Sp.CO.mag[j,i] .* sqrt(Sp.widths[j,i])
@@ -85,7 +85,7 @@ end
 totalint(mu::Measure,A=nothing) = measureintbd(mu.dom,mu,A)
 normalise(mu::Measure) = mu / totalint(mu)[1]
 lyapunov(M::DifferentiableMap,mu::Measure) =
-  exp(totalint(mu,x->log(nextfloat(0.)+abs(M.df(x,M.params)[1])))[1]) # estimated Lyapunov exponent
+  exp(DiscreteMaps.totalint(mu,x->log(nextfloat(0.)+abs(M.df(x,M.params)[1])))[1]) # estimated Lyapunov exponent
 
 # Measure density
 
@@ -100,33 +100,10 @@ function measuredensity(x::F64U,mu::SumMeasure)
 end
 
 # output is input for plotting a measure
-function plotmeasure(mu::Measure;meshf=3000)
-  boxsize = domsize(mu.dom)[1]/meshf
-  hgd = linspace(mu.dom...,meshf+1)
-  pgd = hgd[1:end-1] + boxsize/2
-  mudens = measureint(hgd,mu)[1] / boxsize
+function plotmeasure(mu::Measure;meshf=10000,col=color("blue"))
+    boxsize = domsize(mu.dom)[1]/meshf
+    hgd = linspace(mu.dom...,meshf+1)
+    pgd = hgd[1:end-1] + boxsize/2
+    mudens = measureint(pgd,mu)[1] / boxsize
   return pgd, mudens
-end
-
-# Fluctuation-Dissipation Theorem - calculating linear response of inv measure
-function flucdis(mu::SpectralMeasure,L::Matrix{Float64},Xc::Array{Float64})#,Ac::Array{Float64})
-  ~mu.periodic && error("Chebyshev measures not implemented for F-D")
-  rhoc = mu.coeffs
-  Ncoeffs = length(rhoc)
-  divrX = fourierdiff(Ncoeffs,mu.dom) * (fscmult(Xc,Ncoeffs)*rhoc)
-#  divrX2 = divrX[2:end]
-#  L2 = L[2:end,2:end]
-#   "max eigval: $(eigvals(L2) |> abs |> maximum)" |> println
-#   drho = divrX2
-#   for i = 1:4
-#     drho[:] = divrX2 + L2 * drho
-#   end
-  drho = (I - L[2:end,2:end]) \ divrX[2:end]
-  return SpectralMeasure([0,-drho],mu.dom,mu.periodic)
-end
-flucdis(mu::SpectralMeasure,L::Matrix{Float64},X::Function) =
-  flucdis(mu,L,fouriertransf(length(mu.coeffs))*X(fourierpts(length(mu.coeffs),mu.dom)))
-function flucdis(M::IMap,XXc,N::Integer=100)
-  (mu,L) = spectralacim(M,N,returntransfmat=true)
-  flucdis(mu,L,XXc)
 end
