@@ -6,7 +6,7 @@ module DiscreteMaps
 
 #using ApproxFun
 using Distributions
-using HDF5, JLD, Dates
+using JLD, Dates
 using Roots
 
 # General fluff
@@ -27,14 +27,50 @@ newpath(path) = ispath(path) || mkdir(path)
 # Naturally extending ones
 Base.ones(n::()) = 1.
 
+function (*){T<:Number}(t::Tridiagonal{T},x::Array{T,2})
+  a = Array(Float64,size(t,1),size(x,2))
+  for i = 1:size(x,2)
+    a[:,i] = t*x[:,i]
+  end
+  a
+end
 # chop
 chop{T<:Real}(x::T,epsl=1000eps()) = (abs(x) < epsl) ? convert(T,0) : x
 function chopm!{T<:Real}(x::Array{T})
-  epsl = 100*maximum(size(x))*eps(maxabs(x))
+  epsl = 10*maximum(size(x))*eps(maxabs(x))
   for i = 1:length(x)
     x[i] = chop(x[i],epsl)
   end
+  nothing
 end
+function chopm{T<:Real}(x::Array{T})
+  epsl = 10*maximum(size(x))*eps(maxabs(x))
+  xr = Array(Float64,size(x))
+  for i = 1:length(x)
+    xr[i] = chop(x[i],epsl)
+  end
+  xr
+end
+function chopm!{T<:Real}(x::Tridiagonal{T})
+  epsl = 0.
+  fields = names(Tridiagonal)
+  for fld in fields
+    epsl = max(epsl,100*maximum(size(x))*eps(maxabs(getfield(x,fld))))
+  end
+  for fld in fields
+    for i = 1:length(getfield(x,fld))
+      getfield(x,fld)[i] = chop(getfield(x,fld)[i],epsl)
+    end
+  end
+  nothing
+end
+function chopm{T<:Real}(x::Tridiagonal{T})
+  xr = deepcopy(x)
+  chopm!(xr)
+  xr
+end
+
+getfield(Tridiagonal([1.,0],[2.,3.,pi],[4.,5.],[1.]),:dl)
 ## GENERAL
 # Types
 include("DM-Types.jl")
@@ -72,5 +108,8 @@ include("DM-Measures.jl")
 
 # Spectral acim
 include("DM-Acim.jl")
+
+# Spectral acim function using Koopman operator rather than transfer operator
+include("DM-Acimpf.jl")
 
 end

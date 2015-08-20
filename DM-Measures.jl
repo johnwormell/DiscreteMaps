@@ -72,17 +72,30 @@ end
 
 function measureint(intdom::Array{Float64,1},mu::Measure,A=nothing)
   NB = length(intdom) - 1
-  totalint = Array(Float64,NB)
-  totalerr = Array(Float64,NB)
+  inttotal = Array(Float64,NB)
+  errtotal = Array(Float64,NB)
   for i = 1:NB
     (spi,spe) = DiscreteMaps.measureintbd([intdom[i] intdom[i+1]],mu,A)
-    totalint[i] = spi
-    totalerr[i] = spe
+    inttotal[i] = spi
+    errtotal[i] = spe
   end
-  return (totalint, totalerr)
+  return (inttotal, errtotal)
 end
 
-totalint(mu::Measure,A=nothing) = measureintbd(mu.dom,mu,A)
+totalint(mu::Measure,A::Function) = measureintbd(mu.dom,mu,A)
+function totalint(mu::SumMeasure,A::Nothing=nothing)
+  inttotal = 0.
+  errtotal = 0.
+  for musub in mu.components
+    mi = totalint(musub,A)
+    inttotal += mi[1]
+    errtotal += mi[2]
+  end
+  return inttotal, errtotal
+end
+totalint(mu::SpectralMeasure,A::Nothing=nothing) = (dot(spectraltotalint(mu.N,mu.periodic,mu.dom),mu.coeffs),0.)
+totalint(mu::Spikes,A::Nothing=nothing) = measureintbd(mu.dom,mu,A)
+
 normalise(mu::Measure) = mu / totalint(mu)[1]
 lyapunov(M::DifferentiableMap,mu::Measure) =
   exp(totalint(mu,x->log(nextfloat(0.)+abs(M.df(x,M.params)[1])))[1]) # estimated Lyapunov exponent
@@ -100,7 +113,7 @@ function measuredensity(x::F64U,mu::SumMeasure)
 end
 
 # output is input for plotting a measure
-function plotmeasure(mu::Measure;meshf=10000)
+function plotmeasure(mu::Measure;meshf=3000)
   boxsize = domsize(mu.dom)[1]/meshf
   hgd = linspace(mu.dom...,meshf+1)
   pgd = hgd[1:end-1] + boxsize/2

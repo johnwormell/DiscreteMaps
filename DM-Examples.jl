@@ -56,8 +56,8 @@ function logisticartefacts(alpha;newdom=false)
   discont = makef(logisticf!)(logisticdom(alpha,newdom=newdom)[:,1],alpha) # where is the discontinuity happening?
   logartefn(x::F64U) = 1. * (x .< [discont]') # step function, returns a matrix
   if newdom
-   logpointsin= [discont - 10*eps(maxabs(discont)), discont + 10*eps(maxabs(discont))] # get values near the edge of the step function
-   loggetcoeffs(y::F64U,i::Int64) = y[2] - y[1] # we use the difference in values as a coeff
+    logpointsin= [discont - 10*eps(maxabs(discont)), discont + 10*eps(maxabs(discont))] # get values near the edge of the step function
+    loggetcoeffs(y::F64U,i::Int64) = y[2] - y[1] # we use the difference in values as a coeff
   else
     logpointsin = discont + 2*eps(maxabs(discont)) # get value at the edge of the step function
     loggetcoeffs(y::F64U,i::Int64) = y # we just use the value

@@ -224,7 +224,9 @@ type Spikes <: Measure
          dom::Array{Float64,2},
          mag0::Array{Float64,1}=fill(1.,CO.Nc),
          widths::Array{Float64,2}=fill(0.05,CO.Npts,CO.Nc),
-         cpbd = 0.5) =
+         cpbd = 0.5) = # cpbd: a spacing parameter to keep away from domain edges.
+                      # 1. = right up to the edge, 0.5 = halfway to the edge etc
+
     new(CO,dom,mag0,minwidths(CO,dom,widths,cpbd))
  #dom::Array{Float64,2}
 end

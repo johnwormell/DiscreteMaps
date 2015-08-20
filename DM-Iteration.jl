@@ -122,7 +122,7 @@ function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},sample
     eA = [eA eAl]
     vA = [vA vAl]
     println("File saved at $(now())")
-    save(filename,"epsv",epsv,"eA",eA,"vA",vA)
+    JLD.save(filename,"epsv",epsv,"eA",eA,"vA",vA)
   end
   return epsv, eA, vA
 end

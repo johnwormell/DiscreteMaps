@@ -1,4 +1,4 @@
-using HDF5, JLD
+using JLD
 
 L = JLD.load("/Users/johnwormell/Dropbox/Julia/Specacim/plotoutput.h5")
 
@@ -17,4 +17,3 @@ Gadfly.plot(layer(x = lsp[goodvals],y=difference[goodvals].*sqrt(L["xhcts"][good
 sum(difference[goodvals].*sqrt(L["xhcts"][goodvals]/ (1/ 10^7 * 10^3 / 0.9)).^2)
 
 length(goodvals)
-

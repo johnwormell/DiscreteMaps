@@ -27,16 +27,6 @@ end
 
 legpts(n::Integer,dom::Array{Float64}=defdom(false)) = leginormcoords(FastGaussQuadrature.gausslegendre(n)[1],dom)
 function legtransf(n::Integer)
-#  x = legpts(n)
-#   ltmat = Array(Float64,n,n)
-#   for i = 1:n
-#     ltmat[i,:] = GSL.sf_legendre_Pl_array(n,x[i])
-#   end
-#   for i = 1:n
-#     for j = 1:n
-#     ltmat[j,i] *= (2i+1)/n
-#     end
-#   end
   (x, w) = FastGaussQuadrature.gausslegendre(n)
   legp(x,[0:n-1])'.*[0.5:1:n-0.5].*w'
 end
@@ -47,6 +37,12 @@ legapprox(x::F64U,coeffs::F64U,dom::Array{Float64} = defdom(false)) =
 
 legtotalint(n::Integer,dom::Array{Float64,2} = defdom(false)) =
   [1, zeros(n-1)] * domsize(dom)[1]
+legvaluetotalint(n::Integer,dom::Array{Float64,2} = defdom(false)) =
+  FastGaussQuadrature.gausslegendre(n)[2] * domsize(dom)[1]/2
+
+leginnerprodm(n::Integer=length(coeffs),dom::Array{Float64,2}=defdom(false)) =
+  Diagonal(domsize(dom)[1]./[1:2:2n-1])
+
 legint(n::Integer, dom::Array{Float64,2} = defdom(false)) =
   Tridiagonal(1./[1:2:2n-3],zeros(n),-1./[1:2:2n-3]) * domsize(dom)[1] / 2
 
@@ -120,11 +116,13 @@ function legconv(coeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n
   lpts = legpts(n)
   ptbrk = div(n,2)
 
-  #legtransf(n)*[legp(lpts[1+ptbrk:end]-1,[0:2:n-1])*bleft[1:2:n,:],legp(lpts[1:ptbrk]+1,[0:2:n-1])*bright[1:2:n,:]]
   legtransf(n)*
     [legp(lpts[1:ptbrk]+1,[0:2:n-1])*bleft[1:2:n,:],
      legp(lpts[ptbrk+1:end]-1,[0:2:n-1])*bright[1:2:n,:]]*domsize(dom)[1]
 end
+
+# function legiprod(n::Integer,dom::Array{Float64,2}=defdom(false))
+# end
 
 # # Fourier functions and transforms - 1D ONLY - for explanations of what they do see below
 
@@ -156,7 +154,14 @@ end
 fourierapprox(x::F64U,coeffs::F64U, dom::Array{Float64} = defdom(true)) =
   fouriersc(x,[0:length(coeffs)-1],dom)*coeffs
 
-fouriertotalint(n::Integer,dom::Array{Float64}=defdom(true)) = [2pi, zeros(n-1)] * domsize(dom)[1] # check
+fouriertotalint(n::Integer,dom::Array{Float64}=defdom(true)) = [1, zeros(n-1)] * domsize(dom)[1]
+fouriervaluetotalint(n::Integer,dom::Array{Float64}=defdom(true)) = fill(domsize(dom)[1]/n,n)
+
+function fourierinnerprodm(n::Integer=length(coeffs),dom::Array{Float64,2}=defdom(true))
+  fipd = Diagonal(fill(domsize(dom)[1]/2,n))
+  fipd.diag[1] *= 2
+  fipd
+end
 
 function tridv(n::Integer,pow::Real=-1)
   tdv = zeros(n)
@@ -264,6 +269,14 @@ spectralapprox(x::F64U,coeffs::F64U,periodic::Bool=false,dom::Array{Float64}=def
 spectraltotalint(n::Integer,periodic::Bool=false,dom::Array{Float64}=defdom(periodic)) =
   periodic ? (fouriertotalint(n,dom)) : (legtotalint(n,dom))
 
+# Vector returns integral over domain when dotted with values at spectral points
+spectralvaluetotalint(n::Integer,periodic::Bool=false,dom::Array{Float64}=defdom(periodic)) =
+  periodic ? (fouriervaluetotalint(n,dom)) : (legvaluetotalint(n,dom))
+
+# Vector returns L2 inner product matrix for spectral coefficients
+spectralinnerprodm(n::Integer,periodic::Bool=false,dom::Array{Float64}=defdom(periodic)) =
+  periodic ? (fourierinnerprodm(n,dom)) : (leginnerprodm(n,dom))
+
 # Matrix turns coefficients of function into coefficients of antiderivative
 spectralint(n::Integer,periodic::Bool = false,dom::Array{Float64}=defdom(periodic)) =
   periodic ? (fourierint(n,dom)) : (legint(n,dom))
@@ -279,14 +292,15 @@ spectralmult(coeffs::Array{Float64},n=length(coeffs),periodic::Bool = false) =
 
 # Matrix turns coefficients of function into coefficients of function
 # convolved with a function approximated by coeffs
-spectralmult(coeffs::Array{Float64},n=length(coeffs),periodic::Bool = false,dom::Array{Float64}=defdom(periodic)) =
+spectralconv(coeffs::Array{Float64},periodic::Bool = false,dom::Array{Float64}=defdom(periodic),n=length(coeffs)) =
   periodic ? (fourierconv(coeffs,dom,n)) : (legconv(coeffs,dom,n))
+
 
 # Fourier coefficients of periodic Gaussian distribution
 defaultrelsigmasize = 0.001
-function fouriergauscoefs(n::Integer,dom::Array{Float64,2}=DM.defdom(true),
-                              sigma::Float64=defaultrelsigmasize*DM.domsize(dom)[1],mu::Float64=0.)
-  ds = DM.domsize(dom)[1]
+function fouriergauscoefs(n::Integer,dom::Array{Float64,2}=defdom(true),
+                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.)
+  ds = domsize(dom)[1]
   omega0 = mu*2pi/ds
   gfv = Array(Float64,n)
   gfv[1] = 1. / ds
@@ -298,40 +312,50 @@ function fouriergauscoefs(n::Integer,dom::Array{Float64,2}=DM.defdom(true),
   gfv
 end
 
-# Legendre coefficients of scaled chopped Gaussian distribution
-function leggauscoefs(n::Integer,dom::Array{Float64,2}=DM.defdom(false),
-                              sigma::Float64=defaultrelsigmasize*DM.domsize(dom)[1],mu::Float64=0.)
-  ds = DM.domsize(dom)[1]
+legsigmaratbuf = 1.5
+legsigmaratwarn = 6.
 
-  gfv = legtransf(n)*exp(-legpts(n,dom).^2/2sigma^2)/(sigma*sqrt(2pi))
-  gfv /= gfv[1]*ds
+# Legendre coefficients of scaled chopped Gaussian distribution
+function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
+                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=mean(dom))
+  legnormcoords(mu,dom) == 0. || error("leggauscoeffs does not support non-centered mu values")
+  ds = domsize(dom)[1]
+  sigmarat = sigma * 2 / domsize(dom)[1]
+  sigmarat < legsigmaratwarn/n && warn("The noise size may be too small for the number of spectral coefficients")
+  if sigmarat >= sqrt(-1/2log(eps(1.)))/legsigmaratbuf
+    # for a wide peak we can do with a standard Legendre transform
+    gfv = legtransf(n)*exp(-(legpts(n,dom)-mu).^2/2sigma^2)/(sigma*sqrt(2pi))
+  else
+    # for a narrow peak we only look at the effective support of the gaussian to get a better transform
+    normwdth = sigmarat * sqrt(-log(eps(1.)))
+    pkn = int(n / normwdth)
+    (pkpts,pkw) = FastGaussQuadrature.gausslegendre(pkn)
+    pknrange = int((pkn-n)/2)+(1:n)
+    pkpts = pkpts[pknrange]
+    pkw = pkw[pknrange]
+    gfv = exp(-pkpts.^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
+    gfv = (legp(pkpts,[0:n-1])'.*[0.5:1:n-0.5].*pkw') * gfv # doing a legendre transform
+  end
+  mu == 0 && (gfv[2:2:end] = 0) # for centred transforms
+  gfv /= gfv[1]*ds # to preserve probability density
   gfv
 end
 
-# function chebygauskernel(n::Integer, sratio::Float64=0.001)
-# #   omega0 = pi/2
-# # #  -(2pi*sratio*[0:n-1]).^2 / 2 |> exp |> println
-# #   kerm = diagm(cos(-[0:n-1]*omega0).*exp(-(2pi*sratio*[0:n-1]).^2 / 2))
-# #   kerm
-#   cm = chebytransf(n)
-#   cp = chebypts(n,[-1. 1.])
-#   km = Array(Float64,n,n)
-#   for i = 1:n
-#     for j = 1:n
-#       km[j,i] = (1 + (j!=1))/pi * sqrt(1 - cp[j]^2) * (exp(-((cp[j]-cp[i]) / 2sratio).^2 / 2) +
-#                    exp(-((cp[j]+cp[i]-2) / 2sratio).^2 / 2) +
-#                    exp(-((cp[j]+cp[i]+2) / 2sratio).^2 / 2))/sqrt(2pi)/2sratio
-#     end
-#   end
-#   return km #cm * km * cm'
-# end
 # Returns kernel matrix of a Fourier Gaussian distribution
-spectralgauscoefs(n::Integer,periodic=false,dom::Array{Float64,2}=DM.defdom(periodic),
-                              sigma::Float64=defaultrelsigmasize*DM.domsize(dom)[1],mu::Float64=0.) =
+spectralgauscoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),
+                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.) =
   periodic ? (fouriergauscoefs(n,dom,sigma)) : (leggauscoefs(n,dom,sigma))
-spectralgauskernel(n::Integer,sratio::Float64=0.001,periodic::Bool=false) =
-    spectralconv(spectralgauscoefs(n,periodic,defdom(periodic),domsize(defdom(periodic))*sratio,0.),defdom(periodic),n)
+spectralgauskernel(n::Integer,periodic::Bool=false,sratio::Float64=0.001) =
+    spectralconv(spectralgauscoefs(n,periodic,defdom(periodic),domsize(defdom(periodic))[1]*sratio,0.),periodic,defdom(periodic),n)
 spectralgauskernel(n::Integer,periodic::Bool=false,
                   dom::Array{Float64,2} = defdom(periodic),
                   sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
-  spectralconv(spectralgauscoefs(n,periodic,dom,sigma,0.),dom,n)
+  spectralconv(spectralgauscoefs(n,periodic,dom,sigma),periodic,dom,n)
+
+legdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(false),ctr=mean(dom)) =
+  DM.legp(ctr,[0:n-1],dom)[:].*[0.5:1:n-0.5]
+fourierdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(true),ctr=dom[1]) =
+  DM.fouriergauscoefs(n,dom,0.,ctr)
+spectraldeltacoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),
+                  ctr=(periodic ? dom[1] : mean(dom))) =
+  periodic ? (fourierdeltacoefs(n,dom,ctr)) : (legdeltacoefs(n,dom,ctr))
