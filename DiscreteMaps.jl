@@ -70,7 +70,6 @@ function chopm{T<:Real}(x::Tridiagonal{T})
   xr
 end
 
-getfield(Tridiagonal([1.,0],[2.,3.,pi],[4.,5.],[1.]),:dl)
 ## GENERAL
 # Types
 include("DM-Types.jl")

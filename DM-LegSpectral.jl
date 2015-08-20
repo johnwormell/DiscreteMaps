@@ -121,9 +121,6 @@ function legconv(coeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n
      legp(lpts[ptbrk+1:end]-1,[0:2:n-1])*bright[1:2:n,:]]*domsize(dom)[1]
 end
 
-# function legiprod(n::Integer,dom::Array{Float64,2}=defdom(false))
-# end
-
 # # Fourier functions and transforms - 1D ONLY - for explanations of what they do see below
 
 fourierinormcoords(x::F64U,dom::Array{Float64}) = dom[1] + x * (dom[2] - dom[1])/2pi  #  - 3*eps(dom[2]-dom[1])
