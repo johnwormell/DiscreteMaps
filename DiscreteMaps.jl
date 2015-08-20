@@ -6,7 +6,7 @@ module DiscreteMaps
 
 #using ApproxFun
 using Distributions
-using HDF5, JLD, Dates
+using JLD, Dates
 using Roots
 
 # General fluff

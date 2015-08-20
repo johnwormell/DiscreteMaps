@@ -119,6 +119,11 @@ loginoise1(alpha::F64U=3.8,sd::Float64=0.02;largs...) = IterationSchema(loginois
 
 loginoisem1(alpha::F64U=3.8,sd::Float64=0.0002;largs...) = IterationSchema(loginoisep(alpha,sd),"M1",logiA;largs...)
 
+### K1: little noise
+
+loginoisek1(alpha::F64U=3.8,sd::Float64=0.00002;largs...) = IterationSchema(loginoisep(alpha,sd),"K1",logiA;largs...)
+
+
 # Doubling
 
 function doublingf!(x::Array{Float64,1},a::())
@@ -318,6 +323,7 @@ itdict = {"L1" => logistic1,
           "Lup" => logisticup,
           "Lgc" => logisticgac,
           "Lge" => logisticgae,
+          "K1" => loginoisek1,
           "M1" => loginoisem1,
           "N1" => loginoise1,
           "D1" => doubling1,

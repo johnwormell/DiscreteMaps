@@ -145,7 +145,7 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
   eN = size(eA,2)
   errsize = sqrt(vA)
   neps = repmat(epsv',AN,1) ./ errsize
-  neps2 = repmat(transpose(epsv.^2),AN,1) ./ errsize
+  secondorder && (neps2 = repmat(transpose(epsv.^2),AN,1) ./ errsize)
   nA0c = 1 ./ errsize
   nAc = eA ./ errsize
 
