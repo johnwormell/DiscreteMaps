@@ -5,7 +5,7 @@ try
 catch
   error("Maybe you need to install FastGaussQuadrature, available at https://github.com/ajt60gaibb/FastGaussQuadrature.jl.")
 end
-using GSL, FastGaussQuadrature
+using FastGaussQuadrature
 
 # Spectral helper functions - 1D ONLY
 defdom(periodic) = periodic ? ([0 2pi]) : ([-1. 1.]) # default domain for Fourier/Legendre
@@ -16,12 +16,44 @@ leginormcoords(x::F64U,dom::Array{Float64}) = (dom[1] + dom[2])/2 + x * (dom[2] 
 legnormcoords(x::F64U,dom::Array{Float64}) = (x - (dom[1] + dom[2])/2)/(dom[2] - dom[1]) * 2
 
 function legp(x::F64U,k::I64U,dom::Array{Float64}=defdom(false))
-  lpmat = Array(Float64,length(x),length(k))
-  for i = 1:length(x)
-    for j = 1:length(k)
-      lpmat[i,j] = GSL.sf_legendre_Pl(k[j],legnormcoords(x[i],dom))
-    end
+
+  xn = legnormcoords(x,dom)
+  ks = issorted(k) ? k : sort(k)
+
+  lpmat = Array(Float64,length(xn),length(k))
+  maxk = ks[end]
+  maxkind = length(k)
+  kind = 1
+
+  p2 = ones(length(xn))
+  while kind <= maxkind && ks[kind] == 0
+    lpmat[:,kind] = p2
+    kind += 1
   end
+
+  p1 = [x]
+  while kind <= maxkind && ks[kind] == 1
+    lpmat[:,kind] = p1
+    kind += 1
+  end
+
+  p0 = Array(Float64,length(xn))
+  for j = 2:maxk
+    for i = 1:length(xn)
+      p0[i] = ((2j-1)*xn[i]*p1[i] - (j-1)*p2[i])/j
+    end
+
+    while kind <= maxkind && ks[kind] == j
+      lpmat[:,kind] = p0
+      kind += 1
+    end
+
+    p2[:] = p1[:]
+    p1[:] = p0[:]
+  end
+
+  issorted(k) || (lpmat = lpmat[:,sortperm(k)])
+
   lpmat
 end
 
@@ -33,7 +65,6 @@ end
 
 legapprox(x::F64U,coeffs::F64U,dom::Array{Float64} = defdom(false)) =
   legp(x,[0:length(coeffs)-1],dom) * coeffs
-#  GSL.sf_legendre_Pl_array(length(coeffs),leginormcoords(x,dom))*coeffs
 
 legtotalint(n::Integer,dom::Array{Float64,2} = defdom(false)) =
   [1, zeros(n-1)] * domsize(dom)[1]
