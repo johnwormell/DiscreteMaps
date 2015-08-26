@@ -10,20 +10,20 @@
 
     copts = DiscreteMaps.logisticcriticalorbit(DiscreteMaps.logistic(alpha)).pts |> vec
     gtA(stdv,kv,ns) = [DiscreteMaps.ido(),vec([DiscreteMaps.gaussian(copts[i],std) for std in stdv,i in ns]),
-        vec([trigo(copts[i],k) for k in kv,i in ns])]
+        vec([trigo(0.,k) for k in kv])]
 
-    logisticgt(stdv,kv,ns;largs...) = DiscreteMaps.IterationSchema(DiscreteMaps.logisticp(alpha),"Lgt",gtA(stdv,kv,ns);largs...)
+    logisticgt(stdv,kv,ns;largs...) = DiscreteMaps.IterationSchema(DiscreteMaps.logisticp(alpha),"Lgt2",gtA(stdv,kv,ns);largs...)
     end
 
 @everywhere setupcode = quote
-    nv = [1,5,13,18,22]
+    nv = [1,5,13,22]
     using DiscreteMaps
 
     using expas
     function peturbsample(M,deps)
         N = 10^8
         NH = 10^2
-        stdv = 2. .^(-[1:4:27])
+        stdv = 2. .^(-[1:8:27])
         kv = (sqrt(3) / 2pi) ./ stdv |> round |> int
         DiscreteMaps.timedsample(expas.logisticgt(stdv,kv,nv,
             samplefn=DiscreteMaps.evensamplefn,samplefnargs=(deps),N=N,NH=NH),
@@ -32,6 +32,8 @@
 end
 @everywhere eval(setupcode)
 M = 20
-for deps = [1:100]/100*1e-6
+for deps = logspace(-8,-4,41)
     peturbsample(M,deps);
 end
+
+
