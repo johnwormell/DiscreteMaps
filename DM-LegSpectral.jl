@@ -31,7 +31,7 @@ function legp(x::F64U,k::I64U,dom::Array{Float64}=defdom(false))
     kind += 1
   end
 
-  p1 = [x]
+  p1 = [xn]
   while kind <= maxkind && ks[kind] == 1
     lpmat[:,kind] = p1
     kind += 1
