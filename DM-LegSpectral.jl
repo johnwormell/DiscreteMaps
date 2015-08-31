@@ -126,7 +126,8 @@ function legconvgetptmatrix(coeffs::Array{Float64,1},n::Integer=length(coeffs))
   for i = 1:n-2
     bleft[i+1,2] = bleft[i,1]/(2i-1) - bleft[i+1,1] - bleft[i+2,1]/(2i+3)
   end
-  bleft[n,2] = bleft[n-1,1]/(2n-3) - bleft[n,1]
+  bleft[n,2] = #bleft[n-1,1]/(2n-3)  #removed this term as it's not a great truncation
+    - bleft[n,1]
 
   for j = 2:n-1
     for i = 0:j-1
@@ -136,7 +137,8 @@ function legconvgetptmatrix(coeffs::Array{Float64,1},n::Integer=length(coeffs))
     for i = j:n-2
       bleft[i+1,j+1] = (2j-1)/(2i-1) * bleft[i,j] -(2j-1)/(2i+3) * bleft[i+2,j] + bleft[i+1,j-1]
     end
-    bleft[n,j+1] = (2j-1)/(2n-3) * bleft[n-1,j] + bleft[n,j]
+    bleft[n,j+1] = #(2j-1)/(2n-3) * bleft[n-1,j] +  #removed this term as it's not a great truncation
+        bleft[n,j]
   end
   bleft
 end
@@ -150,6 +152,11 @@ function legconv(coeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n
   legtransf(n)*
     [legp(lpts[1:ptbrk]+1,[0:2:n-1])*bleft[1:2:n,:],
      legp(lpts[ptbrk+1:end]-1,[0:2:n-1])*bright[1:2:n,:]]*domsize(dom)[1]
+end
+
+function leghconv(hcoeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n::Integer=length(hcoeffs))
+  (legconvgetptmatrix(hcoeffs.*(-1).^[0:n-1],n).*(-1).^[0:n-1]'.*(-1).^[0:n-1] +
+    legconvgetptmatrix(hcoeffs,n)) *domsize(dom)[1]/2
 end
 
 # # Fourier functions and transforms - 1D ONLY - for explanations of what they do see below
@@ -340,6 +347,15 @@ function fouriergauscoefs(n::Integer,dom::Array{Float64,2}=defdom(true),
   gfv
 end
 
+fouriergauskernel(n::Integer,sratio::Float64=0.001) =
+    fourierconv(fouriergauscoefs(n,defdom(true),domsize(defdom(true))[1]*sratio,0.),defdom(true),n)
+fouriergauskernel(n::Integer,
+                  dom::Array{Float64,2} = defdom(true),
+                  sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
+  fourierconv(fouriergauscoefs(n,dom,sigma),dom,n)
+
+
+
 legsigmaratbuf = 1.5
 legsigmaratwarn = 6.
 
@@ -350,9 +366,10 @@ function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
   ds = domsize(dom)[1]
   sigmarat = sigma * 2 / domsize(dom)[1]
   sigmarat < legsigmaratwarn/n && warn("The noise size may be too small for the number of spectral coefficients")
+
   if sigmarat >= sqrt(-1/2log(eps(1.)))/legsigmaratbuf
     # for a wide peak we can do with a standard Legendre transform
-    gfv = legtransf(n)*exp(-(legpts(n,dom)-mu).^2/2sigma^2)/(sigma*sqrt(2pi))
+    glv = legtransf(n)*exp(-(legpts(n,dom)-mu).^2/2sigma^2)/(sigma*sqrt(2pi))
   else
     # for a narrow peak we only look at the effective support of the gaussian to get a better transform
     normwdth = sigmarat * sqrt(-log(eps(1.)))
@@ -361,24 +378,86 @@ function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
     pknrange = int((pkn-n)/2)+(1:n)
     pkpts = pkpts[pknrange]
     pkw = pkw[pknrange]
-    gfv = exp(-pkpts.^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
-    gfv = (legp(pkpts,[0:n-1])'.*[0.5:1:n-0.5].*pkw') * gfv # doing a legendre transform
+    glv = exp(-pkpts.^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
+    glv = (legp(pkpts,[0:n-1])'.*[0.5:1:n-0.5].*pkw') * glv # doing a legendre transform
   end
-  mu == 0 && (gfv[2:2:end] = 0) # for centred transforms
-  gfv /= gfv[1]*ds # to preserve probability density
-  gfv
+  mu == 0 && (glv[2:2:end] = 0) # for centred transforms
+  glv /= glv[1]*ds # to preserve probability density
+  glv
 end
+
+  # unstable leggauscoefs exact algorithm
+#   q = Array(Float64,fld(n+1,2)) # q[i+1] = q(2i) = integral(-1,1) of P_(2i)(x) exp(-2x^2/2sigmarat^2) dx
+#   r = Array(Float64,fld(n+1,2)) # r[i+1] = r(2i+1) = integral(-1,1) of P_(2i+1)'(x) exp(-2x^2/2sigmarat^2) dx
+#   q[1] = erf(sqrt(2)*sigmarat) # q(0)
+#   r[1] = q[1] #r(1)
+#   for i = 1:fld(n+1,2)-1
+#     q[i+1] = (4i-1)/2i * sigmarat*(-2exp(-1/2sigmarat^2)/sqrt(2pi) + sigmarat*r[i]) - (2i-1)/2i * q[i]
+#     r[i+1] = r[i] + (4i+1) * q[i+1]
+#     if abs(q[i+1]) < 1000eps(1.) || (2i>4/sigma && abs(q[i+1])>abs(q[i]))
+#       q[i+1:end] = 0
+# #      r[i+1:end] = 0
+#       break
+#     end
+#    end
+#  println([q r])
+#   glv = Array(Float64,n)
+#   glv[1:2:end] = q
+#   glv[2:2:end] = 0
+#   glv .*= [0.5:1:n-0.5]
+#   glv /= glv[1] * ds # to preserve probability density
+#   glv
+# end
+
+# Legendre h-coefficients of scaled chopped Gaussian distribution
+function leggaushcoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
+                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu=leginormcoords(-1.,dom))
+  legnormcoords(mu,dom) == -1. || error("leggaushcoeffs does not support non-centered mu values")
+  ds = domsize(dom)[1]
+  sigmarat = sigma * 2 / domsize(dom)[1]
+  sigmarat < legsigmaratwarn/n && warn("The noise size may be too small for the number of spectral coefficients")
+
+  if sigmarat >= sqrt(-2/log(eps(1.)))/legsigmaratbuf
+    # for a wide peak we can do with a standard Legendre transform
+    glv = legtransf(n)*exp(-(legpts(n,dom)+mu).^2/2sigma^2)/(sigma*sqrt(2pi))
+  else
+    # for a narrow peak we only look at the effective support of the gaussian to get a better transform
+    normwdth = sigmarat * sqrt(-log(eps(1.)))
+    pkn = int(2n / acos(1-normwdth)*pi) # using asymptotic approximation of legendre points + fudge factor 2
+    (pkpts,pkw) = FastGaussQuadrature.gausslegendre(pkn)
+    pknrange = 1:2n
+    pkpts = pkpts[pknrange]
+    pkw = pkw[pknrange]
+    glv = exp(-(pkpts+1).^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
+    # doing a legendre transform
+    glv = (legp(pkpts,[0:n-1])'.*pkw') * glv
+    glv |> chopm
+    glv .*= [0.5:1:n-0.5]
+  end
+  legnormcoords(mu,dom) == -1 && (glv[2:2:end] = 0) # for centred transforms
+  glv /= glv[1]*ds # to preserve probability density
+  glv
+end
+
+leggauskernel(n::Integer,sratio::Float64=0.001) =
+  leghconv(leggaushcoefs(n,defdom(false),domsize(defdom(false))[1]*sratio),defdom(false),n) |> chopm
+leggauskernel(n::Integer, dom::Array{Float64,2} = defdom(false),
+                  sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
+  leghconv(leggaushcoefs(n,dom,sigma),dom,n) |> chopm
+
 
 # Returns kernel matrix of a Fourier Gaussian distribution
 spectralgauscoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),
                               sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.) =
   periodic ? (fouriergauscoefs(n,dom,sigma)) : (leggauscoefs(n,dom,sigma))
 spectralgauskernel(n::Integer,periodic::Bool=false,sratio::Float64=0.001) =
-    spectralconv(spectralgauscoefs(n,periodic,defdom(periodic),domsize(defdom(periodic))[1]*sratio,0.),periodic,defdom(periodic),n)
+  periodic ? (fouriergauskernel(n,sratio)) : (leggauskernel(n,sratio))
+#    spectralconv(spectralgauscoefs(n,periodic,defdom(periodic),domsize(defdom(periodic))[1]*sratio,0.),periodic,defdom(periodic),n)
 spectralgauskernel(n::Integer,periodic::Bool=false,
                   dom::Array{Float64,2} = defdom(periodic),
                   sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
-  spectralconv(spectralgauscoefs(n,periodic,dom,sigma),periodic,dom,n)
+  periodic ? (fouriergauskernel(n,dom,sigma)) : (leggauskernel(n,dom,sigma))
+#  spectralconv(spectralgauscoefs(n,periodic,dom,sigma),periodic,dom,n)
 
 legdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(false),ctr=mean(dom)) =
   DM.legp(ctr,[0:n-1],dom)[:].*[0.5:1:n-0.5]

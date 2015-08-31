@@ -77,15 +77,14 @@ function logisticcospeeds(CO::CriticalOrbit,M::IMap)
   end
   return cospd
 end
-
 # Computes a function containing all the spikes (ηi) from the map.
 # The acim should be continuous after these spikes are removed.
 function spikefn(x::Array{Float64,1},# points to evaluate at
                  Sp::Spikes, #spike measure
-                 whichsp::Union(Integer,Nothing)=nothing, # which spikes to do (nothing = all)
-                 whichnsp::Union(Integer,Nothing)=nothing, # if whichsp = nothing,
+                 whichsp::Union(Integer,Array{Integer},Nothing)=nothing, # which spikes to do (nothing = all)
+                 whichnsp::Union(Integer,Array{Integer},Nothing)=nothing, # if whichsp = nothing,
                  # which spikes not to do (nothing = all)
-                 whichcp::Union(Integer,Nothing)=nothing, # which cps to look at (nothing = all)
+                 whichcp::Union(Integer,Array{Integer},Nothing)=nothing, # which cps to look at (nothing = all)
                  )
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
@@ -96,11 +95,16 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
   Nc = Sp.CO.Nc
 
   if whichsp == nothing
-    spikeind = whichnsp == nothing ? [1:Sp.CO.Npts] : [1:whichnsp-1,whichnsp+1:Sp.CO.Npts]
+    spikeind = [1:Sp.CO.Npts]
+    if whichnsp != nothing
+      for i in whichnsp
+        splice!(spikeind,i)
+      end
+    end
   else
     spikeind = [whichsp]
   end
-  cpind = whichcp == nothing ? [1:Nc] : whichcp
+  cpind = whichcp == nothing ? [1:Nc] : [whichcp]
   NSpts = length(spikeind)
 
   rawspikes = zeros(Float64,Nx)
@@ -167,7 +171,7 @@ function findinvmeasure(Lhat::Array{Float64,2};verbose=false)
   end
 
   weightm = speye(size(Deltahat,1)) # what the norm that you do the svd on looks like
-  (U,S,V) = svd(weightm * Deltahat)
+  (U,S,V) = svd(weightm * Deltahat |> chopm)
   verbose && println("Smallest singular values are ",[signif(S[i],4) for i = length(S) - [0:4]])
   r = V[:,end]
   return (r,(U,S,V))
@@ -182,7 +186,9 @@ function spectralacim(M::IMap, # map whose acim we are finding
                       returntransfmat=false, # if no critical points, additionally return the transfer operator matrix
                       sigma::Float64 = 0., # width of Gaussian noise
                       shortmatrix=(sigma==0), # for the spikes, return a collapsed matrix instead of a true one
-                      usecrit=true)
+                      usecrit=true, # use spikes/critical orbit stuff
+                      lastspiketonoise = false, # turn the last spike into uniformly distributed noise
+                      CONpts = COdefaultNpts) # number of points in critical orbit to use
 #  M.Art = Artefacts()
   crit = usecrit ? M.crit(M.params) : [] #critical point(s), if any
   Nc = length(crit)
@@ -200,7 +206,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
   #  the_spectralpts[1] += 2eps(1.)
 
   if critexists
-    CONpts = noiseexists ? 1 : COdefaultNpts
+    noiseexists && (CONpts = 1)
     CO = uselogisticcofn ? logisticcriticalorbit(M,CONpts) : criticalorbit(M,CONpts)
     Sp = Spikes(CO,M.dom)
 
@@ -223,6 +229,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
 
     fixedhfn = Array(Function,Nc)
     for i = 1:Nc
+      tpts = lastspiketonoise ? (nothing, CONpts) : ()
       function fhfni(x::Array{Float64,1})
         zetav = Array(Float64,length(x),Nc)
         for k = 1:Nc
@@ -231,7 +238,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
           end
         end
 
-        spikefn(x,Sp) - zetav * eta_at_c[:,i] # η - η(c)ζ
+        spikefn(x,Sp,tpts...) - zetav * eta_at_c[:,i] # η - η(c)ζ
       end
       fixedhfn[i] = fhfni
     end
@@ -241,6 +248,12 @@ function spectralacim(M::IMap, # map whose acim we are finding
         spikefn(the_spectralpts,Sp,nothing,1) #L1(η - η(c)ζ) - η + η1
       # η1 is in here because later on we subtract the identity from
       # a matrix that looks like L1
+      if lastspiketonoise
+        noisedist = ones(N) / sum(spectralvaluetotalint(N,M.periodic,M.dom))
+        nconst = normalisedtestfnspiketotalintegral * Sp.mag0[1] *
+         Sp.CO.mag[CONpts,1] .* sqrt(Sp.widths[CONpts,1])
+        h += nconst * noisedist
+      end
 #     elseif noiseexists
 #       h = Array(Float64,N,Nc)
 #       for i = 1:Nc
