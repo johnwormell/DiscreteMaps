@@ -75,7 +75,7 @@ leginnerprodm(n::Integer=length(coeffs),dom::Array{Float64,2}=defdom(false)) =
   Diagonal(domsize(dom)[1]./[1:2:2n-1])
 
 legint(n::Integer, dom::Array{Float64,2} = defdom(false)) =
-  Tridiagonal(1./[1:2:2n-3],zeros(n),-1./[1:2:2n-3]) * domsize(dom)[1] / 2
+  Tridiagonal(1./[1:2:2n-3],zeros(n),-1./[3:2:2n-1]) * domsize(dom)[1] / 2
 
 function legdiff(n::Integer, dom::Array{Float64,2} = defdom(false))
   diffm = zeros(n,n)

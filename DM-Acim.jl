@@ -183,13 +183,14 @@ function spectralacim(M::IMap, # map whose acim we are finding
                       N::Integer=100; # number of points to take spectra at
                       verbose=false, # print output about accuracy etc
                       uselogisticcofn=false, # use logisticcriticalorbit function to calculate CO
-                      returntransfmat=false, # if no critical points, additionally return the transfer operator matrix
+                      returntransfmat=false, # return the transfer operator matrix
+                      returnsmallestsv=false, # return the smallest singular value
                       sigma::Float64 = 0., # width of Gaussian noise
                       shortmatrix=(sigma==0), # for the spikes, return a collapsed matrix instead of a true one
                       usecrit=true, # use spikes/critical orbit stuff
                       lastspiketonoise = false, # turn the last spike into uniformly distributed noise
                       CONpts = COdefaultNpts) # number of points in critical orbit to use
-#  M.Art = Artefacts()
+  M.Art = Artefacts()
   crit = usecrit ? M.crit(M.params) : [] #critical point(s), if any
   Nc = length(crit)
   critexists = (Nc > 0) # is there a critical point?
@@ -198,7 +199,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
     shortmatrix && error("Can't do collapsed critical points for more than one critical point")
     ~noiseexists && error("Can't do multiple critical points without noise")
   elseif Nc == 1
-    ~noiseexists && ~shortmatrix && error("Can't do full matrix yet!")
+ #   ~noiseexists && ~shortmatrix && error("Can't do full matrix yet!")
   end
 
   the_spectralpts = spectralpts(N,M.periodic,M.dom)
@@ -210,65 +211,97 @@ function spectralacim(M::IMap, # map whose acim we are finding
     CO = uselogisticcofn ? logisticcriticalorbit(M,CONpts) : criticalorbit(M,CONpts)
     Sp = Spikes(CO,M.dom)
 
-    zeta = Array(Function,Nc)
-    for i = 1:Nc
-      zeta[i] = inversetransfer(spikefn,M,(Sp,1,nothing,i))
-    end
+    zeta(x::Array{Float64,1},i::Integer) = inversetransfer(spikefn,M,(Sp,1,nothing,i))(x)
   end
 
   if critexists && ~noiseexists
     if shortmatrix
-      eta_at_c = spikefn(crit,Sp)
+      tpts = lastspiketonoise ? (nothing, CONpts) : (nothing,nothing)
+      eta_at_c = spikefn(crit,Sp,tpts...)
     else
-      eta_at_c = Array(Float64,Nc,Nc)
+      eta_at_c = Array(Float64,Nc,CONpts,Nc)
       for i = 1:Nc
-        eta_at_c[:,i] = spikefn(crit,Sp,1,nothing,i)
+        for j = 1:CONpts
+          eta_at_c[:,j,i] = spikefn(crit,Sp,j,nothing,i)
+        end
       end
     end
 #    eta_at_c = spikefn(crit,Sp)[1]
 
-    fixedhfn = Array(Function,Nc)
-    for i = 1:Nc
-      tpts = lastspiketonoise ? (nothing, CONpts) : ()
-      function fhfni(x::Array{Float64,1})
+    if shortmatrix
+#        tpts = lastspiketonoise ? (nothing, CONpts) : (nothing,nothing)
+        function fixedhfn(x::Array{Float64,1},i::Integer)
+        i > Nc && error("Bounds error: i > Nc")
         zetav = Array(Float64,length(x),Nc)
         for k = 1:Nc
           for j = 1:length(x)
-            zetav[j,k] = zeta[k]([x[j]])[1]
+            zetav[j,k] = zeta([x[j]],k)[1]
           end
         end
 
-        spikefn(x,Sp,tpts...) - zetav * eta_at_c[:,i] # η - η(c)ζ
+        spikefn(x,Sp,tpts...,i) - zetav * eta_at_c[:,i] # η - η(c)ζ
       end
-      fixedhfn[i] = fhfni
+    else
+      CONptslimit = lastspiketonoise ? CONpts-1 : CONpts
+      function fixedhfn(x::Array{Float64,1},j::Integer,i::Integer)
+        i > Nc && error("Bounds error: i > Nc")
+        if (j == CONpts) && lastspiketonoise
+          return zeros(length(x))
+        elseif j > CONpts
+          error("Bounds error: j > CONpts")
+        end
+
+        zetav = Array(Float64,length(x),Nc)
+        for k = 1:Nc
+          for l = 1:length(x)
+            zetav[l,k] = zeta([x[l]],k)[1]
+          end
+        end
+
+        spikefn(x,Sp,j,nothing,i) - zetav * eta_at_c[:,j,i] # η - η(c)ζ
+      end
     end
 
     if shortmatrix
-      h = transfer(fixedhfn[1],M,())(the_spectralpts) -
+      h = transfer(fixedhfn,M,(1))(the_spectralpts) -
         spikefn(the_spectralpts,Sp,nothing,1) #L1(η - η(c)ζ) - η + η1
       # η1 is in here because later on we subtract the identity from
       # a matrix that looks like L1
       if lastspiketonoise
-        noisedist = ones(N) / sum(spectralvaluetotalint(N,M.periodic,M.dom))
         nconst = normalisedtestfnspiketotalintegral * Sp.mag0[1] *
          Sp.CO.mag[CONpts,1] .* sqrt(Sp.widths[CONpts,1])
-        h += nconst * noisedist
+        h += fill(nconst / sum(spectralvaluetotalint(N,M.periodic,M.dom)),N)
       end
 #     elseif noiseexists
 #       h = Array(Float64,N,Nc)
 #       for i = 1:Nc
-#         h[:,i] = transfer(fixedhfn[i],M,())(the_spectralpts)
+#         h[:,i] = transfer(fixedhfn,M,(i))(the_spectralpts)
 #       end
+    else
+      h = Array(Float64,N,CONpts,Nc)
+      for i = 1:Nc
+        for j = 1:CONpts-1
+          h[:,j,i] = #transfer(spikefn,M,(Sp,j,nothing,i))(the_spectralpts) -
+            transfer(fixedhfn,M,(j,i))(the_spectralpts) -
+            spikefn(the_spectralpts,Sp,j+1,nothing,i)
+        end
+        if lastspiketonoise
+          nconst = normalisedtestfnspiketotalintegral * Sp.mag0[i] *
+            Sp.CO.mag[CONpts,i] .* sqrt(Sp.widths[CONpts,i])
+          h[:,CONpts,i] = fill(nconst / sum(spectralvaluetotalint(N,M.periodic,M.dom)),N)
+        else
+          h[:,CONpts,i] = transfer(fixedhfn,M,(CONpts,i))(the_spectralpts)
+        end
+      end
     end
   end
-
   if critexists
     Dr_at_c = spectralf(crit,[0:N-1],M.periodic,M.dom)
 
     function fixedfn(x::Array{Float64,1},i::Int64)
       cpremove = 0
       for j = 1:Nc
-        cpremove += Dr_at_c[j,i+1] * zeta[j](x)
+        cpremove += Dr_at_c[j,i+1] * zeta(x,j)
       end
       spectralf(x,i,M.periodic,M.dom) - cpremove # Ti - Ti(c)ζ (if we're using Chebyshev, e.g.)
     end
@@ -299,10 +332,27 @@ function spectralacim(M::IMap, # map whose acim we are finding
   end
 
   #  verbose && println("Doing linear algebra stuff")
-  if critexists && ~noiseexists
-    Lhat = [eta_at_c Dr_at_c; spectraltransf(N,M.periodic) * [h LD]; zeros(M.Art.nfns,length(crit)) ac]
-  elseif critexists && noiseexists
-    Lhat = [Dr_at_c; spectraltransf(N,M.periodic) * LD; ac]
+  if critexists
+    if noiseexists
+          Lhat = [Dr_at_c; spectraltransf(N,M.periodic) * LD; ac]
+    else
+      if shortmatrix
+        Lhat = [eta_at_c Dr_at_c; spectraltransf(N,M.periodic) * [h LD]; zeros(M.Art.nfns,length(crit)) ac]
+      else
+        topleftsize = Nc*CONpts
+        topwidth = Nc*CONpts + N
+        topm = zeros(topleftsize,topwidth)
+        topm[CONpts*(0:Nc-1)+1,:] = [eta_at_c[:,:] Dr_at_c]
+        for i = 1:Nc
+          for j = 1:CONpts-1
+            tlindex = CONpts*(i-1) + j
+            topm[j+1,j] += 1
+          end
+        end
+
+        Lhat = [topm; spectraltransf(N,M.periodic) * [h[:,:] LD]; zeros(M.Art.nfns,topleftsize) ac]
+      end
+    end
   else
     Lhat = [spectraltransf(N,M.periodic) * LD; zeros(M.Art.nfns,length(crit)) ac]
   end
@@ -317,6 +367,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
         critspikeker[:,i] = spikefn(the_spectralpts,Sp,1,nothing,i)
       end
       critspikeker = spectralker * (spectraltransf(N,M.periodic) * critspikeker)
+
 
 #       for i = 1:Nc
 #         dotfn = spectralvaluetotalint(N,M.periodic,M.dom) .* spikefn(the_spectralpts,Sp,1,nothing,i)
@@ -344,7 +395,14 @@ function spectralacim(M::IMap, # map whose acim we are finding
 
   # Creating the measure
   if critexists && ~noiseexists
-    mu = SumMeasure([SpectralMeasure(r[2:end],M.dom,M.periodic),r[1] * Sp])
+    if shortmatrix
+      mu = SumMeasure([SpectralMeasure(r[2:end],M.dom,M.periodic),r[1] * Sp])
+    else
+      rsp = reshape(r[1:topleftsize],CONpts,Nc)
+      sqrt(CONpts) * norm(std(rsp,2)) > 2S[end] * norm(r) && warn("Variance in spike coefficients is a bit large eh")
+      Sp.mag0 .*= mean(rsp,2)|>vec
+      mu = SumMeasure([SpectralMeasure(r[topleftsize+1:end],M.dom,M.periodic),Sp])
+    end
   else
     mu = SpectralMeasure(r,M.dom,M.periodic)
   end
@@ -360,8 +418,11 @@ function spectralacim(M::IMap, # map whose acim we are finding
     ~noiseexists && (M.Art.nfns > 0) && println("Artefact size: ",(Lhat*r)[N+2])
   end
 
-  returntransfmat && return (mu, Lhat)
-  return mu #, S # mu = measure, S = vector of singular values
+  returntup = mu
+  if returntransfmat
+      return returnsmallestsv ? (mu,Lhat,S[end]) : (mu,Lhat)
+  else
+    return returnsmallestsv ? (mu,S[end]) : mu
+  end
 
 end
-

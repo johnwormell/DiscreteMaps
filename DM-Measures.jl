@@ -70,6 +70,13 @@ function measureintbd(intdom::Array{Float64,2},mu::SumMeasure,A=nothing)
   return totalint, totalerr
 end
 
+function measureint(intdom::Array{Float64,1},mu::SpectralMeasure,A::Nothing)
+  NB = length(intdom) - 1
+  mint = diff(DiscreteMaps.spectralapprox(vec(intdom),DiscreteMaps.spectralint(mu.N,mu.periodic,mu.dom) * mu.coeffs,mu.periodic,mu.dom))
+  mu.periodic && (mint += mu.coeffs[1] * diff(vec(intdom)))
+  return (mint,zeros(NB))
+end
+
 function measureint(intdom::Array{Float64,1},mu::Measure,A=nothing)
   NB = length(intdom) - 1
   inttotal = Array(Float64,NB)
