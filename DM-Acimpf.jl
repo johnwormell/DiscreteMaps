@@ -12,10 +12,14 @@ function spectralacimpf(M::Map, # map whose acim we are finding
   Pf = spectraltransf(N,M.periodic)*Pf
   chopm!(Pf)
   L = inv(spectralinnerprodm(N,M.periodic,M.dom)) * Pf' * spectralinnerprodm(N,M.periodic,M.dom)
-  if noiseexists
-    spectralker = spectralgauskernel(N,M.periodic,M.dom,sigma) #|> chopm
-    L = spectralker * L
+    if fastinv == false
+#    L = spectralker * L
   end
+
+  if noiseexists
+    L = spectralgauskernel(N,M.periodic,M.dom,sigma) * L #|> chopm
+  end
+
   if fastinv == false
     (r,(U,S,V)) = findinvmeasure(L,verbose=verbose)
   elseif fastinv == :rand
