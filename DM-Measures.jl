@@ -1,51 +1,63 @@
 # Measure object stuff
-
+zerosqrt(x::Array{Float64}) = sqrt(x .* (x .> 0))
 function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::Bool=true, dorest::Bool=true
-                  )
+                      )
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
   # dofirst = include first spikes (η1)
   # dorest = include the others spikes
   Nc = Sp.CO.Nc
-#   dorest && (rest = zeros(Nx))
-#   dofirst && (first = zeros(Nx))
+  #   dorest && (rest = zeros(Nx))
+  #   dofirst && (first = zeros(Nx))
 
   theintegral = 0.
   theerror = 0.
-  for i = 1:Nc
-    lratio = restrictto(barrierdistoriented(Sp.CO.pts[:,i],Sp.CO.sgn[:,i],intdom[:,1]) ./ Sp.widths[:,i],0,1)
-    rratio = restrictto(barrierdistoriented(Sp.CO.pts[:,i],Sp.CO.sgn[:,i],intdom[:,2]) ./ Sp.widths[:,i],0,1)
-    partialspikes = (0 .< lratio .< 1) | (0 .< rratio .< 1)
-    fullspikes = abs(lratio - rratio) .== 1
-
-    quadgkspikes = find(partialspikes)
-    # full spikes
+  if Sp.widths == nothing
     if A == nothing
-      theintegral += normalisedtestfnspiketotalintegral * Sp.mag0[i] *
-        sum(fullspikes .* Sp.CO.mag[:,i] .* sqrt(Sp.widths[:,i]))
+      theintegral += Sp.CO.mag .* Sp.mag0' .* Sp.CO.sgn .*
+      2(zerosqrt(Sp.CO.sgn .* (intdom[2] - Sp.CO.pts)) - zerosqrt(Sp.CO.sgn .* (intdom[1] - Sp.CO.pts))) |> sum
     else
-      append!(quadgkspikes,find(fullspikes))
+      intfn(x) = A(x)[1] * spikefn(x,Sp)[1]
+      problempts = [intdom[1], sort(Sp.CO.pts[intdom[1] .< Sp.CO.pts .< intdom[2]]), intdom[2]]
+      (pint, perr) = quadgk(intfn,problempts)
+      theintegral += pint
+      theerror += perr
     end
+  else
+    for i = 1:Nc
+      lratio = restrictto(barrierdistoriented(Sp.CO.pts[:,i],Sp.CO.sgn[:,i],intdom[:,1]) ./ Sp.widths[:,i],0,1)
+      rratio = restrictto(barrierdistoriented(Sp.CO.pts[:,i],Sp.CO.sgn[:,i],intdom[:,2]) ./ Sp.widths[:,i],0,1)
+      partialspikes = (0 .< lratio .< 1) | (0 .< rratio .< 1)
+      fullspikes = abs(lratio - rratio) .== 1
 
-    # progressively add
-    for j in quadgkspikes
+      quadgkspikes = find(partialspikes)
+      # full spikes
       if A == nothing
-        intfn = normalisedtestfnspike
+        theintegral += normalisedtestfnspiketotalintegral * Sp.mag0[i] *
+          sum(fullspikes .* Sp.CO.mag[:,i] .* sqrt(Sp.widths[:,i]))
       else
-        intfn(x) = normalisedtestfnspike(x) * A(x*Sp.widths[j,i]/Sp.CO.sgn[j,i] + Sp.CO.pts[j,i])
+        append!(quadgkspikes,find(fullspikes))
       end
-      (pint, perr) = quadgk(intfn,sort([lratio[j],rratio[j]])...)
-      pcoeff = Sp.mag0[i] * Sp.CO.mag[j,i] .* sqrt(Sp.widths[j,i])
-      theintegral += pint * pcoeff
-      theerror += perr * pcoeff
+
+      # progressively add
+      for j in quadgkspikes
+        if A == nothing
+          intfn = normalisedtestfnspike
+        else
+          intfn(x) = normalisedtestfnspike(x) * A(x*Sp.widths[j,i]/Sp.CO.sgn[j,i] + Sp.CO.pts[j,i])
+        end
+        (pint, perr) = quadgk(intfn,sort([lratio[j],rratio[j]])...)
+        pcoeff = Sp.mag0[i] * Sp.CO.mag[j,i] .* sqrt(Sp.widths[j,i])
+        theintegral += pint * pcoeff
+        theerror += perr * pcoeff
+      end
     end
   end
-
   return theintegral, theerror
-#   full  = zeros(Nx)
-#   dofirst && (full += first)
-#   dorest && (full += rest)
-#   return full
+  #   full  = zeros(Nx)
+  #   dofirst && (full += first)
+  #   dorest && (full += rest)
+  #   return full
   #  dofull ? (return (full,first)) : (return first) # eek
 end
 
@@ -114,7 +126,7 @@ measuredensity(x::F64U,mu::SpectralMeasure) = spectralapprox(x,mu.coeffs,mu.peri
 function measuredensity(x::F64U,mu::SumMeasure)
   dens = zeros(size(x))
   for musub in mu.components
-    dens += measuredensity(x)
+    dens += measuredensity(x,musub)
   end
   return dens
 end
@@ -130,23 +142,23 @@ end
 
 # Fluctuation-Dissipation Theorem - calculating linear response of inv measure
 function flucdis(mu::SpectralMeasure,L::Matrix{Float64},Xc::Array{Float64})#,Ac::Array{Float64})
-#  ~mu.periodic && error("Chebyshev measures not implemented for F-D")
+  #  ~mu.periodic && error("Chebyshev measures not implemented for F-D")
   rhoc = mu.coeffs
   Ncoeffs = length(rhoc)
   divrX = spectraldiff(Ncoeffs,mu.periodic,mu.dom) * (spectralmult(Xc,Ncoeffs,mu.periodic)*rhoc)
-#  divrX2 = divrX[2:end]
-#  L2 = L[2:end,2:end]
-#   "max eigval: $(eigvals(L2) |> abs |> maximum)" |> println
-#   drho = divrX2
-#   for i = 1:4
-#     drho[:] = divrX2 + L2 * drho
-#   end
+  #  divrX2 = divrX[2:end]
+  #  L2 = L[2:end,2:end]
+  #   "max eigval: $(eigvals(L2) |> abs |> maximum)" |> println
+  #   drho = divrX2
+  #   for i = 1:4
+  #     drho[:] = divrX2 + L2 * drho
+  #   end
   drho = (I - L[2:end,2:end]) \ divrX[2:end]
   tint = spectraltotalint(Ncoeffs,mu.periodic,mu.dom)
   drho0 = -sum(tint[2:end] .* drho)/tint[1]
   return SpectralMeasure(-[drho0,drho],mu.dom,mu.periodic)
 end
-flucdis(mu::SpectralMeasure,L::Matrix{Float64},X::Function) =
+flucdis(mu::Measure,L::Matrix{Float64},X::Function) =
   flucdis(mu,L,spectraltransf(length(mu.coeffs),mu.periodic)
           *X(spectralpts(length(mu.coeffs),mu.periodic,mu.dom)))
 function flucdis(M::IMap,XXc,N::Integer=100)

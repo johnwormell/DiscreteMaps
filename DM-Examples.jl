@@ -19,7 +19,7 @@ function logisticf!(x::Array{Float64,1},a::Array{Float64,1})
   nothing
 end
 
-function makelogisticg(;newdom::Bool=false)
+function makelogisticg(;newdom::Bool=true)
   function logisticg(x::F64U,a::F64U)
     g1 = (1 - nicesqrt(1 - 4*x./a))/2 # + eps(maximum(a)/4)
     g2 = 1 - g1
@@ -33,14 +33,14 @@ end
 # This is not the natural domain of the logistic map in any sense but it
 # limits the number of discontinuities when you do the transfer map so the
 # number of artefact functions required, and for that we must be greatful
-function logisticdom(alpha::Array{Float64,1};newdom::Bool=false)
+function logisticdom(alpha::Array{Float64,1};newdom::Bool=true)
   if newdom
-    return [alpha.^2.*(4-alpha)/16 alpha/4]
+    return [0. 1.] #[alpha.^2/16 .* (4-alpha) alpha/4] #[0. 1.]
   else
-    return [1-alpha/4 alpha/4]
+    return [alpha.^2/16 .* (4-alpha) alpha/4]
   end
 end
-logisticdom(alpha::Float64;newdom::Bool=false) = logisticdom([alpha];newdom=newdom)
+logisticdom(alpha::Float64;newdom::Bool=true) = logisticdom([alpha];newdom=newdom)
 
 # Logistic inversetransferwt - see type definition
 function logisticinversetransferwt(x::Array{Float64,1},a::Array{Float64,1})
@@ -52,22 +52,20 @@ function logisticinversetransferwt(x::Array{Float64,1},a::Array{Float64,1})
 end
 
 # returns logistic Artefacts container for parameter alpha
-function logisticartefacts(alpha;newdom=false)
-  discont = makef(logisticf!)(logisticdom(alpha,newdom=newdom)[:,1],alpha) # where is the discontinuity happening?
-  logartefn(x::F64U) = 1. * (x .< [discont]') # step function, returns a matrix
+function logisticartefacts(alpha;newdom=true)
   if newdom
-    logpointsin= [discont - 10*eps(maxabs(discont)), discont + 10*eps(maxabs(discont))] # get values near the edge of the step function
-    loggetcoeffs(y::F64U,i::Int64) = y[2] - y[1] # we use the difference in values as a coeff
+    return Artefacts()
   else
+    discont = makef(logisticf!)(logisticdom(alpha,newdom=newdom)[:,1],alpha) # where is the discontinuity happening?
+    logartefn(x::F64U) = 1. * (x .< [discont]') # step function, returns a matrix
     logpointsin = discont + 2*eps(maxabs(discont)) # get value at the edge of the step function
     loggetcoeffs(y::F64U,i::Int64) = y # we just use the value
+    lognfns = 1
+    return Artefacts(logartefn,logpointsin,loggetcoeffs,lognfns)
   end
-  lognfns = 1 # at present
-
-  return Artefacts(logartefn,logpointsin,loggetcoeffs,lognfns)
 end
 
-function logistic(alpha::Array{Float64},invertible=(length(alpha)==1);newdom::Bool=false)
+function logistic(alpha::Array{Float64},invertible=(length(alpha)==1);newdom::Bool=true)
   if ~(invertible)
     DMap(logisticf!, # logistic map
          (x,a) -> (a .* (1 - 2x)), # differential of 1D logistic map
@@ -84,7 +82,7 @@ function logistic(alpha::Array{Float64},invertible=(length(alpha)==1);newdom::Bo
          )
   end
 end
-logistic(alpha::Float64=3.8;newdom=false) = logistic([alpha],true;newdom=newdom)
+logistic(alpha::Float64=3.8;newdom=true) = logistic([alpha],true;newdom=newdom)
 #logistic(alpha::Float64) = DMap((x,a)->a*x.*(1-x),(x,a)->a*(1-2x),alpha)
 #logistic(alpha::Array{Float64}) = DMap((x,a)->a.*x.*(1-x),(x,a)->diagm(a.*(1-2x)),alpha,repmat([0. 1.],length(alpha),1))
 

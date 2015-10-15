@@ -430,7 +430,7 @@ function leggaushcoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
     pkw = pkw[pknrange]
     glv = exp(-(pkpts+1).^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
     # doing a legendre transform
-    glv = (legp(pkpts,[0:n-1])'.*pkw') * glv
+    glv = legp(pkpts,[0:n-1])' * (pkw .* glv)
     glv |> chopm
     glv .*= [0.5:1:n-0.5]
   end

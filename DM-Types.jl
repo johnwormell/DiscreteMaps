@@ -196,6 +196,8 @@ CriticalOrbit(crit,pts,mag,sign) = CriticalOrbit(crit,pts,mag,sign,length(crit),
 
 # change the widths to keep them away from domain edges, singularities
 function minwidths(CO,dom,widths,cpbd)
+  (widths == nothing) && (return nothing)
+
   widths2 = Array(typeof(widths).parameters[1],size(widths))
   for i = 1:CO.Nc
     widths2[:,i] = min(
@@ -217,19 +219,19 @@ type Spikes <: Measure
   CO::CriticalOrbit
   dom::Array{Float64,2}
   mag0::Array{Float64,1}
-  widths::Array{Float64,2}
-
-#  bumpwidth::Array{Float64,1}
-  Spikes(CO::CriticalOrbit,
-         dom::Array{Float64,2},
-         mag0::Array{Float64,1}=fill(1.,CO.Nc),
-         widths::Array{Float64,2}=fill(0.05,CO.Npts,CO.Nc),
-         cpbd = 0.5) = # cpbd: a spacing parameter to keep away from domain edges.
-                      # 1. = right up to the edge, 0.5 = halfway to the edge etc
-
-    new(CO,dom,mag0,minwidths(CO,dom,widths,cpbd))
- #dom::Array{Float64,2}
+  widths::Union(Array{Float64,2},Nothing)
 end
+
+Spikes(CO::CriticalOrbit,
+       dom::Array{Float64,2},
+       mag0::Array{Float64,1}=fill(1.,CO.Nc),
+       cpbd = 0.5,
+       widths::Array{Float64,2}=fill(0.05,CO.Npts,CO.Nc)) =
+  Spikes(CO,dom,mag0,minwidths(CO,dom,widths,cpbd))
+#   cpbd: a spacing parameter to keep away from domain edges.
+#   1. = right up to the edge, 0.5 = halfway to the edge etc
+
+
 (*)(normfactor::Real,Sp::Spikes) = Spikes(Sp.CO # don't change the magnitudes in this cause they're relative to mag0
                                              ,Sp.dom,normfactor*Sp.mag0,Sp.widths)
 

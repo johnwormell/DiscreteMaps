@@ -26,6 +26,7 @@ newpath(path) = ispath(path) || mkdir(path)
 
 # Naturally extending ones
 Base.ones(n::()) = 1.
+Base.zeros(n::()) = 0.
 
 function (*){T<:Number}(t::Tridiagonal{T},x::Array{T,2})
   a = Array(Float64,size(t,1),size(x,2))
@@ -101,6 +102,9 @@ include("DM-Iteration.jl")
 # Spectral functions
 #include("DM-Spectral.jl")
 include("DM-LegSpectral.jl")
+
+# Spectral function/spike interaction
+include("DM-LegSpikes.jl")
 
 # Measures
 include("DM-Measures.jl")
