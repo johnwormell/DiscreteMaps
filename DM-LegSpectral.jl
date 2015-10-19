@@ -460,9 +460,9 @@ spectralgauskernel(n::Integer,periodic::Bool=false,
 #  spectralconv(spectralgauscoefs(n,periodic,dom,sigma),periodic,dom,n)
 
 legdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(false),ctr=mean(dom)) =
-  DM.legp(ctr,[0:n-1],dom)[:].*[0.5:1:n-0.5]
+  legp(ctr,[0:n-1],dom)[:].*[0.5:1:n-0.5]
 fourierdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(true),ctr=dom[1]) =
-  DM.fouriergauscoefs(n,dom,0.,ctr)
+  fouriergauscoefs(n,dom,0.,ctr)
 spectraldeltacoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),
                   ctr=(periodic ? dom[1] : mean(dom))) =
   periodic ? (fourierdeltacoefs(n,dom,ctr)) : (legdeltacoefs(n,dom,ctr))

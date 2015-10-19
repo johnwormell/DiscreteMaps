@@ -437,8 +437,10 @@ function spectralacim(M::IMap, # map whose acim we are finding
 
   returntup = mu
   if returntransfmat
-#     magconv = [vec(Sp.CO.mag),ones(N)]
-#     Lhat = (Lhat ./ magconv').*magconv
+    if critexists & ~shortmatrix
+     magconv = [vec(Sp.CO.mag),ones(N)]
+     Lhat = (Lhat ./ magconv').*magconv
+    end
     return returnsmallestsv ? (mu,Lhat,S[end]) : (mu,Lhat)
   else
     return returnsmallestsv ? (mu,S[end]) : mu

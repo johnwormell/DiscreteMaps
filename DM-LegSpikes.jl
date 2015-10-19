@@ -3,7 +3,7 @@ function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
                             normspikes=true) # false = multiply by mag/mag0
   Nc = Sp.CO.Nc
   Npts = Sp.CO.Npts
-  domsizemult = sqrt(domsize(dom)[1]/2)
+  domsizemult = sqrt(domsize(dom)[1]/2)/domsize(dom)[1]
   coefm = Array(Float64,n,Npts,Nc)
   for i = 1:Nc
     for k = 1:Npts
@@ -106,7 +106,7 @@ function legspikemult(coeffs::Array{Float64,1}, Sp::Spikes, n::Integer=length(co
            SL[1:n,:] LL]
 end
 
-function spikesumleglinop(L::Array{Float64,2}, mu::SumMeasure)
+function legspikelinop(L::Array{Float64,2}, mu::SumMeasure)
   Sp = deepcopy(mu.components[2])
   Sm = deepcopy(mu.components[1])
   sn = L * [vec(Sp.mag0' .* Sp.CO.mag),Sm.coeffs]
@@ -157,4 +157,6 @@ function legspikecorrel(L::Array{Float64,2},mu::SumMeasure)
   return invs
 end
 
-# function legspikemult(coeffs::Array{Float64,1},Sp::Spikes,n::Integer)
+function legspiketoleg(Sp::Spikes,n)
+  [legnakedspikecoeffs(Sp,n,Sp.dom+100eps(1.)*[-1 1.],normspikes=true)[:,:] eye(n)]
+end# function legspikemult(coeffs::Array{Float64,1},Sp::Spikes,n::Integer)
