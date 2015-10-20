@@ -163,7 +163,7 @@ doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
 
 # Sine-peturbed doubling
 
-spdoublinglift(x::Float64,a::(Float64,Int64)) = 2*(x + a[1]*sin(2pi*a[2]*x))
+spdoublinglift(x::Float64,a::(Float64,Int64)) = 2x + a[1]*sin(2pi*a[2]*2x)
 function spdoublingf!(x::Array{Float64,1},a::(Float64,Int64))
   x[:] = mod(spdoublinglift(x[1],a),1)
   nothing
@@ -180,7 +180,7 @@ function spdoubling(amp::Float64=0.05,k::Int64=1,invertible::Bool=true)
   a = (amp,k)
   if ~(invertible)
         DMap(spdoublingf!, # double it + peturbation
-             (x,a)->2*(1 + a[1]*2pi*a[2]*cos(2pi*a[2]*x)), # derivative
+             (x,a)->2 + a[1]*2pi*2a[2]*cos(2pi*a[2]*2x), # derivative
              a, # a peturbation parameter, a tuple (amplitude, frequency)
              repmat([0. 1.],1,1), # got a unit domain of dimension 1
              1, # one dimension remember
