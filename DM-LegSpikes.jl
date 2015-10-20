@@ -60,7 +60,7 @@ function legspikeinnerprodm(mu::SumMeasure,normspikes=true) # L_infty x L_1 -> R
   [diag(leginnerprodm(n,mu.dom)) .* legspikecoeffs(mu.components[2],n,mu.dom,normspikes=true)[:,:] full(leginnerprodm(n,mu.dom))]
 end
 
-function legspikemult(coeffs::Array{Float64,1}, Sp::Spikes, n::Integer=length(coeffs), dom = Sp.dom)
+function legspikemult(coeffs::Array{Float64,1}, Sp::Spikes, n::Integer=length(coeffs), dom = Sp.dom; spikesonly=false)
   Sp.widths == nothing || error("legspikemult doesn't support spikes that have test functions on them")
   spn = Sp.CO.Nc * Sp.CO.Npts
 
@@ -95,6 +95,11 @@ function legspikemult(coeffs::Array{Float64,1}, Sp::Spikes, n::Integer=length(co
   end
 
   SL /= domsize(dom)[1]
+  if spikesonly
+    SS = legapprox(vec(Sp.CO.pts),coeffs,dom)
+    Sp.widths != nothing && error("Can't do spikes only if the spikes have test functions on them")
+    return (SS, SL[1:n,:])
+  end
   LL = legmult(coeffs, n)
   SS = legapprox(vec(Sp.CO.pts),coeffs,dom)
 

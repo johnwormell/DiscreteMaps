@@ -114,6 +114,34 @@ function legmult(coeffs::Array{Float64}, n::Integer=length(coeffs))
   multm
 end
 
+# multiplies two vectors together
+function legmultv(coeffs::Array{Float64}, coeffs2::Array{Float64})
+#   coeffs2 = [coeffs[2:end]/2,zeros(max(0,n-length(coeffs)))] # length n-1
+#   coeffstpl = [coeffs2|>flipud,coeffs[1],coeffs2] # length 2n-1
+  n=length(coeffs2)
+  mconstarray2 = leginnerprodm(n) * coeffs2;
+  multm = coeffs[1] * mconstarray2
+    mconstarray1 = leginnerprodm(n) *(Tridiagonal(0.5+1./[2:4:4n-6],zeros(n),(0.5-1./[6:4:4n-2])) * coeffs2)
+  coeffs[2] != 0 && (multm += coeffs[2] * mconstarray1)
+  for j = 2:maximum([find(coeffs.!=0),2])-1
+    mconstarray = -mconstarray2*(j-1)/j
+
+    for i = 1:n-1
+      mconstarray[i+1] += (2j-1)/j/(2i+1) * i*mconstarray1[i]
+    end
+    for i = 0:n-2
+      mconstarray[i+1] += (2j-1)/j/(2i+1) * (i+1)*mconstarray1[i+2]
+    end
+
+    coeffs[j+1] != 0 && (multm += coeffs[j+1] * mconstarray)
+    mconstarray2 = mconstarray1
+    mconstarray1 = mconstarray
+  end
+  inv(leginnerprodm(n)) * multm
+end
+
+
+
 function legconvgetptmatrix(coeffs::Array{Float64,1},n::Integer=length(coeffs))
   bleft = Array(Float64,n,n)
   bleft[1,1] = coeffs[1] - coeffs[2]/3
@@ -373,7 +401,7 @@ function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
   else
     # for a narrow peak we only look at the effective support of the gaussian to get a better transform
     normwdth = sigmarat * sqrt(-log(eps(1.)))
-    pkn = int(n / normwdth)
+    pkn = int(n / normwdth)[1]
     (pkpts,pkw) = FastGaussQuadrature.gausslegendre(pkn)
     pknrange = int((pkn-n)/2)+(1:n)
     pkpts = pkpts[pknrange]
@@ -423,7 +451,7 @@ function leggaushcoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
   else
     # for a narrow peak we only look at the effective support of the gaussian to get a better transform
     normwdth = sigmarat * sqrt(-log(eps(1.)))
-    pkn = int(2n / acos(1-normwdth)*pi) # using asymptotic approximation of legendre points + fudge factor 2
+    pkn = int(2n / acos(1-normwdth)*pi)[1] # using asymptotic approximation of legendre points + fudge factor 2
     (pkpts,pkw) = FastGaussQuadrature.gausslegendre(pkn)
     pknrange = 1:2n
     pkpts = pkpts[pknrange]
