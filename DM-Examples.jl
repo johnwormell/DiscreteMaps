@@ -35,9 +35,9 @@ end
 # number of artefact functions required, and for that we must be greatful
 function logisticdom(alpha::Array{Float64,1};newdom::Bool=false)
   if newdom
-    return [alpha.^2.*(4-alpha)/16 alpha/4]
+    return [0. 1.]
   else
-    return [1-alpha/4 alpha/4]
+    return [alpha.^2.*(4-alpha)/16 alpha/4] #[1-alpha/4 alpha/4]
   end
 end
 logisticdom(alpha::Float64;newdom::Bool=false) = logisticdom([alpha];newdom=newdom)

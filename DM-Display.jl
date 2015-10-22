@@ -20,7 +20,7 @@ searchdir(path,key::String) = filter(x->contains(x,key), readdir(path))
 searchdir(path,keys::Array) =
   restrictfiles(readdir(path),keys)
 
-searchdirh5(path,key=[]) = filter(x->contains(x,".h5"),searchdir(path,key))
+searchdirh5(path,key=[]) = filter(x->(contains(x,".h5")|contains(x,".jld")),searchdir(path,key))
 
 function synthesiseresults(PInitial,Jpathx="",extrastuff=["rs"];foutput=true)
   path = "$(Jpathx)"

@@ -113,7 +113,7 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
   eAv = Array(Float64,It.AN,0)
   vAv = Array(Float64,It.AN,0)
   It.useacv ? (svstring = "") : (svstring = "-s")
-  filename = replace("$(startstring)-$(It.PInitial)-$(endtime)--$(hour(now()))-$(minute(now()))$(svstring).h5",":","-")
+  filename = replace("$(startstring)-$(It.PInitial)-$(endtime)--$(hour(now()))-$(minute(now()))$(svstring).jld",":","-")
   obsiteratef(Peps::Float64) = obsiterate(It,Peps)
   cyclecount = 0
   while (now() < endtime) & (cyclecount < NCycles)
@@ -129,7 +129,7 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
       vAv[:,cyclecount*NP+i] = dA[:,2]
     end
 
-    save(filename,"epsv",epsv,"eA",eAv,"vA",vAv,"N",It.N,"NH",It.NH)
+    JLD.save(filename,"epsv",epsv,"eA",eAv,"vA",vAv,"N",It.N,"NH",It.NH)
     println("File saved at $(now())")
     cyclecount += 1
   end
