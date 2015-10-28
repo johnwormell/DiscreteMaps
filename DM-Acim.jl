@@ -77,7 +77,7 @@ function logisticcospeeds(CO::CriticalOrbit,M::IMap)
   end
   return cospd
 end
-# Computes a function containing all the spikes (ηi) from the map.
+# Computes a function containing all the spikes (etai) from the map.
 # The acim should be continuous after these spikes are removed.
 function spikefn(x::Array{Float64,1},# points to evaluate at
                  Sp::Spikes, #spike measure
@@ -85,11 +85,11 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
                  whichnsp::Union(Integer,Array{Integer},Nothing)=nothing, # if whichsp = nothing,
                  # which spikes not to do (nothing = all)
                  whichcp::Union(Integer,Array{Integer},Nothing)=nothing; # which cps to look at (nothing = all)
-                 oneminustfn::Bool=false # use (1-φ) instead of φ (= bump fn) when multiplying the test function
+                 oneminustfn::Bool=false # use (1-phi) instead of phi (= bump fn) when multiplying the test function
                  )
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
-  # dofirst = include first spikes (η1)
+  # dofirst = include first spikes (eta1)
   # dorest = include the others spikes
 
   Nx = length(x)
@@ -123,7 +123,7 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
       # is the x value in the domain of the map?
       if Sp.widths != nothing
         tfnvals .*= testfn(x,Sp.CO.pts[spikeind[j],i],Sp.widths[spikeind[j]])
-      # test function centred around spikes to limit their support
+        # test function centred around spikes to limit their support
       end
 
       oneminustfn && (tfnvals = 1 - tfnvals)
@@ -156,7 +156,7 @@ function transfer(r::Function,M::IMap,rargs=())
   return Lr
 end
 
-# A right inverse of the transfer operator: used on η1 to calculate ζ (from the paper)
+# A right inverse of the transfer operator: used on eta1 to calculate zeta (from the paper)
 function inversetransfer(r::Function,M::IMap,rargs=())
   function Mr(x::Array{Float64})
     #    Mrx = Array(Float64,size(x))
@@ -246,7 +246,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
           end
         end
 
-        spikefn(x,Sp,tpts...,i) - zetav * eta_at_c[:,i] # η - η(c)ζ
+        spikefn(x,Sp,tpts...,i) - zetav * eta_at_c[:,i] # eta - eta(c)zeta
       end
     else
       CONptslimit = lastspiketonoise ? CONpts-1 : CONpts
@@ -265,14 +265,14 @@ function spectralacim(M::IMap, # map whose acim we are finding
           end
         end
 
-        spikefn(x,Sp,j,nothing,i) - zetav * eta_at_c[:,j,i] # η - η(c)ζ
+        spikefn(x,Sp,j,nothing,i) - zetav * eta_at_c[:,j,i] # eta - eta(c)zeta
       end
     end
 
     if shortmatrix
       h = transfer(fixedhfn,M,(1))(the_spectralpts) -
-        spikefn(the_spectralpts,Sp,nothing,1) #L1(η - η(c)ζ) - η + η1
-      # η1 is in here because later on we subtract the identity from
+        spikefn(the_spectralpts,Sp,nothing,1) #L1(eta - eta(c)zeta) - eta + eta1
+      # eta1 is in here because later on we subtract the identity from
       # a matrix that looks like L1
       if lastspiketonoise
         if Sp.widths == nothing
@@ -320,7 +320,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
       for j = 1:Nc
         cpremove += Dr_at_c[j,i+1] * zeta(x,j)
       end
-      spectralf(x,i,M.periodic,M.dom) - cpremove # Ti - Ti(c)ζ (if we're using Chebyshev, e.g.)
+      spectralf(x,i,M.periodic,M.dom) - cpremove # Ti - Ti(c)zeta (if we're using Chebyshev, e.g.)
     end
   else
     fixedfn(x::Array{Float64,1},i::Int64) =
@@ -438,8 +438,8 @@ function spectralacim(M::IMap, # map whose acim we are finding
   returntup = mu
   if returntransfmat
     if critexists & ~shortmatrix
-     magconv = [vec(Sp.CO.mag),ones(N)]
-     Lhat = (Lhat ./ magconv').*magconv
+      magconv = [vec(Sp.CO.mag),ones(N)]
+      Lhat = (Lhat ./ magconv').*magconv
     end
     return returnsmallestsv ? (mu,Lhat,S[end]) : (mu,Lhat)
   else

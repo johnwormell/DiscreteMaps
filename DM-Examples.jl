@@ -25,7 +25,7 @@ function makelogisticg(;newdom::Bool=true)
     g2 = 1 - g1
     return checkindomain([g1 g2],logisticdom(a;newdom=newdom))
   end
-#  logisticg(x::Float64,a) = logisticg([x]::Array{Float64,1},a::Array{Float64,1}) # SKULL AND XBONES FOR PARALLELISATION
+  #  logisticg(x::Float64,a) = logisticg([x]::Array{Float64,1},a::Array{Float64,1}) # SKULL AND XBONES FOR PARALLELISATION
   return logisticg
 end
 
@@ -45,10 +45,10 @@ logisticdom(alpha::Float64;newdom::Bool=true) = logisticdom([alpha];newdom=newdo
 # Logistic inversetransferwt - see type definition
 function logisticinversetransferwt(x::Array{Float64,1},a::Array{Float64,1})
   return fill(0.5,size(x))
-#   return (x .< 0.5) .* (1 - 0.5 *testfn(x,0.5,0.1)) +
-#     (x .> 0.5) .* (0.5 * testfn(x,0.5,0.1)) + # in the chaotic regime, a width of 0.1 will keep it clear of the edge of the domain for one application of inversetransfer
-#     (x .== 0.5) .* 1.
-# # This is really here "just in case"
+  #   return (x .< 0.5) .* (1 - 0.5 *testfn(x,0.5,0.1)) +
+  #     (x .> 0.5) .* (0.5 * testfn(x,0.5,0.1)) + # in the chaotic regime, a width of 0.1 will keep it clear of the edge of the domain for one application of inversetransfer
+  #     (x .== 0.5) .* 1.
+  # # This is really here "just in case"
 end
 
 # returns logistic Artefacts container for parameter alpha
@@ -57,12 +57,12 @@ function logisticartefacts(alpha;newdom=true)
     return Artefacts()
   else
     return Artefacts()
-#     discont = makef(logisticf!)(logisticdom(alpha,newdom=newdom)[:,1],alpha) # where is the discontinuity happening?
-#     logartefn(x::F64U) = 1. * (x .< [discont]') # step function, returns a matrix
-#     logpointsin = discont + 2*eps(maxabs(discont)) # get value at the edge of the step function
-#     loggetcoeffs(y::F64U,i::Int64) = y # we just use the value
-#     lognfns = 1
-#     return Artefacts(logartefn,logpointsin,loggetcoeffs,lognfns)
+    #     discont = makef(logisticf!)(logisticdom(alpha,newdom=newdom)[:,1],alpha) # where is the discontinuity happening?
+    #     logartefn(x::F64U) = 1. * (x .< [discont]') # step function, returns a matrix
+    #     logpointsin = discont + 2*eps(maxabs(discont)) # get value at the edge of the step function
+    #     loggetcoeffs(y::F64U,i::Int64) = y # we just use the value
+    #     lognfns = 1
+    #     return Artefacts(logartefn,logpointsin,loggetcoeffs,lognfns)
   end
 end
 
@@ -78,7 +78,7 @@ function logistic(alpha::Array{Float64},invertible=(length(alpha)==1);newdom::Bo
          makelogisticg(newdom=newdom), # inverse of logistic map
          logisticinversetransferwt, # logisticinversetransferwt, just constant 1/2
          (a)->[0.5], # one critical point
-         (a)->-2*a, # f'(0.5) = -2α
+         (a)->-2*a, # f'(0.5) = -2alpha
          logisticartefacts(alpha;newdom=newdom) # logistic Artefacts container
          )
   end
@@ -138,12 +138,12 @@ doublingg(x::Float64,a) = doublingg([x],a)
 
 function doubling(dim::Integer=1,invertible::Bool=(dim==1))
   if ~(invertible)
-        DMap(doublingf!, # double it!
-             (x,a)->2*ones(size(x)), # let its derivative be 2!
-             (), # no parameters
-             repmat([0. 1.],dim,1), # got a unit domain!
-             dim, # of an arbitrary number of dimensions but by default 1 (see above)
-             true) # it's periodic
+    DMap(doublingf!, # double it!
+         (x,a)->2*ones(size(x)), # let its derivative be 2!
+         (), # no parameters
+         repmat([0. 1.],dim,1), # got a unit domain!
+         dim, # of an arbitrary number of dimensions but by default 1 (see above)
+         true) # it's periodic
   else
     IMap(doubling(dim,false), #doubling DMap, see immediately above
          doublingg, # inverse of doubling map
@@ -179,12 +179,12 @@ spdoublingg(x::Float64,a::(Float64,Int64)) = spdoublingg([x],a)
 function spdoubling(amp::Float64=0.05,k::Int64=1,invertible::Bool=true)
   a = (amp,k)
   if ~(invertible)
-        DMap(spdoublingf!, # double it + peturbation
-             (x,a)->2 + a[1]*2pi*2a[2]*cos(2pi*a[2]*2x), # derivative
-             a, # a peturbation parameter, a tuple (amplitude, frequency)
-             repmat([0. 1.],1,1), # got a unit domain of dimension 1
-             1, # one dimension remember
-             true) # it's periodic
+    DMap(spdoublingf!, # double it + peturbation
+         (x,a)->2 + a[1]*2pi*2a[2]*cos(2pi*a[2]*2x), # derivative
+         a, # a peturbation parameter, a tuple (amplitude, frequency)
+         repmat([0. 1.],1,1), # got a unit domain of dimension 1
+         1, # one dimension remember
+         true) # it's periodic
   else
     IMap(spdoubling(a...,false), #spdoubling DMap, see immediately above
          spdoublingg, # inverse of spdoubling map
@@ -211,12 +211,12 @@ desqueg(x::Float64,a::Function) = desqueg([x],a)
 
 function desque(lift::Function=(x->2x),dlift::Function=(x->fill(2,x|>size)),invertible::Bool=true)
   if ~(invertible)
-        DMap(desquef!,
-             (x,a)->dlift(x), # derivative
-             lift, # lift function
-             repmat([0. 1.],1,1), # got a unit domain of dimension 1
-             1, # one dimension remember
-             true) # it's periodic
+    DMap(desquef!,
+         (x,a)->dlift(x), # derivative
+         lift, # lift function
+         repmat([0. 1.],1,1), # got a unit domain of dimension 1
+         1, # one dimension remember
+         true) # it's periodic
   else
     IMap(desque(lift,dlift,false),
          desqueg,

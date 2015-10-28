@@ -42,7 +42,7 @@ function makef(f!::Function)
     f!(P,a)
     return P[1]
   end
-#  f(x::Float64,a) = f([x],a) # CAUSES NASTY STACKOVERFLOWERRORS AVOID AVOID!!!
+  #  f(x::Float64,a) = f([x],a) # CAUSES NASTY STACKOVERFLOWERRORS AVOID AVOID!!!
   return f
 end
 
@@ -132,17 +132,17 @@ type IMap <: DifferentiableMap
 
   IMap(f!,df,g,params,inversetransferwt,crit,critxx,Art,dom,dim,periodic,init,noise!) =
     new(makef(f!),f!,df,g,params,inversetransferwt,crit,critxx,Art,dom,dim,periodic,init,noise!) #ew
-#  IMap(f!,args...) = addf(new,f!,args...)
+  #  IMap(f!,args...) = addf(new,f!,args...)
 end
 
 IMap(M::DMap,g,inversetransferwt,crit=x->[],critxx=x->[],Art=Artefacts()) = # defaults are no critical pts, artefacts
-  IMap(M.f!,M.df,g,M.params,inversetransferwt,crit,critxx,Art,M.dom,M.dim,M.periodic,M.init,M.noise!); #gross
+IMap(M.f!,M.df,g,M.params,inversetransferwt,crit,critxx,Art,M.dom,M.dim,M.periodic,M.init,M.noise!); #gross
 
 # Peturbation
-# One-parameter family of maps Mε parametrised by ε.
+# One-parameter family of maps Meps parametrised by eps.
 # Domain inherited from M
 # f0(x) = M.f(x)
-# fε(x) = X(M.f(x))
+# feps(x) = X(M.f(x))
 # Involved in linear response
 
 type Peturbation
@@ -201,9 +201,9 @@ function minwidths(CO,dom,widths,cpbd)
   widths2 = Array(typeof(widths).parameters[1],size(widths))
   for i = 1:CO.Nc
     widths2[:,i] = min(
-            barrierdistoriented(CO.pts[:,i]',CO.sgn[:,i]',[dom # CO.crit
-                                                 ])[:]*cpbd,
-            widths[:,i])
+      barrierdistoriented(CO.pts[:,i]',CO.sgn[:,i]',[dom # CO.crit
+                                                     ])[:]*cpbd,
+      widths[:,i])
   end
   return widths2
 end
@@ -233,7 +233,7 @@ Spikes(CO::CriticalOrbit,
 
 
 (*)(normfactor::Real,Sp::Spikes) = Spikes(Sp.CO # don't change the magnitudes in this cause they're relative to mag0
-                                             ,Sp.dom,normfactor*Sp.mag0,Sp.widths)
+                                          ,Sp.dom,normfactor*Sp.mag0,Sp.widths)
 
 type SpectralMeasure <: Measure
   coeffs::Array{Float64,1}

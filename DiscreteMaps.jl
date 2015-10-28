@@ -1,10 +1,5 @@
-#Pkg.add("ApproxFun")
-#Pkg.add("Distributions")
-#Pkg.add("Roots")
-#Pkg.update()
 module DiscreteMaps
 
-#using ApproxFun
 using Distributions
 using JLD, Dates
 using Roots
@@ -19,7 +14,9 @@ I64U = Union(Int64,Array{Int64})
 kw(;kwargs...) = kwargs
 
 # returns 10AM tomorrow
-tomorrowmorning() = Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16)))+Dates.Hour(10)
+tomorrowmorning() =
+  Dates.DateTime(Dates.Date(Dates.now() + Dates.Hour(16))) +
+  Dates.Hour(10)
 
 # Create a folder if it doesn't already exist
 newpath(path) = ispath(path) || mkdir(path)
@@ -36,7 +33,8 @@ function (*){T<:Number}(t::Tridiagonal{T},x::Array{T,2})
   a
 end
 # chop
-chop{T<:Real}(x::T,epsl=1000eps()) = (abs(x) < epsl) ? convert(T,0) : x
+chop{T<:Real}(x::T,epsl=1000eps()) =
+  (abs(x) < epsl) ? convert(T,0) : x
 function chopm!{T<:Real}(x::Array{T})
   epsl = 10*maximum(size(x))*eps(maxabs(x))
   for i = 1:length(x)
@@ -56,7 +54,8 @@ function chopm!{T<:Real}(x::Tridiagonal{T})
   epsl = 0.
   fields = names(Tridiagonal)
   for fld in fields
-    epsl = max(epsl,100*maximum(size(x))*eps(maxabs(getfield(x,fld))))
+    epsl = max(epsl,100*maximum(size(x))*
+                 eps(maxabs(getfield(x,fld))))
   end
   for fld in fields
     for i = 1:length(getfield(x,fld))

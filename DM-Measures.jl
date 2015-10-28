@@ -4,7 +4,7 @@ function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::B
                       )
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
-  # dofirst = include first spikes (η1)
+  # dofirst = include first spikes (eta1)
   # dorest = include the others spikes
   Nc = Sp.CO.Nc
   #   dorest && (rest = zeros(Nx))
@@ -19,7 +19,7 @@ function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::B
     else
       intfn(x) = A(x)[1] * spikefn(x,Sp)[1]
       problempts = [intdom[1], sort(Sp.CO.pts[intdom[1] .< Sp.CO.pts .< intdom[2]]), intdom[2]]
-      (pint, perr) = quadgk(intfn,problempts)
+      (pint, perr) = quadgk(intfn,problempts...)
       theintegral += pint
       theerror += perr
     end

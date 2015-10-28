@@ -1,6 +1,6 @@
 # Multiplying
 function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
-                            normspikes=true) # false = multiply by mag/mag0
+                             normspikes=true) # false = multiply by mag/mag0
   Nc = Sp.CO.Nc
   Npts = Sp.CO.Npts
   domsizemult = sqrt(domsize(dom)[1]/2)/domsize(dom)[1]
@@ -16,18 +16,18 @@ function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
       normspikes || (coefm[:,k,i] .*= Sp.mag0[i] .*Sp.CO.mag[k,i])
       coefm[:,k,i] .*= (csgn2 * csgn).^ [0:n-1]
 
-#       coefm[1,k,i] = Sp.mag0[i]*Sp.CO.mag[k,i] * domsizemult * 2sqrt(1-cnorm)
-#       coefm[2,k,i] = csgn * coefm[1,k,i] * (cnorm + (1-cnorm)/3)
-#       for j = 1:n-2
-#         coefm[j+2,k,i] =  (csgn*2cnorm*(2j+1) * coefm[j+1,k,i] - (2j-1) * coefm[j,k,i])/(2j+3)
-#       end
+      #       coefm[1,k,i] = Sp.mag0[i]*Sp.CO.mag[k,i] * domsizemult * 2sqrt(1-cnorm)
+      #       coefm[2,k,i] = csgn * coefm[1,k,i] * (cnorm + (1-cnorm)/3)
+      #       for j = 1:n-2
+      #         coefm[j+2,k,i] =  (csgn*2cnorm*(2j+1) * coefm[j+1,k,i] - (2j-1) * coefm[j,k,i])/(2j+3)
+      #       end
     end
   end
   return coefm# .*[1:2:2n-1]
 end
 
 function legclothingspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
-                            normspikes=true)
+                                normspikes=true)
   Nc = Sp.CO.Nc
   Npts = Sp.CO.Npts
   if Sp.widths == nothing
@@ -47,7 +47,7 @@ function legclothingspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.d
 end
 
 function legspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
-                            normspikes=true)
+                        normspikes=true)
   coefm = legnakedspikecoeffs(Sp,n,dom,normspikes=normspikes)
   if Sp.widths != nothing
     coefm += legclothingspikecoeffs(Sp,n,dom,normspikes=normspikes)
@@ -154,11 +154,11 @@ function legspikecorrel(L::Array{Float64,2},mu::SumMeasure)
           -Spint' * invs[1:spn,:] / legtotalint(n,mu.dom)[1];
           invs[spn+1:end,:]]
   invs = [invs[:,1:spn] zeros(size(invs,1)) invs[:,spn+1:end]]
-#   inv = [invs[1:spn,1:spn] zeros(spn) invs[1:spn,spn+2:end];
-#           zeros(1,spn+n);
-#           invs[spn+2:end,1:spn] zeros(n-1) invs[spn+2:end,spn+2:end]]
-#   Spint = normalisedtestfnspiketotalintegral * Sp.mag0 .* Sp.CO.mag .* sqrt(Sp.widths) |> vec
-#   invf[spn+1,1:spn] = -Spint' * invs[:,1:spn] / legtotalint(n,mu.dom)[1]
+  #   inv = [invs[1:spn,1:spn] zeros(spn) invs[1:spn,spn+2:end];
+  #           zeros(1,spn+n);
+  #           invs[spn+2:end,1:spn] zeros(n-1) invs[spn+2:end,spn+2:end]]
+  #   Spint = normalisedtestfnspiketotalintegral * Sp.mag0 .* Sp.CO.mag .* sqrt(Sp.widths) |> vec
+  #   invf[spn+1,1:spn] = -Spint' * invs[:,1:spn] / legtotalint(n,mu.dom)[1]
   return invs
 end
 

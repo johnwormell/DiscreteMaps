@@ -90,8 +90,8 @@ function legdiff(n::Integer, dom::Array{Float64,2} = defdom(false))
 end
 
 function legmult(coeffs::Array{Float64}, n::Integer=length(coeffs))
-#   coeffs2 = [coeffs[2:end]/2,zeros(max(0,n-length(coeffs)))] # length n-1
-#   coeffstpl = [coeffs2|>flipud,coeffs[1],coeffs2] # length 2n-1
+  #   coeffs2 = [coeffs[2:end]/2,zeros(max(0,n-length(coeffs)))] # length n-1
+  #   coeffstpl = [coeffs2|>flipud,coeffs[1],coeffs2] # length 2n-1
 
   mconstarray2 = eye(n)
   multm = coeffs[1] * mconstarray2
@@ -116,12 +116,12 @@ end
 
 # multiplies two vectors together
 function legmultv(coeffs::Array{Float64}, coeffs2::Array{Float64})
-#   coeffs2 = [coeffs[2:end]/2,zeros(max(0,n-length(coeffs)))] # length n-1
-#   coeffstpl = [coeffs2|>flipud,coeffs[1],coeffs2] # length 2n-1
+  #   coeffs2 = [coeffs[2:end]/2,zeros(max(0,n-length(coeffs)))] # length n-1
+  #   coeffstpl = [coeffs2|>flipud,coeffs[1],coeffs2] # length 2n-1
   n=length(coeffs2)
   mconstarray2 = leginnerprodm(n) * coeffs2;
   multm = coeffs[1] * mconstarray2
-    mconstarray1 = leginnerprodm(n) *(Tridiagonal(0.5+1./[2:4:4n-6],zeros(n),(0.5-1./[6:4:4n-2])) * coeffs2)
+  mconstarray1 = leginnerprodm(n) *(Tridiagonal(0.5+1./[2:4:4n-6],zeros(n),(0.5-1./[6:4:4n-2])) * coeffs2)
   coeffs[2] != 0 && (multm += coeffs[2] * mconstarray1)
   for j = 2:maximum([find(coeffs.!=0),2])-1
     mconstarray = -mconstarray2*(j-1)/j
@@ -155,7 +155,7 @@ function legconvgetptmatrix(coeffs::Array{Float64,1},n::Integer=length(coeffs))
     bleft[i+1,2] = bleft[i,1]/(2i-1) - bleft[i+1,1] - bleft[i+2,1]/(2i+3)
   end
   bleft[n,2] = #bleft[n-1,1]/(2n-3)  #removed this term as it's not a great truncation
-    - bleft[n,1]
+  - bleft[n,1]
 
   for j = 2:n-1
     for i = 0:j-1
@@ -166,7 +166,7 @@ function legconvgetptmatrix(coeffs::Array{Float64,1},n::Integer=length(coeffs))
       bleft[i+1,j+1] = (2j-1)/(2i-1) * bleft[i,j] -(2j-1)/(2i+3) * bleft[i+2,j] + bleft[i+1,j-1]
     end
     bleft[n,j+1] = #(2j-1)/(2n-3) * bleft[n-1,j] +  #removed this term as it's not a great truncation
-        bleft[n,j]
+    bleft[n,j]
   end
   bleft
 end
@@ -184,7 +184,7 @@ end
 
 function leghconv(hcoeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n::Integer=length(hcoeffs))
   (legconvgetptmatrix(hcoeffs.*(-1).^[0:n-1],n).*(-1).^[0:n-1]'.*(-1).^[0:n-1] +
-    legconvgetptmatrix(hcoeffs,n)) *domsize(dom)[1]/2
+     legconvgetptmatrix(hcoeffs,n)) *domsize(dom)[1]/2
 end
 
 # # Fourier functions and transforms - 1D ONLY - for explanations of what they do see below
@@ -302,7 +302,7 @@ function fourierconv(coeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(true)
   d[1] = coeffsf[1]
   for i = 2:n
     d[i] = coeffsf[2fld(i,2)]/2
-    end
+  end
   dl = Array(Float64,n-1)
   for i = 1:n-1
     dl[i] = rem(i,2) == 0 ? coeffsf[2div(i,2)+1]/2 : 0
@@ -362,7 +362,7 @@ spectralconv(coeffs::Array{Float64},periodic::Bool = false,dom::Array{Float64}=d
 # Fourier coefficients of periodic Gaussian distribution
 defaultrelsigmasize = 0.001
 function fouriergauscoefs(n::Integer,dom::Array{Float64,2}=defdom(true),
-                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.)
+                          sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.)
   ds = domsize(dom)[1]
   omega0 = mu*2pi/ds
   gfv = Array(Float64,n)
@@ -376,7 +376,7 @@ function fouriergauscoefs(n::Integer,dom::Array{Float64,2}=defdom(true),
 end
 
 fouriergauskernel(n::Integer,sratio::Float64=0.001) =
-    fourierconv(fouriergauscoefs(n,defdom(true),domsize(defdom(true))[1]*sratio,0.),defdom(true),n)
+  fourierconv(fouriergauscoefs(n,defdom(true),domsize(defdom(true))[1]*sratio,0.),defdom(true),n)
 fouriergauskernel(n::Integer,
                   dom::Array{Float64,2} = defdom(true),
                   sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
@@ -389,7 +389,7 @@ legsigmaratwarn = 6.
 
 # Legendre coefficients of scaled chopped Gaussian distribution
 function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
-                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=mean(dom))
+                      sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=mean(dom))
   legnormcoords(mu,dom) == 0. || error("leggauscoeffs does not support non-centered mu values")
   ds = domsize(dom)[1]
   sigmarat = sigma * 2 / domsize(dom)[1]
@@ -414,7 +414,7 @@ function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
   glv
 end
 
-  # unstable leggauscoefs exact algorithm
+# unstable leggauscoefs exact algorithm
 #   q = Array(Float64,fld(n+1,2)) # q[i+1] = q(2i) = integral(-1,1) of P_(2i)(x) exp(-2x^2/2sigmarat^2) dx
 #   r = Array(Float64,fld(n+1,2)) # r[i+1] = r(2i+1) = integral(-1,1) of P_(2i+1)'(x) exp(-2x^2/2sigmarat^2) dx
 #   q[1] = erf(sqrt(2)*sigmarat) # q(0)
@@ -439,7 +439,7 @@ end
 
 # Legendre h-coefficients of scaled chopped Gaussian distribution
 function leggaushcoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
-                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu=leginormcoords(-1.,dom))
+                       sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu=leginormcoords(-1.,dom))
   legnormcoords(mu,dom) == -1. || error("leggaushcoeffs does not support non-centered mu values")
   ds = domsize(dom)[1]
   sigmarat = sigma * 2 / domsize(dom)[1]
@@ -470,20 +470,20 @@ end
 leggauskernel(n::Integer,sratio::Float64=0.001) =
   leghconv(leggaushcoefs(n,defdom(false),domsize(defdom(false))[1]*sratio),defdom(false),n) |> chopm
 leggauskernel(n::Integer, dom::Array{Float64,2} = defdom(false),
-                  sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
+              sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
   leghconv(leggaushcoefs(n,dom,sigma),dom,n) |> chopm
 
 
 # Returns kernel matrix of a Fourier Gaussian distribution
 spectralgauscoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),
-                              sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.) =
+                  sigma::Float64=defaultrelsigmasize*domsize(dom)[1],mu::Float64=0.) =
   periodic ? (fouriergauscoefs(n,dom,sigma)) : (leggauscoefs(n,dom,sigma))
 spectralgauskernel(n::Integer,periodic::Bool=false,sratio::Float64=0.001) =
   periodic ? (fouriergauskernel(n,sratio)) : (leggauskernel(n,sratio))
 #    spectralconv(spectralgauscoefs(n,periodic,defdom(periodic),domsize(defdom(periodic))[1]*sratio,0.),periodic,defdom(periodic),n)
 spectralgauskernel(n::Integer,periodic::Bool=false,
-                  dom::Array{Float64,2} = defdom(periodic),
-                  sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
+                   dom::Array{Float64,2} = defdom(periodic),
+                   sigma::Float64=defaultrelsigmasize*domsize(dom)[1]) =
   periodic ? (fouriergauskernel(n,dom,sigma)) : (leggauskernel(n,dom,sigma))
 #  spectralconv(spectralgauscoefs(n,periodic,dom,sigma),periodic,dom,n)
 
@@ -492,5 +492,5 @@ legdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(false),ctr=mean(dom)) =
 fourierdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(true),ctr=dom[1]) =
   fouriergauscoefs(n,dom,0.,ctr)
 spectraldeltacoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),
-                  ctr=(periodic ? dom[1] : mean(dom))) =
+                   ctr=(periodic ? dom[1] : mean(dom))) =
   periodic ? (fourierdeltacoefs(n,dom,ctr)) : (legdeltacoefs(n,dom,ctr))

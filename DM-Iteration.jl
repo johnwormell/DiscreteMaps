@@ -2,35 +2,35 @@
 export iterate, observepeturbation, checklinearresponse
 
 function iterationpreloop!(x::Array{Float64},fn!::Function,NI::Integer)
-    for n = 1:NI
-        fn!(x)
-    end
-    nothing
+  for n = 1:NI
+    fn!(x)
+  end
+  nothing
 end
 
 function iterationloop!(x_history::Array{Float64},x::Array{Float64},fn!::Function,N::Integer)
-    for n = 1:N
-#        for j = 1:16
-       fn!(x)
-#        end
-        x_history[:,n] = x
-    end
-    x
+  for n = 1:N
+    #        for j = 1:16
+    fn!(x)
+    #        end
+    x_history[:,n] = x
+  end
+  x
 end
 
 function iterate(fn!,M::Map,N::Integer=10^7,NI::Integer=10^4,x0::Array{Float64,1}=Float64[])
-##    fn = x->DM.noise(DM.f(x,DM.params))
-    x_history = Array(Float64,M.dim,N)
+  ##    fn = x->DM.noise(DM.f(x,DM.params))
+  x_history = Array(Float64,M.dim,N)
 
-    if isempty(x0)
-        x = M.init()
-        iterationpreloop!(x,fn!,NI)
-    else
+  if isempty(x0)
+    x = M.init()
+    iterationpreloop!(x,fn!,NI)
+  else
     x = x0
     x0 = []
-    end
-    iterationloop!(x_history,x,fn!,N)
-    return x_history
+  end
+  iterationloop!(x_history,x,fn!,N)
+  return x_history
 end
 
 function iterate(M::Map,N::Integer=10^7,NI::Integer=10^4,x0::Array{Float64,1}=Float64[])
@@ -75,7 +75,7 @@ function findobservableslil(Peps::Float64,A::Array{Function,1},x::Array{Float64,
     AV[an,1] = mean(A[an](xh))
     AV[an,2] = observevar(A[an],xh)/length(xh)
   end
-#  println("one obs done")
+  #  println("one obs done")
   return AV, x
 end
 
@@ -97,7 +97,7 @@ function observepeturbation(P::Peturbation,A::Array{Function,1},epsv::Array{Floa
   eN = length(epsv)
   findobservablesbigf(Peps::Float64) = findobservablesbig(Peps,A,P,N,NI,NR)
   AX = pmap(findobservablesbigf,epsv)
-#  println("iteration done")
+  #  println("iteration done")
   eA = Array(Float64,AN,eN)
   vA = Array(Float64,AN,eN)
   for i = 1:eN
@@ -145,7 +145,7 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
   eN = size(eA,2)
   errsize = sqrt(vA)
   neps = repmat(epsv',AN,1) ./ errsize
-  neps2 = repmat(transpose(epsv.^2),AN,1) ./ errsize
+  secondorder && (neps2 = repmat(transpose(epsv.^2),AN,1) ./ errsize)
   nA0c = 1 ./ errsize
   nAc = eA ./ errsize
 
@@ -154,6 +154,14 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
   rss = Array(Float64,AN)
   pval = Array(Float64,AN)
   for an = 1:AN
+    if minimum(vA[an,:]) <= 100eps(maximum(vA[an,:]))
+      zeroval[an] = NaN
+      lrtval[an] = NaN
+      rss[an] = NaN
+      pval[an] = NaN
+      continue
+    end
+
     if secondorder
       lmX = [neps[an,:]' neps2[an,:]' nA0c[an,:]']
     else
@@ -161,23 +169,25 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
     end
 
     lmY = nAc[an,:]'
-   # lmX |> println
+    # lmX |> println
+    #     an == 115 && lmX |> println
+    #     an == 115 && (lmX' * lmX) |> println
     lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]
     rss[an] = sum((lmY-lmX*lmbh).^2)
     pval[an] = Distributions.ccdf(Distributions.Chisq(eN-3),sum((lmY - lmX*lmbh).^2))
-#    pval[an] = Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2))
+    #    pval[an] = Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2))
 
-#    println("Observable $an")
-#    println("Coefficients: ", lmbh)
-#    println("Residual sum of squares: ", sum((lmY-lmX*lmbh).^2))
-#    println("p-value: ", Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2)))
+    #    println("Observable $an")
+    #    println("Coefficients: ", lmbh)
+    #    println("Residual sum of squares: ", sum((lmY-lmX*lmbh).^2))
+    #    println("p-value: ", Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2)))
 
-#    lmX = [epsv ones(size(eA[an,:]'))]
-#    lmY = eA[an,:]'
-#    lmbh = inv(lmX' * lmX) * lmX' * lmY
-#    println("Estimated variance given lr:", sqrt(sum((lmY-lmX*lmbh).^2)/(eN-2)))
+    #    lmX = [epsv ones(size(eA[an,:]'))]
+    #    lmY = eA[an,:]'
+    #    lmbh = inv(lmX' * lmX) * lmX' * lmY
+    #    println("Estimated variance given lr:", sqrt(sum((lmY-lmX*lmbh).^2)/(eN-2)))
   end
   return rss, pval, zeroval, lrtval
 end
