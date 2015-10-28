@@ -78,7 +78,7 @@ function logisticcospeeds(CO::CriticalOrbit,M::IMap)
   return cospd
 end
 
-# Computes a function containing all the spikes (ηi) from the map.
+# Computes a function containing all the spikes (eta_i) from the map.
 # The acim should be continuous after these spikes are removed.
 function spikefn(x::Array{Float64,1},# points to evaluate at
                  Sp::Spikes, #spike measure
@@ -86,7 +86,7 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
                  dorest::Bool=true) #include the rest of the spikes in the density
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
-  # dofirst = include first spikes (η1)
+  # dofirst = include first spikes (eta1)
   # dorest = include the others spikes
   Nx = length(x)
   Nc = Sp.CO.Nc
@@ -139,7 +139,7 @@ function transfer(r::Function,M::IMap,rargs=())
   return Lr
 end
 
-# A right inverse of the transfer operator: used on η1 to calculate ζ (from the paper)
+# A right inverse of the transfer operator: used on eta1 to calculate zeta (from the report)
 function inversetransfer(r::Function,M::IMap,rargs=())
   function Mr(x::Array{Float64})
     #    Mrx = Array(Float64,size(x))
@@ -176,16 +176,16 @@ function spectralacim(M::IMap, # map whose acim we are finding
     zeta = inversetransfer(spikefn,M,(Sp,true,false))
 
     fixedhfn(x::Array{Float64,1}) =
-      spikefn(x,Sp) - eta_at_c*zeta(x) # η - η(c)ζ
+      spikefn(x,Sp) - eta_at_c*zeta(x) # eta - eta(c)zeta
     h = transfer(fixedhfn,M,())(the_spectralpts) -
-      spikefn(the_spectralpts,Sp,false,true) #L1(η - η(c)ζ) - η + η1
-                                  # η1 is in here because later on we subtract the identity from
+      spikefn(the_spectralpts,Sp,false,true) #L1(eta - eta(c)zeta) - eta + eta1
+                                  # eta1 is in here because later on we subtract the identity from
                                   # a matrix that looks like L1
   end
 
   if critexists
     fixedfn(x::Array{Float64,1},i::Int64) =
-      spectralf(x,i,M.periodic,M.dom) - Dr_at_c[i+1]*zeta(x) # Ti - Ti(c)ζ (if we're using Chebyshev, e.g.)
+      spectralf(x,i,M.periodic,M.dom) - Dr_at_c[i+1]*zeta(x) # Ti - Ti(c)zeta (if we're using Chebyshev, e.g.)
   else
     fixedfn(x::Array{Float64,1},i::Int64) =
       spectralf(x,i,M.periodic,M.dom)

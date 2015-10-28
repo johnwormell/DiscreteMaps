@@ -79,7 +79,7 @@ function logistic(alpha::Array{Float64},invertible=(length(alpha)==1);newdom::Bo
          makelogisticg(newdom=newdom), # inverse of logistic map
          logisticinversetransferwt, # logisticinversetransferwt, just constant 1/2
          (a)->[0.5], # one critical point
-         (a)->-2*a, # f'(0.5) = -2α
+         (a)->-2*a, # f'(0.5) = -2alpha
          logisticartefacts(alpha;newdom=newdom) # logistic Artefacts container
          )
   end

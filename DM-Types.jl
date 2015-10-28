@@ -139,10 +139,10 @@ IMap(M::DMap,g,inversetransferwt,crit=x->[],critxx=x->[],Art=Artefacts()) = # de
   IMap(M.f!,M.df,g,M.params,inversetransferwt,crit,critxx,Art,M.dom,M.dim,M.periodic,M.init,M.noise!); #gross
 
 # Peturbation
-# One-parameter family of maps Mε parametrised by ε.
+# One-parameter family of maps Meps parametrised by eps.
 # Domain inherited from M
 # f0(x) = M.f(x)
-# fε(x) = X(M.f(x))
+# feps(x) = X(M.f(x))
 # Involved in linear response
 
 type Peturbation

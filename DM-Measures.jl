@@ -4,7 +4,7 @@ function measureintbd(intdom::Array{Float64,2},Sp::Spikes,A=nothing#, dofirst::B
                   )
   # x = array of values to evaluate spike function at
   # Sp = container of spikes
-  # dofirst = include first spikes (η1)
+  # dofirst = include first spikes (eta1)
   # dorest = include the others spikes
   Nc = Sp.CO.Nc
 #   dorest && (rest = zeros(Nx))
