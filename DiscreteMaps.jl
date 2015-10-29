@@ -95,7 +95,7 @@ include("DM-Iteration.jl")
 #include("DM-Fluctuation.jl")
 
 # Displaying iteration stuff
-#include("DM-Display.jl")
+include("DM-Display.jl")
 
 ## SPECTRAL APPROXIMATION OF INVARIANT MEASURES
 # Spectral functions

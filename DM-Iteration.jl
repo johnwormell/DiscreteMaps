@@ -169,25 +169,25 @@ function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false
     end
 
     lmY = nAc[an,:]'
-    # lmX |> println
-    #     an == 115 && lmX |> println
-    #     an == 115 && (lmX' * lmX) |> println
+   # lmX |> println
+#     an == 115 && lmX |> println
+#     an == 115 && (lmX' * lmX) |> println
     lmbh = inv(lmX' * lmX) * lmX' * lmY
     zeroval[an] = lmbh[1]
     lrtval[an] = lmbh[2]
     rss[an] = sum((lmY-lmX*lmbh).^2)
     pval[an] = Distributions.ccdf(Distributions.Chisq(eN-3),sum((lmY - lmX*lmbh).^2))
-    #    pval[an] = Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2))
+#    pval[an] = Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2))
 
-    #    println("Observable $an")
-    #    println("Coefficients: ", lmbh)
-    #    println("Residual sum of squares: ", sum((lmY-lmX*lmbh).^2))
-    #    println("p-value: ", Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2)))
+#    println("Observable $an")
+#    println("Coefficients: ", lmbh)
+#    println("Residual sum of squares: ", sum((lmY-lmX*lmbh).^2))
+#    println("p-value: ", Distributions.ccdf(Distributions.Chisq(eN-2),sum((lmY - lmX*lmbh).^2)))
 
-    #    lmX = [epsv ones(size(eA[an,:]'))]
-    #    lmY = eA[an,:]'
-    #    lmbh = inv(lmX' * lmX) * lmX' * lmY
-    #    println("Estimated variance given lr:", sqrt(sum((lmY-lmX*lmbh).^2)/(eN-2)))
+#    lmX = [epsv ones(size(eA[an,:]'))]
+#    lmY = eA[an,:]'
+#    lmbh = inv(lmX' * lmX) * lmX' * lmY
+#    println("Estimated variance given lr:", sqrt(sum((lmY-lmX*lmbh).^2)/(eN-2)))
   end
   return rss, pval, zeroval, lrtval
 end

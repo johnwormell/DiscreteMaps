@@ -3,7 +3,7 @@ function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
                              normspikes=true) # false = multiply by mag/mag0
   Nc = Sp.CO.Nc
   Npts = Sp.CO.Npts
-  domsizemult = sqrt(domsize(dom)[1]/2)/domsize(dom)[1]
+  domsizemult = sqrt(domsize(dom)[1]/2)
   coefm = Array(Float64,n,Npts,Nc)
   for i = 1:Nc
     for k = 1:Npts
@@ -11,7 +11,7 @@ function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
       cnorm = csgn * legnormcoords(Sp.CO.pts[k,i],dom)
       csgn2 = cnorm >= 0 ? 1 : -1
       theta = acos(cnorm*csgn2)
-      coefm[:,k,i] = domsizemult * 2sqrt(2) *
+      coefm[:,k,i] = domsizemult * sqrt(2) *
         (csgn2 == 1 ? sin : cos)(theta*[1/2:1:n-1/2])
       normspikes || (coefm[:,k,i] .*= Sp.mag0[i] .*Sp.CO.mag[k,i])
       coefm[:,k,i] .*= (csgn2 * csgn).^ [0:n-1]

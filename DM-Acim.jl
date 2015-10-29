@@ -192,7 +192,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
                       returntransfmat=false, # return the transfer operator matrix
                       returnsmallestsv=false, # return the smallest singular value
                       sigma::Float64 = 0., # width of Gaussian noise
-                      shortmatrix=(sigma==0), # for the spikes, return a collapsed matrix instead of a true one
+                      shortmatrix=false, # for the spikes, return a collapsed matrix instead of a true one
                       usecrit=true, # use spikes/critical orbit stuff
                       lastspiketonoise = false, # turn the last spike into uniformly distributed noise
                       CONpts = COdefaultNpts, # number of points in critical orbit to use
