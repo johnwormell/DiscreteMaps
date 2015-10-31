@@ -3,7 +3,7 @@ function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
                              normspikes=true) # false = multiply by mag/mag0
   Nc = Sp.CO.Nc
   Npts = Sp.CO.Npts
-  domsizemult = sqrt(domsize(dom)[1]/2)
+  domsizemult = sqrt(2/domsize(dom)[1])
   coefm = Array(Float64,n,Npts,Nc)
   for i = 1:Nc
     for k = 1:Npts
