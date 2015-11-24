@@ -2,10 +2,15 @@ module DiscreteMaps
 
 #using ApproxFun
 using Distributions
-
+<<<<<<< HEAD
 importall Base
 #using Roots
 
+=======
+
+using Roots
+importall Base
+>>>>>>> 04ca758209ad9a15e15fce096d0a6e4adf98258c
 # General fluff
 
 # Input types
