@@ -2,8 +2,8 @@ module DiscreteMaps
 
 #using ApproxFun
 using Distributions
-
-using Roots
+importall Base
+#using Roots
 
 # General fluff
 
