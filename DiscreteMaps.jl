@@ -2,7 +2,7 @@ module DiscreteMaps
 
 #using ApproxFun
 using Distributions
-using JLD
+
 using Roots
 
 # General fluff

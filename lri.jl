@@ -20,7 +20,8 @@ println("Initialising!")
     end
   end
 
-  endtime = DateTime(2015,06,29,10,00,00) #DiscreteMaps.tomorrowmorning()
+  endtime = # DateTime(2015,08,24,10,00,00) #
+     DiscreteMaps.tomorrowmorning()
 end
 
 @everywhere eval(setup_code)
