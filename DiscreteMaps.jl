@@ -4,7 +4,7 @@ module DiscreteMaps
 using Distributions
 
 using Roots
-
+importall Base
 # General fluff
 
 # Input types
