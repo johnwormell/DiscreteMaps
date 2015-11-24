@@ -7,8 +7,8 @@ using Roots
 # General fluff
 
 # Input types
-F64U = Union(Float64,Array{Float64})
-I64U = Union(Int64,Array{Int64})
+F64U = Union{Float64,Array{Float64}}
+I64U = Union{Int64,Array{Int64}}
 
 # turn into keyword argument dictionary
 kw(;kwargs...) = kwargs
@@ -22,8 +22,8 @@ tomorrowmorning() =
 newpath(path) = ispath(path) || mkdir(path)
 
 # Naturally extending ones
-Base.ones(n::()) = 1.
-Base.zeros(n::()) = 0.
+Base.ones(n::Tuple{}) = 1.
+Base.zeros(n::Tuple{}) = 0.
 
 function (*){T<:Number}(t::Tridiagonal{T},x::Array{T,2})
   a = Array(Float64,size(t,1),size(x,2))

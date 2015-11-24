@@ -81,10 +81,10 @@ end
 # The acim should be continuous after these spikes are removed.
 function spikefn(x::Array{Float64,1},# points to evaluate at
                  Sp::Spikes, #spike measure
-                 whichsp::Union(Integer,Array{Integer},Nothing)=nothing, # which spikes to do (nothing = all)
-                 whichnsp::Union(Integer,Array{Integer},Nothing)=nothing, # if whichsp = nothing,
+                 whichsp::Union{Integer,Array{Integer},Nothing}=nothing, # which spikes to do (nothing = all)
+                 whichnsp::Union{Integer,Array{Integer},Nothing}=nothing, # if whichsp = nothing,
                  # which spikes not to do (nothing = all)
-                 whichcp::Union(Integer,Array{Integer},Nothing)=nothing; # which cps to look at (nothing = all)
+                 whichcp::Union{Integer,Array{Integer},Nothing}=nothing; # which cps to look at (nothing = all)
                  oneminustfn::Bool=false # use (1-phi) instead of phi (= bump fn) when multiplying the test function
                  )
   # x = array of values to evaluate spike function at
