@@ -1,8 +1,7 @@
 module DiscreteMaps
 
-#using ApproxFun
 using Distributions
-
+using JLD
 importall Base
 #using Roots
 
