@@ -102,7 +102,7 @@ logisticgae(k::Float64,alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alp
 logisticgac(k::Float64,alpha::F64U=3.8;largs...) = IterationSchema(logisticp(alpha),"Lgc",logisticgaussnearcoA(k);largs...) # u for one
 
 # Logistic with noise
-function loginoisef!(x::Array{Float64,1},a::(Array{Float64,1},Float64))
+function loginoisef!(x::Array{Float64,1},a::Tuple{Array{Float64,1},Float64})
   x[:] = restrictto(a[1] .* x .* (1.-x) + a[2]*randn(length(x)),0.,1.)
   nothing
 end
@@ -126,12 +126,12 @@ loginoisek1(alpha::F64U=3.8,sd::Float64=0.00002;largs...) = IterationSchema(logi
 
 # Doubling
 
-function doublingf!(x::Array{Float64,1},a::())
+function doublingf!(x::Array{Float64,1},a::Tuple{})
   x[:] = mod(2*x,1)
   nothing
 end
 
-function doublingg(x::Array{Float64,1},a::())
+function doublingg(x::Array{Float64,1},a::Tuple{})
   g1 = x/2
   g2 = (x+1)/2
   return [g1 g2]
@@ -169,18 +169,18 @@ doubling2(;largs...) = IterationSchema(doublingpp(),"D2",trigA;largs...)
 
 # Sine-peturbed doubling
 
-spdoublinglift(x::Float64,a::(Float64,Int64)) = 2*(x + a[1]*sin(2pi*a[2]*x))
-function spdoublingf!(x::Array{Float64,1},a::(Float64,Int64))
+spdoublinglift(x::Float64,a::Tuple{Float64,Int64}) = 2*(x + a[1]*sin(2pi*a[2]*x))
+function spdoublingf!(x::Array{Float64,1},a::Tuple{Float64,Int64})
   x[:] = mod(spdoublinglift(x[1],a),1)
   nothing
 end
 
-function spdoublingg(y::Array{Float64,1},a::(Float64,Int64))
+function spdoublingg(y::Array{Float64,1},a::Tuple{Float64,Int64})
   g1 = fzero(x->spdoublinglift(x,a) - y[1],0.,1.)
   g2 = fzero(x->spdoublinglift(x,a) - (y[1]+1),0.,1.)
   return [g1 g2]
 end
-spdoublingg(x::Float64,a::(Float64,Int64)) = spdoublingg([x],a)
+spdoublingg(x::Float64,a::Tuple{Float64,Int64}) = spdoublingg([x],a)
 
 function spdoubling(amp::Float64=0.05,k::Int64=1,invertible::Bool=true)
   a = (amp,k)
@@ -201,7 +201,7 @@ end
 
 # Doubling-esque
 
-#doublingesquelift(x::Float64,a::(Float64,Int64)) = 2*(x + a[1]*sin(2pi*a[2]*x))
+#doublingesquelift(x::Float64,a::Tuple{Float64,Int64}) = 2*(x + a[1]*sin(2pi*a[2]*x))
 function desquef!(x::Array{Float64,1},a::Function)
   x[:] = mod(a(x[1]),1)
   nothing
@@ -234,7 +234,7 @@ end
 # Arnol'd cat map
 
 catmatrix = [2. 1.;1. 1.]
-function catf!(x::Array{Float64,1},a::())
+function catf!(x::Array{Float64,1},a::Tuple{})
   x[:] = mod(catmatrix*x,1)
 end
 
@@ -257,7 +257,7 @@ loginocoup1(J::Integer=100,alpha0::Float64=3.8,sd0::Float64=0.02;largs...) =
   IterationSchema(loginocoupp(J,alpha0,sd0),"Y1",coupA;largs...)
 
 ## with coupling
-function logiwcmap!(x::Array{Float64,1},a::(Array{Float64,1},Float64,Int64,Int64))
+function logiwcmap!(x::Array{Float64,1},a::Tuple{Array{Float64,1},Float64,Int64,Int64})
   alpha = a[1]
   f, Jind = gj(a[3],a[4])
   Jmult = length(alpha)^(Jind)
