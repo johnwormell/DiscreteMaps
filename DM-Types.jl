@@ -158,7 +158,7 @@ Peturbation(M::Map,X) = Peturbation(M::Map,X,0.0)
 
 type IterationSchema
   P::Peturbation
-  PInitial::String
+  PInitial::AbstractString
   A::Array{Function,1}
   samplefn::Function
   samplefnargs
@@ -170,7 +170,7 @@ type IterationSchema
   NVsamp::Integer
   NVbuffer::Integer
 end
-IterationSchema(P::Peturbation,Pinitial::String,A::Array{Function,1};
+IterationSchema(P::Peturbation,Pinitial::AbstractString,A::Array{Function,1};
                 samplefn::Function=betasamplefn,samplefnargs=(),
                 N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4,useacv=false,NVsamp=1000,NVbuffer=NVsamp) =
   IterationSchema(P,Pinitial,A,samplefn,samplefnargs,N,NI,NH,length(A),useacv,NVsamp,NVbuffer)

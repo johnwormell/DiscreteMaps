@@ -16,7 +16,7 @@ function restrictfiles(files,keys::Array)
   files
 end
 
-searchdir(path,key::String) = filter(x->contains(x,key), readdir(path))
+searchdir(path,key::AbstractString) = filter(x->contains(x,key), readdir(path))
 searchdir(path,keys::Array) =
   restrictfiles(readdir(path),keys)
 

@@ -108,7 +108,7 @@ end
 
 function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
                      NQ::Int64=1, NP::Int64=NQ*nworkers(), NCycles::Real=Inf,
-                     startstring::String="rs")
+                     startstring::AbstractString="rs")
   epsv = Array(Float64,0)
   eAv = Array(Float64,It.AN,0)
   vAv = Array(Float64,It.AN,0)
@@ -129,16 +129,16 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
       vAv[:,cyclecount*NP+i] = dA[:,2]
     end
 
-    JLD.save(filename,"epsv",epsv,"eA",eAv,"vA",vAv,"N",It.N,"NH",It.NH)
+    save(filename,"epsv",epsv,"eA",eAv,"vA",vAv,"N",It.N,"NH",It.NH)
     println("File saved at $(now())")
     cyclecount += 1
   end
   return cyclecount, epsv, eAv, vAv
 end
 
-timedsample(PInitial::String; endtime::DateTime=tomorrowmorning(),
+timedsample(PInitial::AbstractString; endtime::DateTime=tomorrowmorning(),
             NQ::Int64=1, NP::Int64=NQ*nworkers(), NCycles::Real=Inf,
             Itargs=(),Itkwargs=kw(),
-            startstring::String="rs") =
+            startstring::AbstractString="rs") =
   timedsample(itdict[PInitial](Itargs...;Itkwargs...);endtime=endtime,NQ=NQ,NP=NP,NCycles=NCycles,
               startstring=startstring)
