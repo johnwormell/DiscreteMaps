@@ -1,7 +1,7 @@
 module DiscreteMaps
 
 using Distributions
-using JLD, Dates
+using JLD
 using Roots
 
 # General fluff
