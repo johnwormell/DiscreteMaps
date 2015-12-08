@@ -1,4 +1,4 @@
-export fluctuation, flucsum
+#export fluctuation, flucsum
 function fluctuation(M::Map,A::Function,x_history::Array{Float64},divrX::Function,flucN=60)
     N = length(x_history)
     divrXxh = divrX(x_history)[:]

@@ -1,5 +1,5 @@
 # Iteration
-export iterate, observepeturbation, checklinearresponse
+#export iterate, observepeturbation, checklinearresponse
 
 function iterationpreloop!(x::Array{Float64},fn!::Function,NI::Integer)
     for n = 1:NI
@@ -136,7 +136,7 @@ function zerosamplefn(NP::Int64,epsmax=0.0001)
 end
 
 function evensamplefn(NP::Int64,deps=0.0001,centred=false)
-  centred ? [0:NP-1] * deps : ([0:NP-1]-(NP-1)/2) * deps
+  centred ? collect(0:NP-1) * deps : (collect(0:NP-1)-(NP-1)/2) * deps
 end
 
 function checklinearresponse(epsv,eA,vA;epsmax=Inf,epsmin=-Inf,secondorder=false)

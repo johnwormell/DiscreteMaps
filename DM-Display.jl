@@ -8,7 +8,6 @@ function chopeps(epsv::Array{Float64,1},eA::Array{Float64,2},vA::Array{Float64,2
   return epsv, eA, vA
 end
 
-stringarrayu =
 function restrictfiles(files,keys::Array)
   for str in keys
     files = filter(x->contains(x,"$(str)"),files)

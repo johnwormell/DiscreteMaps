@@ -58,10 +58,10 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
     else
       bufferrandsize = 5
       Nremaining = It.N-NH
-      NVsamp = min(int(floor(Nremaining/100.)),It.NVsamp)
+      NVsamp = min(Int(floor(Nremaining/100.)),It.NVsamp)
       NVbuffer = min(NVsamp,It.NVbuffer)
       sAs = Array(Float64,It.AN,
-                  int(floor((Nremaining+NVbuffer+bufferrandsize)/(NVsamp+NVbuffer-bufferrandsize))))
+                  Int(floor((Nremaining+NVbuffer+bufferrandsize)/(NVsamp+NVbuffer-bufferrandsize))))
       samplecount = 0
       #      println("NVsamp: ",NVsamp)
       #      println("Nremaining: ",Nremaining)
@@ -76,9 +76,9 @@ function obsiterate(fn!::Function,It::IterationSchema;returnhistory=false)
           samplecount += 1
         end
         # to put into acv buffer
-        Nbuffer = min(Nremaining,NVbuffer+int(rand(-bufferrandsize:bufferrandsize)))
+        Nbuffer = min(Nremaining,NVbuffer+Int(rand(-bufferrandsize:bufferrandsize)))
         oiterationmainloop!(x,fn!,It.A,sA,
-                            Nbuffer + int(rand(-bufferrandsize:bufferrandsize))) # in case of periodicity
+                            Nbuffer + Int(rand(-bufferrandsize:bufferrandsize))) # in case of periodicity
         Nremaining -= Nbuffer
       end
       vA = var(sAs[:,1:samplecount]/NVsamp,2)*NVsamp/It.N
@@ -122,7 +122,7 @@ function timedsample(It::IterationSchema; endtime::DateTime=tomorrowmorning(),
 #    pmapcontainer = pmap(obsiterate,fill(It,length(epsl)))
     eAv = [eAv Array(Float64,It.AN,NP)]
     vAv = [vAv Array(Float64,It.AN,NP)]
-    epsv = [epsv, epsl]
+    epsv = [epsv; epsl]
     for i = 1:NP
       dA = pmapcontainer[i]
       eAv[:,cyclecount*NP+i] = dA[:,1]

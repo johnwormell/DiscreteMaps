@@ -316,7 +316,7 @@ logiwcoupj3(J::Integer=100;alpha0::Float64=3.8,sd0::Float64=0.02,n::Integer=100,
 
 # Dictionary
 
-itdict = {"L1" => logistic1,
+itdict = Dict{AbstractString,Function}("L1" => logistic1,
           "L2" => logistic2,
           "Lh" => logistich,
           "Lhp" => logistichp,
@@ -337,4 +337,4 @@ itdict = {"L1" => logistic1,
           "X1" => logiwcoupj1,
           "X2" => logiwcoupj2,
           "X3" => logiwcoupj3
-          }
+          )

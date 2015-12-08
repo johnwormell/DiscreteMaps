@@ -1,4 +1,4 @@
-export observe, autocovariance, observevar
+#export observe, autocovariance, observevar
 
 function observe(A::Function,x_history::Array{Float64})
   # Estimates an observable
