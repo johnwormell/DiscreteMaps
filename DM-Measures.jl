@@ -82,7 +82,7 @@ function measureintbd(intdom::Array{Float64,2},mu::SumMeasure,A=nothing)
   return totalint, totalerr
 end
 
-function measureint(intdom::Array{Float64,1},mu::SpectralMeasure,A::Nothing)
+function measureint(intdom::Array{Float64,1},mu::SpectralMeasure,A::Void)
   NB = length(intdom) - 1
   mint = diff(DiscreteMaps.spectralapprox(vec(intdom),DiscreteMaps.spectralint(mu.N,mu.periodic,mu.dom) * mu.coeffs,mu.periodic,mu.dom))
   mu.periodic && (mint += mu.coeffs[1] * diff(vec(intdom)))
@@ -102,7 +102,7 @@ function measureint(intdom::Array{Float64,1},mu::Measure,A=nothing)
 end
 
 totalint(mu::Measure,A::Function) = measureintbd(mu.dom,mu,A)
-function totalint(mu::SumMeasure,A::Nothing=nothing)
+function totalint(mu::SumMeasure,A::Void=nothing)
   inttotal = 0.
   errtotal = 0.
   for musub in mu.components
@@ -112,8 +112,8 @@ function totalint(mu::SumMeasure,A::Nothing=nothing)
   end
   return inttotal, errtotal
 end
-totalint(mu::SpectralMeasure,A::Nothing=nothing) = (dot(spectraltotalint(mu.N,mu.periodic,mu.dom),mu.coeffs),0.)
-totalint(mu::Spikes,A::Nothing=nothing) = measureintbd(mu.dom,mu,A)
+totalint(mu::SpectralMeasure,A::Void=nothing) = (dot(spectraltotalint(mu.N,mu.periodic,mu.dom),mu.coeffs),0.)
+totalint(mu::Spikes,A::Void=nothing) = measureintbd(mu.dom,mu,A)
 
 normalise(mu::Measure) = mu / totalint(mu)[1]
 lyapunov(M::DifferentiableMap,mu::Measure) =

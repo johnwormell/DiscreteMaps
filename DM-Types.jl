@@ -1,4 +1,4 @@
-export Map, NDMap, DMap, Peturbation
+#export Map, NDMap, DMap, Peturbation
 
 # Domain
 
@@ -158,7 +158,7 @@ Peturbation(M::Map,X) = Peturbation(M::Map,X,0.0)
 
 type IterationSchema
   P::Peturbation
-  PInitial::String
+  PInitial::AbstractString
   A::Array{Function,1}
   samplefn::Function
   samplefnargs
@@ -170,7 +170,7 @@ type IterationSchema
   NVsamp::Integer
   NVbuffer::Integer
 end
-IterationSchema(P::Peturbation,Pinitial::String,A::Array{Function,1};
+IterationSchema(P::Peturbation,Pinitial::AbstractString,A::Array{Function,1};
                 samplefn::Function=betasamplefn,samplefnargs=(),
                 N::Integer=10^7,NI::Integer=10^4,NH::Integer=10^4,useacv=false,NVsamp=1000,NVbuffer=NVsamp) =
   IterationSchema(P,Pinitial,A,samplefn,samplefnargs,N,NI,NH,length(A),useacv,NVsamp,NVbuffer)
@@ -219,7 +219,7 @@ type Spikes <: Measure
   CO::CriticalOrbit
   dom::Array{Float64,2}
   mag0::Array{Float64,1}
-  widths::Union(Array{Float64,2},Nothing)
+  widths::Union{Array{Float64,2},Void}
 end
 
 Spikes(CO::CriticalOrbit,
@@ -252,7 +252,7 @@ type SumMeasure <: Measure
     dom1 = (components[1]).dom
     L = length(components)
     if length(components) > 1
-      for i in [2:length(components)]
+      for i = 2:length(components)
         if (components[i]).dom != dom1
           error("Measures do not have matching domain")
         end
@@ -269,7 +269,7 @@ function (*)(normfactor::Real,mu::SumMeasure)
   return SumMeasure(components)
 end
 
-(+)(mu1::Measure,mu2::Measure) = SumMeasure(Measure[mu1,mu2])
-(-)(mu1::Measure,mu2::Measure) = SumMeasure(Measure[mu1,-1*mu2])
+(+)(mu1::Measure,mu2::Measure) = SumMeasure(Measure[mu1;mu2])
+(-)(mu1::Measure,mu2::Measure) = SumMeasure(Measure[mu1;-1*mu2])
 (*)(mu::Measure,normfactor::Real) = normfactor * mu
 (/)(mu::Measure,normfactor::Real) = mu * (1./normfactor)

@@ -81,10 +81,10 @@ end
 # The acim should be continuous after these spikes are removed.
 function spikefn(x::Array{Float64,1},# points to evaluate at
                  Sp::Spikes, #spike measure
-                 whichsp::Union{Integer,Array{Integer},Nothing}=nothing, # which spikes to do (nothing = all)
-                 whichnsp::Union{Integer,Array{Integer},Nothing}=nothing, # if whichsp = nothing,
+                 whichsp::Union{Integer,Array{Integer},Void}=nothing, # which spikes to do (nothing = all)
+                 whichnsp::Union{Integer,Array{Integer},Void}=nothing, # if whichsp = nothing,
                  # which spikes not to do (nothing = all)
-                 whichcp::Union{Integer,Array{Integer},Nothing}=nothing; # which cps to look at (nothing = all)
+                 whichcp::Union{Integer,Array{Integer},Void}=nothing; # which cps to look at (nothing = all)
                  oneminustfn::Bool=false # use (1-phi) instead of phi (= bump fn) when multiplying the test function
                  )
   # x = array of values to evaluate spike function at
@@ -96,7 +96,7 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
   Nc = Sp.CO.Nc
 
   if whichsp == nothing
-    spikeind = [1:Sp.CO.Npts]
+    spikeind = collect(1:Sp.CO.Npts)
     if whichnsp != nothing
       for i in sort([whichnsp],rev=true)
         splice!(spikeind,i)
@@ -105,7 +105,7 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
   else
     spikeind = [whichsp]
   end
-  cpind = whichcp == nothing ? [1:Nc] : [whichcp]
+  cpind = whichcp == nothing ? collect(1:Nc) : collect(whichcp)
   NSpts = length(spikeind)
 
   rawspikes = zeros(Float64,Nx)
@@ -135,8 +135,8 @@ function spikefn(x::Array{Float64,1},# points to evaluate at
   #  dofull ? (return (full,first)) : (return first) # eek
 end
 spikefn(x::Array{Float64,1},Sp::Spikes;
-        whichsp::Union(Integer,Nothing)=nothing,
-        whichnsp::Union(Integer,Nothing)=nothing) = spikefn(x,Sp,whichsp,whichnsp)
+        whichsp::Union{Integer,Void}=nothing,
+        whichnsp::Union{Integer,Void}=nothing) = spikefn(x,Sp,whichsp,whichnsp)
 spikefn(x::Float64,args...;kwargs...) = spikefn([x],args...;kwargs...)
 measuredensity(x::F64U,Sp::Spikes) = spikefn(x,Sp)
 
@@ -178,7 +178,7 @@ function findinvmeasure(Lhat::Array{Float64,2};verbose=false)
 
   weightm = speye(size(Deltahat,1)) # what the norm that you do the svd on looks like
   (U,S,V) = svd(weightm * Deltahat |> chopm)
-  verbose && println("Smallest singular values are ",[signif(S[i],4) for i = length(S) - [0:4]])
+  verbose && println("Smallest singular values are ",[signif(S[i],4) for i = length(S) - collect(0:4)])
   r = V[:,end]
   return (r,(U,S,V))
 end
@@ -313,7 +313,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
   end
 
   if critexists
-    Dr_at_c = spectralf(crit,[0:N-1],M.periodic,M.dom)
+    Dr_at_c = spectralf(crit,collect(0:N-1),M.periodic,M.dom)
 
     function fixedfn(x::Array{Float64,1},i::Int64)
       cpremove = 0
@@ -418,7 +418,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
       rsp = reshape(r[1:topleftsize],CONpts,Nc)
       sqrt(CONpts) * norm(std(rsp,2)) > 2S[end] * norm(r) && warn("Variance in spike coefficients is a bit large eh")
       Sp.mag0 .*= mean(rsp,1)|>vec
-      mu = SumMeasure([SpectralMeasure(r[topleftsize+1:end],M.dom,M.periodic),Sp])
+      mu = SumMeasure([SpectralMeasure(r[topleftsize+1:end],M.dom,M.periodic);Sp])
     end
   else
     mu = SpectralMeasure(r,M.dom,M.periodic)

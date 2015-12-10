@@ -16,7 +16,7 @@ function restrictfiles(files,keys::Array)
   files
 end
 
-searchdir(path,key::String) = filter(x->contains(x,key), readdir(path))
+searchdir(path,key::AbstractString) = filter(x->contains(x,key), readdir(path))
 searchdir(path,keys::Array) =
   restrictfiles(readdir(path),keys)
 
@@ -31,7 +31,7 @@ function synthesiseresults(PInitial,Jpathx="",extrastuff=["rs"];foutput=true)
   end
   FL = length(files)
   foutput && (println(FL, " files found"))
-  FL == 0 && (return (Nothing, Nothing))
+  FL == 0 && (return (nothing, nothing))
   for i = 1:FL
     f = files[i]
     L = load("$(path)/$f")

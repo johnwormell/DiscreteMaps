@@ -1,8 +1,8 @@
 module DiscreteMaps
 
 using Distributions
-using JLD
-using Roots
+using JLD, Roots
+importall Base
 
 # General fluff
 

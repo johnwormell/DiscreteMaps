@@ -31,7 +31,7 @@ function legp(x::F64U,k::I64U,dom::Array{Float64}=defdom(false))
     kind += 1
   end
 
-  p1 = [xn]
+  p1 = collect(xn)
   while kind <= maxkind && ks[kind] == 1
     lpmat[:,kind] = p1
     kind += 1
@@ -60,30 +60,30 @@ end
 legpts(n::Integer,dom::Array{Float64}=defdom(false)) = leginormcoords(FastGaussQuadrature.gausslegendre(n)[1],dom)
 function legtransf(n::Integer)
   (x, w) = FastGaussQuadrature.gausslegendre(n)
-  legp(x,[0:n-1])'.*[0.5:1:n-0.5].*w'
+  legp(x,collect(0:n-1))'.*collect(0.5:1:n-0.5).*w'
 end
 
 legapprox(x::F64U,coeffs::F64U,dom::Array{Float64} = defdom(false)) =
-  legp(x,[0:length(coeffs)-1],dom) * coeffs
+  legp(x,collect(0:length(coeffs)-1),dom) * coeffs
 
 legtotalint(n::Integer,dom::Array{Float64,2} = defdom(false)) =
-  [1, zeros(n-1)] * domsize(dom)[1]
+  [1; zeros(n-1)] * domsize(dom)[1]
 legvaluetotalint(n::Integer,dom::Array{Float64,2} = defdom(false)) =
   FastGaussQuadrature.gausslegendre(n)[2] * domsize(dom)[1]/2
 
 leginnerprodm(n::Integer=length(coeffs),dom::Array{Float64,2}=defdom(false)) =
-  Diagonal(domsize(dom)[1]./[1:2:2n-1])
+  Diagonal(domsize(dom)[1]./collect(1:2:2n-1))
 
 legint(n::Integer, dom::Array{Float64,2} = defdom(false)) =
-  Tridiagonal(1./[1:2:2n-3],zeros(n),-1./[3:2:2n-1]) * domsize(dom)[1] / 2
+  Tridiagonal(1./collect(1:2:2n-3),zeros(n),-1./collect(3:2:2n-1)) * domsize(dom)[1] / 2
 
 function legdiff(n::Integer, dom::Array{Float64,2} = defdom(false))
   diffm = zeros(n,n)
   for i = 1:n
     if rem(i,2) == 0
-      diffm[1:2:i-1,i] = [1:4:2i-3]
+      diffm[1:2:i-1,i] = collect(1:4:2i-3)
     else
-      diffm[2:2:i-1,i] = [3:4:2i-3]
+      diffm[2:2:i-1,i] = collect(3:4:2i-3)
     end
   end
   diffm * 2/domsize(dom)[1]
@@ -95,7 +95,7 @@ function legmult(coeffs::Array{Float64}, n::Integer=length(coeffs))
 
   mconstarray2 = eye(n)
   multm = coeffs[1] * mconstarray2
-  mconstarray1 = Tridiagonal(0.5+1./[2:4:4n-6],zeros(n),(0.5-1./[6:4:4n-2])) |> full
+  mconstarray1 = Tridiagonal(0.5+1./collect(2:4:4n-6),zeros(n),(0.5-1./collect(6:4:4n-2))) |> full
   coeffs[2] != 0 && (multm += coeffs[2] * mconstarray1)
   for j = 2:maximum([find(coeffs.!=0),2])-1
     mconstarray = -mconstarray2*(j-1)/j
@@ -121,9 +121,9 @@ function legmultv(coeffs::Array{Float64}, coeffs2::Array{Float64})
   n=length(coeffs2)
   mconstarray2 = leginnerprodm(n) * coeffs2;
   multm = coeffs[1] * mconstarray2
-  mconstarray1 = leginnerprodm(n) *(Tridiagonal(0.5+1./[2:4:4n-6],zeros(n),(0.5-1./[6:4:4n-2])) * coeffs2)
+  mconstarray1 = leginnerprodm(n) *(Tridiagonal(0.5+1./collect(2:4:4n-6),zeros(n),(0.5-1./collect(6:4:4n-2))) * coeffs2)
   coeffs[2] != 0 && (multm += coeffs[2] * mconstarray1)
-  for j = 2:maximum([find(coeffs.!=0),2])-1
+  for j = 2:maximum([find(coeffs.!=0);2])-1
     mconstarray = -mconstarray2*(j-1)/j
 
     for i = 1:n-1
@@ -173,17 +173,17 @@ end
 
 function legconv(coeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n::Integer=length(coeffs))
   bleft = legconvgetptmatrix(coeffs,n)
-  bright = legconvgetptmatrix(coeffs.*(-1).^[0:n-1],n).*(-1).^[0:n-1]'
+  bright = legconvgetptmatrix(coeffs.*(-1).^collect(0:n-1),n).*(-1).^collect(0:n-1)'
   lpts = legpts(n)
   ptbrk = div(n,2)
 
   legtransf(n)*
-    [legp(lpts[1:ptbrk]+1,[0:2:n-1])*bleft[1:2:n,:],
-     legp(lpts[ptbrk+1:end]-1,[0:2:n-1])*bright[1:2:n,:]]*domsize(dom)[1]
+    [legp(lpts[1:ptbrk]+1,collect(0:2:n-1))*bleft[1:2:n,:],
+     legp(lpts[ptbrk+1:end]-1,collect(0:2:n-1))*bright[1:2:n,:]]*domsize(dom)[1]
 end
 
 function leghconv(hcoeffs::Array{Float64,1},dom::Array{Float64,2}=defdom(false), n::Integer=length(hcoeffs))
-  (legconvgetptmatrix(hcoeffs.*(-1).^[0:n-1],n).*(-1).^[0:n-1]'.*(-1).^[0:n-1] +
+  (legconvgetptmatrix(hcoeffs.*(-1).^collect(0:n-1),n).*(-1).^collect(0:n-1)'.*(-1).^collect(0:n-1) +
      legconvgetptmatrix(hcoeffs,n)) *domsize(dom)[1]/2
 end
 
@@ -206,16 +206,16 @@ function fouriersc(x::F64U,k::I64U,dom::Array{Float64}=defdom(true))
 end
 
 fouriersc([0,pi,2pi],[0,1,2,3])
-fourierpts(n::Integer,dom::Array{Float64}=defdom(true)) = fourierinormcoords([0:n-1]/n * 2pi,dom)
+fourierpts(n::Integer,dom::Array{Float64}=defdom(true)) = fourierinormcoords(collect(0:n-1)/n * 2pi,dom)
 function fouriertransf(n::Integer)
   fp = fourierpts(n)
-  ftm = fouriersc(fp,[0:(n-1)]) / n * 2
+  ftm = fouriersc(fp,collect(0:n-1)) / n * 2
   ftm[:,1] /= 2
   return ftm'
 end
 
 fourierapprox(x::F64U,coeffs::F64U, dom::Array{Float64} = defdom(true)) =
-  fouriersc(x,[0:length(coeffs)-1],dom)*coeffs
+  fouriersc(x,collect(0:length(coeffs)-1),dom)*coeffs
 
 fouriertotalint(n::Integer,dom::Array{Float64}=defdom(true)) = [1, zeros(n-1)] * domsize(dom)[1]
 fouriervaluetotalint(n::Integer,dom::Array{Float64}=defdom(true)) = fill(domsize(dom)[1]/n,n)
@@ -228,7 +228,7 @@ end
 
 function tridv(n::Integer,pow::Real=-1)
   tdv = zeros(n)
-  tdv[2:2:end] = [1:floor(n/2)].^pow
+  tdv[2:2:end] = collect(1:floor(n/2)).^pow
   tdv
 end
 
@@ -239,42 +239,42 @@ fourierdiff(n::Integer,dom::Array{Float64}=defdom(true)) = Tridiagonal(-tridv(n-
 fillhf(m::Float64,f::Real) = fill(m,fld(f,2))
 function fouriersmultk(k::Integer,n::Integer)
   # left,top
-  I = [1,2k+1]
-  J = [2k+1,1]
-  V = [0.5,1]
+  I = [1;2k+1]
+  J = [2k+1;1]
+  V = [0.5;1]
   # top half
-  append!(I,[2:2:n-2k-1,3:2:n-2k+1])
-  append!(J,[2k+3:2:n,2k+2:2:n])
+  append!(I,[collect(2:2:n-2k-1);collect(3:2:n-2k+1)])
+  append!(J,[collect(2k+3:2:n);collect(2k+2:2:n)])
   append!(V,[fillhf(0.5,n-2k-1),fillhf(-0.5,n-2k)])
 
   # middle
-  append!(I,[2:1:2k-1])
-  append!(J,[2k-1:-1:2])
+  append!(I,collect(2:1:2k-1))
+  append!(J,collect(2k-1:-1:2))
   append!(V,fill(0.5,2k-2))
 
   # bottom half
-  append!(I,[2k+3:2:n,2k+2:2:n])
-  append!(J,[2:2:n-2k-1,3:2:n-2k+1])
+  append!(I,collect(2k+3:2:n,2k+2:2:n))
+  append!(J,collect(2:2:n-2k-1,3:2:n-2k+1))
   append!(V,[fillhf(0.5,n-2k-1),fillhf(-0.5,n-2k)])
 
   return sparse(I,J,V,n,n)
 end
 function fouriercmultk(k::Integer,n::Integer)
   # left,top edges
-  I = [1,2k]
-  J = [2k,1]
-  V = [0.5,1]
+  I = [1;2k]
+  J = [2k;1]
+  V = [0.5;1]
   # top half
-  append!(I,[2:n-2k])
-  append!(J,[2k+2:n])
+  append!(I,collect(2:n-2k))
+  append!(J,collect(2k+2:n))
   append!(V,fill(0.5,max(n-2k-1,0)))
   # middle
-  append!(I,[2:2:2k-2,3:2:2k-1])
-  append!(J,[2k-2:-2:2,2k-1:-2:3])
-  append!(V,[fill(0.5,k-1),fill(-0.5,k-1)])
+  append!(I,[collect(2:2:2k-2);collect(3:2:2k-1)])
+  append!(J,[collect(2k-2:-2:2);collect(2k-1:-2:3)])
+  append!(V,[fill(0.5,k-1);fill(-0.5,k-1)])
   # bottom half
-  append!(I,[2k+2:n])
-  append!(J,[2:n-2k])
+  append!(I,collect(2k+2:n))
+  append!(J,collect(2:n-2k))
   append!(V,fill(0.5,max(n-2k-1,0)))
 
   return sparse(I,J,V,n,n)
@@ -407,7 +407,7 @@ function leggauscoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
     pkpts = pkpts[pknrange]
     pkw = pkw[pknrange]
     glv = exp(-pkpts.^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
-    glv = (legp(pkpts,[0:n-1])'.*[0.5:1:n-0.5].*pkw') * glv # doing a legendre transform
+    glv = (legp(pkpts,collect(0:n-1))'.*collect(0.5:1:n-0.5).*pkw') * glv # doing a legendre transform
   end
   mu == 0 && (glv[2:2:end] = 0) # for centred transforms
   glv /= glv[1]*ds # to preserve probability density
@@ -432,7 +432,7 @@ end
 #   glv = Array(Float64,n)
 #   glv[1:2:end] = q
 #   glv[2:2:end] = 0
-#   glv .*= [0.5:1:n-0.5]
+#   glv .*= collect(0.5:1:n-0.5)
 #   glv /= glv[1] * ds # to preserve probability density
 #   glv
 # end
@@ -451,16 +451,16 @@ function leggaushcoefs(n::Integer,dom::Array{Float64,2}=defdom(false),
   else
     # for a narrow peak we only look at the effective support of the gaussian to get a better transform
     normwdth = sigmarat * sqrt(-log(eps(1.)))
-    pkn = int(2n / acos(1-normwdth)*pi)[1] # using asymptotic approximation of legendre points + fudge factor 2
+    pkn = round(Int,2n / acos(1-normwdth)*pi)[1] # using asymptotic approximation of legendre points + fudge factor 2
     (pkpts,pkw) = FastGaussQuadrature.gausslegendre(pkn)
     pknrange = 1:2n
     pkpts = pkpts[pknrange]
     pkw = pkw[pknrange]
     glv = exp(-(pkpts+1).^2/2sigmarat^2)/(sigmarat*sqrt(2pi))
     # doing a legendre transform
-    glv = legp(pkpts,[0:n-1])' * (pkw .* glv)
+    glv = legp(pkpts,collect(0:n-1))' * (pkw .* glv)
     glv |> chopm
-    glv .*= [0.5:1:n-0.5]
+    glv .*= collect(0.5:1:n-0.5)
   end
   legnormcoords(mu,dom) == -1 && (glv[2:2:end] = 0) # for centred transforms
   glv /= glv[1]*ds # to preserve probability density
@@ -488,7 +488,7 @@ spectralgauskernel(n::Integer,periodic::Bool=false,
 #  spectralconv(spectralgauscoefs(n,periodic,dom,sigma),periodic,dom,n)
 
 legdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(false),ctr=mean(dom)) =
-  legp(ctr,[0:n-1],dom)[:].*[0.5:1:n-0.5]
+  legp(ctr,collect(0:n-1),dom)[:].*collect(0.5:1:n-0.5)
 fourierdeltacoefs(n::Integer,dom::Array{Float64,2}=defdom(true),ctr=dom[1]) =
   fouriergauscoefs(n,dom,0.,ctr)
 spectraldeltacoefs(n::Integer,periodic::Bool=false,dom::Array{Float64,2}=defdom(periodic),

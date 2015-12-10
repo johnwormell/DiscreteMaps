@@ -12,9 +12,9 @@ function legnakedspikecoeffs(Sp::Spikes,n::Integer,dom::Array{Float64,2}=Sp.dom;
       csgn2 = cnorm >= 0 ? 1 : -1
       theta = acos(cnorm*csgn2)
       coefm[:,k,i] = domsizemult * sqrt(2) *
-        (csgn2 == 1 ? sin : cos)(theta*[1/2:1:n-1/2])
+        (csgn2 == 1 ? sin : cos)(theta*collect(1/2:1:n-1/2))
       normspikes || (coefm[:,k,i] .*= Sp.mag0[i] .*Sp.CO.mag[k,i])
-      coefm[:,k,i] .*= (csgn2 * csgn).^ [0:n-1]
+      coefm[:,k,i] .*= (csgn2 * csgn).^ collect(0:n-1)
 
       #       coefm[1,k,i] = Sp.mag0[i]*Sp.CO.mag[k,i] * domsizemult * 2sqrt(1-cnorm)
       #       coefm[2,k,i] = csgn * coefm[1,k,i] * (cnorm + (1-cnorm)/3)
@@ -67,12 +67,12 @@ function legspikemult(coeffs::Array{Float64,1}, Sp::Spikes, n::Integer=length(co
   SL = legnakedspikecoeffs(Sp, n+1, dom, normspikes=true)[:,:] # reusing SL as spike Legendre coeffs matrix to save memory
   for i = 1:spn
     lc = copy(SL[:,i])
-    lp = legp(Sp.CO.pts[i],[0:n],dom)
+    lp = legp(Sp.CO.pts[i],collect(0:n),dom)
 
     mconstarray2 = zeros(n+1)
     SL[:,i] = coeffs[1] * mconstarray2
     mconstarray1 = [lc[2]/3-lp[2]*lc[1],
-                    -0.5*(lc[3:end]./[5:2:2n+1] - lc[1:end-2]./[1:2:2n-3]),
+                    -0.5*(lc[3:end]./collect(5:2:2n+1) - lc[1:end-2]./collect(1:2:2n-3)),
                     0]
     coeffs[2] != 0 && (SL[:,i] += coeffs[2] * mconstarray1)
     for j = 2:maximum([find(coeffs.!=0),2])-1
@@ -149,7 +149,7 @@ function legspikecorrel(L::Array{Float64,2},mu::SumMeasure)
   n = mu.components[1].N
   spn = Sp.CO.Nc * Sp.CO.Npts
 
-  invs = inv(I-L[[1:spn,spn+2:end],[1:spn,spn+2:end]])
+  invs = inv(I-L[[1:spn,spn+2:spn+n],[collect(1:spn),collect(spn+2:spn+n)]])
   invs = [invs[1:spn,:];
           -Spint' * invs[1:spn,:] / legtotalint(n,mu.dom)[1];
           invs[spn+1:end,:]]

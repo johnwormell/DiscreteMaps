@@ -1,5 +1,5 @@
 # Iteration
-export iterate, observepeturbation, checklinearresponse
+#export iterate, observepeturbation, checklinearresponse
 
 function iterationpreloop!(x::Array{Float64},fn!::Function,NI::Integer)
   for n = 1:NI
@@ -108,7 +108,7 @@ function observepeturbation(P::Peturbation,A::Array{Function,1},epsv::Array{Floa
   return eA,vA
 end
 
-function timedsample(P::Peturbation,PInitial::String,A::Array{Function,1},samplefn::Function,endtime::DateTime=tomorrowmorning(),N::Int64=10^7,NI::Int64=10^4,NR::Int64=1,NQ::Int64=3,samplefnargs=())
+function timedsample(P::Peturbation,PInitial::AbstractString,A::Array{Function,1},samplefn::Function,endtime::DateTime=tomorrowmorning(),N::Int64=10^7,NI::Int64=10^4,NR::Int64=1,NQ::Int64=3,samplefnargs=())
   AN = length(A)
   epsv = Array(Float64,0)
   eA = Array(Float64,AN,0)
