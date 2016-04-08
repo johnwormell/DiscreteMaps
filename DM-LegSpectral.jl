@@ -1,11 +1,4 @@
 # Generic routines for measure and spectral functions
-# Packages
-try
-  Pkg.installed("FastGaussQuadrature")
-catch
-  error("Maybe you need to install FastGaussQuadrature, available at https://github.com/ajt60gaibb/FastGaussQuadrature.jl.")
-end
-using FastGaussQuadrature
 
 # Spectral helper functions - 1D ONLY
 defdom(periodic) = periodic ? ([0 2pi]) : ([-1. 1.]) # default domain for Fourier/Legendre
@@ -245,7 +238,7 @@ function fouriersmultk(k::Integer,n::Integer)
   # top half
   append!(I,[collect(2:2:n-2k-1);collect(3:2:n-2k+1)])
   append!(J,[collect(2k+3:2:n);collect(2k+2:2:n)])
-  append!(V,[fillhf(0.5,n-2k-1),fillhf(-0.5,n-2k)])
+  append!(V,[fillhf(0.5,n-2k-1);fillhf(-0.5,n-2k)])
 
   # middle
   append!(I,collect(2:1:2k-1))
@@ -253,9 +246,9 @@ function fouriersmultk(k::Integer,n::Integer)
   append!(V,fill(0.5,2k-2))
 
   # bottom half
-  append!(I,collect(2k+3:2:n,2k+2:2:n))
-  append!(J,collect(2:2:n-2k-1,3:2:n-2k+1))
-  append!(V,[fillhf(0.5,n-2k-1),fillhf(-0.5,n-2k)])
+  append!(I,[collect(2k+3:2:n);collect(2k+2:2:n)])
+  append!(J,[collect(2:2:n-2k-1);collect(3:2:n-2k+1)])
+  append!(V,[fillhf(0.5,n-2k-1);fillhf(-0.5,n-2k)])
 
   return sparse(I,J,V,n,n)
 end

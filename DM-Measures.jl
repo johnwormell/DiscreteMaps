@@ -136,7 +136,7 @@ function plotmeasure(mu::Measure;meshf=3000)
   boxsize = domsize(mu.dom)[1]/meshf
   hgd = linspace(mu.dom...,meshf+1)
   pgd = hgd[1:end-1] + boxsize/2
-  mudens = measureint(hgd,mu)[1] / boxsize
+  mudens = measureint(collect(hgd),mu)[1] / boxsize
   return pgd, mudens
 end
 

@@ -1,7 +1,6 @@
 module DiscreteMaps
 
-using Distributions
-using JLD, Roots
+using Distributions, FastGaussQuadrature, JLD, Roots
 importall Base
 
 # General fluff

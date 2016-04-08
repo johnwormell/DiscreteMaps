@@ -408,7 +408,9 @@ function spectralacim(M::IMap, # map whose acim we are finding
     Lhat = totalker * Lhat
   end
 
+  try
   (r,(U,S,V)) = findinvmeasure(Lhat,verbose=verbose)
+
 
   # Creating the measure
   if critexists && ~noiseexists
@@ -445,5 +447,7 @@ function spectralacim(M::IMap, # map whose acim we are finding
   else
     return returnsmallestsv ? (mu,S[end]) : mu
   end
-
+  catch
+    return (null,LD)
+  end
 end
