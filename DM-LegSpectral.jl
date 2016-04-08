@@ -210,7 +210,7 @@ end
 fourierapprox(x::F64U,coeffs::F64U, dom::Array{Float64} = defdom(true)) =
   fouriersc(x,collect(0:length(coeffs)-1),dom)*coeffs
 
-fouriertotalint(n::Integer,dom::Array{Float64}=defdom(true)) = [1, zeros(n-1)] * domsize(dom)[1]
+fouriertotalint(n::Integer,dom::Array{Float64}=defdom(true)) = [1; zeros(n-1)] * domsize(dom)[1]
 fouriervaluetotalint(n::Integer,dom::Array{Float64}=defdom(true)) = fill(domsize(dom)[1]/n,n)
 
 function fourierinnerprodm(n::Integer=length(coeffs),dom::Array{Float64,2}=defdom(true))
